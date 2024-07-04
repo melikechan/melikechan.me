@@ -1,0 +1,13 @@
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+insert_final_newline = false
+
+[*.md]
+insert_final_newline = true
+trim_trailing_whitespace = false
+indent_size = 2
+
+[{*.js,*.json,*.css,*.scss,*.html,*.yml,*.yaml,*.jsx,*.ts,*.tsx}]
+indent_size = 2
