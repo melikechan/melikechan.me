@@ -1,6 +1,6 @@
-# melikechan's personal website
+# melikechan's website
 
-This repository is contains the source code of my website. Even though it has still **a lot of work**.
+This repository contains the source code of my website. Even though it has still **a lot of work**.
 
 ## TODO list
 
@@ -13,4 +13,8 @@ This repository is contains the source code of my website. Even though it has st
     - [ ] Implement the frontend of _showcase_
   - [ ] Finish implementing _contact_ section
 - [ ] Draw graphics for the website (hero and some other things)
-- [ ] Add dark mode
+- [x] Add dark mode
+
+## Special thanks ✨
+
+I want to thank Ahmet, Burak (1), Burak (2), Hüseyin Burak, Toprak, and Yusuf for their valuable feedback and suggestions.
