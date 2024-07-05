@@ -4,7 +4,7 @@ import Link from 'next/link';
 import ThemeToggle from './ThemeToggler';
 import { useEffect } from 'react';
 
-export default function MobileMenu({ isOpen, closeMenu }) {
+export default function MobileMenu({ isOpen, closeMenu, navLinks }) {
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
@@ -20,7 +20,7 @@ export default function MobileMenu({ isOpen, closeMenu }) {
         onClick={(e) => e.stopPropagation()}
       >
         <ul className="space-y-4">
-          {['about', 'projects', 'contact'].map((item) => (
+          {navLinks.map((item) => (
             <li key={item}>
               <Link href={`/${item}`} onClick={closeMenu} className="capitalize">
                 {item}

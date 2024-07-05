@@ -40,7 +40,7 @@ export default function Navbar() {
           ))}
         </ul>
       </div>
-      <MobileMenu isOpen={menuOpen} closeMenu={() => setMenuOpen(false)} />
+      <MobileMenu isOpen={menuOpen} closeMenu={() => setMenuOpen(false)} navLinks={NAV_ITEMS} />
     </nav>
   );
 }
