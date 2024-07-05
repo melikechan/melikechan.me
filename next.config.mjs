@@ -8,6 +8,9 @@ const withMdx = nextMdx({
 /** @type {import('next').NextConfig} */
 const nextConfig = withMdx({
     pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
+    images: {
+        domains: ['repository-images.githubusercontent.com']
+    }
 });
 
 export default nextConfig;
