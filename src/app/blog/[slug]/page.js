@@ -16,7 +16,7 @@ export default async function Post({ params }) {
     return notFound()
   }
   return (
-    <article className="flex flex-col mx-8 my-4 h-screen space-y-4">
+    <article className="flex flex-col mx-8 my-4 min-h-screen space-y-4 animate-fadeIn">
       <h1 class="text-4xl font-bold">{postData.title}</h1>
       <div className="flex flex-col xs:flex-row gap-4 items-center">
         <time>{postData.date}</time>

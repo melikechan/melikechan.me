@@ -31,7 +31,7 @@ export default async function Home() {
   ];
 
   return (
-    <main className="flex flex-col mx-8 my-4 h-screen space-y-4">
+    <main className="flex flex-col mx-8 my-4 min-h-screen space-y-4 animate-fadeIn">
       <h1 className="text-4xl font-bold">Projects</h1>
 
       <h2 className="text-2xl text-center font-bold">Featured Projects</h2>

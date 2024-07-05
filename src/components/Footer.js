@@ -7,7 +7,7 @@ export default function Navbar() {
   }
   return (
     <footer className="flex justify-center items-center py-4 w-full px-4">
-      made with love 🤍 melikechan | {yearString}
+      made with love 🤍 by melikechan | {yearString}
     </footer>
   );
 }

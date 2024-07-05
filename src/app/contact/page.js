@@ -2,7 +2,7 @@ import { SiLinkedin, SiTutanota } from "@icons-pack/react-simple-icons";
 
 export default function Home() {
   return (
-    <main className="flex flex-col mx-8 my-4 h-screen space-y-4">
+    <main className="flex flex-col mx-8 my-4 min-h-screen space-y-4 animate-fadeIn">
       <h1 className="text-4xl font-bold">Contact</h1>
       <p className="text-lg">You can contact me via:</p>
 

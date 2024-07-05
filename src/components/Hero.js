@@ -3,7 +3,7 @@ import Button
   from "./Button";
 export default function Hero() {
   return (
-    <section className="flex flex-col items-center justify-center h-screen space-y-4">
+    <section className="flex flex-col items-center justify-center min-h-screen space-y-4">
       <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-melikechan-gold to-melikechan-pink dark:from-melikechan-purple dark:to-melikechan-blue">
         melikechan
       </h1>
