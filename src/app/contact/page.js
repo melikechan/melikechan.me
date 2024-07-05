@@ -21,6 +21,7 @@ export default function Home() {
             </a>
           </li>
         </ul>
+        <p className="text-sm">For my resume, please reach out to me via email or LinkedIn.</p>
       </section>
     </main>
   );
