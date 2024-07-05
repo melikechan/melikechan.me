@@ -17,3 +17,7 @@ This repository contains the source code of my website. Even though it has still
 ## Special thanks ✨
 
 I want to thank Ahmet, Burak (1), Burak (2), Hüseyin Burak, Toprak, and Yusuf for their valuable feedback and suggestions.
+
+## Deployment
+
+I was unable to serve my website on Github, therefore I used [vercel](https://vercel.com) to do so.
