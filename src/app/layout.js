@@ -4,7 +4,11 @@ import Footer from "../components/Footer";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  weights: [400, 500, 600, 700],
+  display: "swap",
+});
 
 export const metadata = {
   title: "melikechan",
