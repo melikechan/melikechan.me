@@ -1,51 +1,56 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
-const postsDirectory = path.join(process.cwd(), '_posts')
+const postsDirectory = path.join(process.cwd(), '_posts');
+
+function getAllFiles(dirPath, arrayOfFiles) {
+  const files = fs.readdirSync(dirPath);
+  
+  arrayOfFiles = arrayOfFiles || [];
+
+  files.forEach(function(file) {
+    if (fs.statSync(path.join(dirPath, file)).isDirectory()) {
+      arrayOfFiles = getAllFiles(path.join(dirPath, file), arrayOfFiles);
+    } else {
+      arrayOfFiles.push(path.join(dirPath, file));
+    }
+  });
+
+  return arrayOfFiles;
+}
 
 export function getSortedPostsData() {
-  const fileNames = fs.readdirSync(postsDirectory)
-  const allPostsData = fileNames.map(fileName => {
-    const id = fileName.replace(/\.mdx$/, '')
-    const fullPath = path.join(postsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const matterResult = matter(fileContents)
+  const allFiles = getAllFiles(postsDirectory);
+  const allPostsData = allFiles.map(filePath => {
+    const id = filePath.replace(/^.*[\\\/]/, '').replace(/\.mdx$/, '');
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const matterResult = matter(fileContents);
 
     return {
       id,
+      path: filePath.substring(postsDirectory.length + 1), // Remove the base directory path
       ...matterResult.data
-    }
-  })
+    };
+  });
 
-  return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1
-    } else {
-      return -1
-    }
-  })
+  return allPostsData.sort((a, b) => b.date - a.date);
 }
 
 export function getPostData(id) {
-  const fullPath = path.join(postsDirectory, `${id}.mdx`)
+  const allFiles = getAllFiles(postsDirectory);
+  const filePath = allFiles.find(filePath => filePath.split(path.sep).pop() === `${id}.mdx`);
 
-  try {
-    if (!fs.existsSync(fullPath)) {
-      return null;
-    }
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const matterResult = matter(fileContents)
-
-    return {
-      id,
-      content: matterResult.content,
-      ...matterResult.data
-    }
-  } catch (error) {
-    Console.log(error);
+  if (!filePath || !fs.existsSync(filePath)) {
     return null;
   }
 
+  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const matterResult = matter(fileContents);
 
+  return {
+    id,
+    content: matterResult.content,
+    ...matterResult.data
+  };
 }
