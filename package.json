@@ -1,6 +1,6 @@
 {
-  "name": "melikechan.github.io",
-  "version": "0.1.0",
+  "name": "melikechan.io",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
