@@ -1,19 +1,20 @@
-import { getSortedPostsData, getPostData } from '@/lib/posts'
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import { notFound } from 'next/navigation'
+import { getSortedPostsData, getPostData } from "@/lib/posts";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { notFound } from "next/navigation";
+import { config, components } from "@/lib/mdxSettings";
 
 export async function generateStaticParams() {
-  const posts = getSortedPostsData()
+  const posts = getSortedPostsData();
   return posts.map((post) => ({
     slug: post.id,
-  }))
+  }));
 }
 
 export default async function Post({ params }) {
-  const postData = getPostData(params.slug)
+  const postData = getPostData(params.slug);
 
   if (!postData) {
-    return notFound()
+    return notFound();
   }
   return (
     <article className="flex flex-col mx-8 my-4 min-h-screen space-y-4 animate-fadeIn">
@@ -22,7 +23,11 @@ export default async function Post({ params }) {
         <time>{postData.date}</time>
         {postData.author && <span>by {postData.author}</span>}
       </div>
-      <MDXRemote source={postData.content} />
+      <MDXRemote
+        source={postData.content}
+        components={components}
+        options={config}
+      />
     </article>
-  )
+  );
 }
