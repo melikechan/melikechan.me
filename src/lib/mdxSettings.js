@@ -19,7 +19,7 @@ export const components = {
       />
     </div>
   ),
-  Link: (props) => (
+  a: (props) => (
     <Link
       href
       {...props}
