@@ -1,19 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/posts/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/lib/**/*.{js,ts,jsx,tsx,mdx}",
+    "./posts/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   darkMode: "class",
   theme: {
     extend: {
       screens: {
-        "xs": "320px"
+        xs: "320px",
       },
-      colors:
-      {
+      colors: {
         "melikechan-gold": "#e79518",
         "melikechan-pink": "#e71878",
         "melikechan-purple": "#a70e7f",
@@ -21,7 +20,7 @@ module.exports = {
         "melikechan-blue": "#6913ec",
       },
       keyframes: {
-        "fadeIn": {
+        fadeIn: {
           "0%": {
             opacity: "0",
           },
@@ -31,7 +30,7 @@ module.exports = {
         },
       },
       animation: {
-        "fadeIn": "fadeIn 0.5s ease-in-out",
+        fadeIn: "fadeIn 0.5s ease-in-out",
       },
     },
   },
