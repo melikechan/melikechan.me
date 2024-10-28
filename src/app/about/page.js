@@ -1,9 +1,22 @@
+export async function generateMetadata() {
+  return {
+    title: "About | melikechan",
+    description: "About melikechan.",
+  };
+}
+
 export default function Home() {
   return (
     <main className="flex flex-col mx-8 my-4 min-h-screen space-y-4 animate-fadeIn">
       <h1 className="text-4xl font-bold">About</h1>
-      <p className="text-lg">I am currently a <b>junior</b> in computer engineering at Ankara University.</p>
-      <p className="text-lg">I am interested in AI and I would like to work as a research scientist in the future.</p>
+      <p className="text-lg">
+        I am currently a <b>junior</b> in computer engineering at Ankara
+        University.
+      </p>
+      <p className="text-lg">
+        I am interested in AI and I would like to work as a research scientist
+        in the future.
+      </p>
 
       <section className="flex flex-col">
         <h2 className="text-2xl font-bold">Skills</h2>

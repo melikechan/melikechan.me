@@ -1,18 +1,26 @@
 import ProjectCard from "@/components/ProjectCard";
 
+export async function generateMetadata() {
+  return {
+    title: "Projects | melikechan",
+    description: "Projects of melikechan.",
+  };
+}
+
 export default async function Home() {
   const projects = [
     {
-      title: "Quantum Testcase Generator",
-      description: "A testcase generator using IBM Quantum Experience.",
-      href: "https://github.com/melikechan/quantum-testcase-generator",
+      title: "Testcase Generator",
+      description:
+        "A testcase generator that takes JSON input and generates testcases.",
+      href: "https://github.com/melikechan/object-to-tc",
       progress: 10,
-      tags: ["Python", "Qiskit", "IBM Quantum Experience"],
+      tags: ["Python", "JSON"],
     },
     {
       title: "degoogle (Turkish)",
       description: "Turkish translation of the degoogle project.",
-      href: "https://github.com/melikechan/degoogle-turkish",
+      href: "https://github.com/ankaraunifreesoftware/degoogle-turkish",
       img: "https://repository-images.githubusercontent.com/191201679/10394d00-968c-11ea-8879-4f06b3e59af5",
       progress: 15,
     },
@@ -27,7 +35,7 @@ export default async function Home() {
       description: "TBA!",
       progress: 5,
       tags: ["JavaScript"],
-    }
+    },
   ];
 
   return (

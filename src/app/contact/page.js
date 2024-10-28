@@ -1,5 +1,17 @@
 import { SiLinkedin, SiTutanota } from "@icons-pack/react-simple-icons";
 
+export async function generateMetadata() {
+  return {
+    title: "Contact | melikechan",
+    description: "Contact information of melikechan.",
+    robots: {
+      index: false,
+      follow: false,
+      nocache: true,
+    },
+  };
+}
+
 export default function Home() {
   return (
     <main className="flex flex-col mx-8 my-4 min-h-screen space-y-4 animate-fadeIn">

@@ -1,8 +1,15 @@
-import Link from 'next/link'
-import { getSortedPostsData } from '@/lib/posts'
+import Link from "next/link";
+import { getSortedPostsData } from "@/lib/posts";
+
+export async function generateMetadata() {
+  return {
+    title: "Blog | melikechan",
+    description: "melikechan's blog posts.",
+  };
+}
 
 export default function Blog() {
-  const allPostsData = getSortedPostsData()
+  const allPostsData = getSortedPostsData();
 
   return (
     <main className="flex flex-col mx-8 my-4 min-h-screen space-y-4 animate-fadeIn">
@@ -10,7 +17,10 @@ export default function Blog() {
       <ul className="flex flex-col gap-4">
         {allPostsData.map(({ id, date, title }) => (
           <li key={id} className="flex flex-col gap-1">
-            <Link href={`/blog/${id}`} className='text-xl hover:underline focus:underline active:underline'>
+            <Link
+              href={`/blog/${id}`}
+              className="text-xl hover:underline focus:underline active:underline"
+            >
               {title}
             </Link>
             <br />
@@ -19,5 +29,5 @@ export default function Blog() {
         ))}
       </ul>
     </main>
-  )
+  );
 }
