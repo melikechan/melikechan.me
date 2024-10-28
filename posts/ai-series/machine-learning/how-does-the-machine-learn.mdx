@@ -5,8 +5,6 @@ author: "Melike Vurucu"
 tags: ["AI", "Artifical Intelligence", "Machine Learning"]
 ---
 
-(to be edited later)
-
 Well, you may heard of some _machine learning_ memes such as:
 
 <figure style={{textAlign: "center"}}>
@@ -20,6 +18,10 @@ Well, you may heard of some _machine learning_ memes such as:
     _Well, I am not actually a **fan** of this meme, I saw on LinkedIn (then found on Reddit)... Here is the [Reddit post (original one seems deleted)](https://www.reddit.com/r/ProgrammerHumor/comments/lyejqp/machine_learning_things/)._
     </figcaption>
 </figure>
+
+You may be alien to what does it _mean_, why there is a warning sign on the keyboard etc. 
+
+In this post, we will learn what _the learning is._
 
 ## What actually learning is?!
 
@@ -38,6 +40,8 @@ Some of the parameters that are **predefined** are:
 - **Number of Layers**
 
 These parameters are _set before the training_ and _not learned from the data_, are known as **hyperparameters**.
+
+Hyperparameters are like features your classroom—size of the class, equipments available. They are predetermined by the school administration.
 
 ### But, what about the parameters that are learned from the data?
 
@@ -70,13 +74,23 @@ This metric of error is calculated by using a **loss function**.
 
 Our goal is to _minimize the loss function_ to make the model **learn better**.
 
+> Let's make this goal less abstract. Why?
+>
+> Imagine we are walking through a way to _go somewhere._ We use GPS, but it is broken. It only shows how far we are **from the destination, not the way.**
+> 
+> We have to figure out to what could we do to _get closer to our destination with our instincts or insights, step by step._ The surroundings change.
+
 #### How do we minimize the loss function?
 
-By using _gradient descent!_
+By using _gradient descent! (or its derivatives)_
 
-Gradient descent is an optimization algorithm that is used to **minimize the loss function**.
+Gradient descent is an _optimization algorithm_ that is used to **minimize the loss function**.
 
 > Well, this is also another topic to discuss, but in short, it is an algorithm that **iteratively updates the weights** to **minimize the loss function**.
+
+> We can rewrap the previous visualization like:
+> - **Broken GPS:** Loss function, which only shows the _distance_ from our goal.
+> - **Our instincts/insights:** Optimization algorithm to get closer to our goal.
 
 ## Types of Feeding Data to the Model
 
