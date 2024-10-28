@@ -29,16 +29,37 @@ There are three types of machine learning:
 4. **Reinforcement Learning**: The model learns to make a **sequence of decisions**. The model learns to make decisions by **trial and error**. (by **rewards** and **penalties**).
 > Main problems: **Playing a game (i.e. osu!)**, **Robotics**.
 
+<figure style={{textAlign: "center", display: "flex", alignItems: "center", flexDirection: "column"}}>
+<iframe style={{width: "100%", maxWidth:"800px", height: "auto"}} width="0" height="0" src="https://www.youtube-nocookie.com/embed/cAvSV4b1kcg?si=KCz6FiAIccKFTKcc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <figcaption style={{margin: 0}}>
+    This video is an evidence of computers can learn playing games using _reinforcement learning_ and even beat the _top players_!
+    </figcaption>
+</figure>
+
 ### Problems that Machine Learning can solve
 
 We have seen some problems in the previous section, but let's see what they _actually_ are:
 
 - **Classification**: Predicting the **category (also called as _class_ or _label_)** of a given data point.
-    - It has two variations: **Binary Classification** and **Multi-class Classification**.
-    - **Binary Classification**: Predicting if the given data point belongs to _one of the two classes._
-    - **Multi-class Classification**: Predicting if the given data point belongs to _one of the multiple classes._
-    - **Multi-label Classification**: Predicting if the given data point belongs to _multiple classes._
+    - It has three variations: **Binary Classification**, **Multi-class Classification** and **Multi-label Classification**.
+        - **Binary Classification**: Predicting if the given data point belongs to _one of the two classes._
+        - **Multi-class Classification**: Predicting if the given data point belongs to _one of the multiple classes._
+        - **Multi-label Classification**: Predicting if the given data point belongs to _multiple classes._
     - **Example**: _Spam Detection (detecting if the e-mail is spam or not, **binary classification**)_, _Handwritten Digit Recognition (recognizing the digit from 0 to 9, **multi-class classification**)_.
+
+<figure style={{textAlign: "center", display: "flex", alignItems: "center", flexDirection: "column"}}>
+    <Image src="/images/ai-series/machine-learning/intro-to-ml/e-mail-classification.jpg"
+    alt="Spam detection process"
+    width={0} 
+    height={0} 
+    sizes="50vw" 
+    style={{width: "100%", maxWidth:"800px", height: "auto"}}
+    />
+    <figcaption style={{margin: 0}}>
+        Here is an illustration of _binary classification_ by spam detection: Take the e-mail, _digest_ and determine whether it is _spam_ or _not spam_.
+    </figcaption>
+</figure>
+
 - **Regression**: Predicting the **value** of a given data point.
     - **Example**: _Predicting the price of a house based on the features of the house (like number of rooms, area, etc.)_.
 - **Clustering**: Grouping the data points into **clusters** based on the **similarities, patterns** in the data.
