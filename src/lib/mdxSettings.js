@@ -1,10 +1,13 @@
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import Image from "next/image";
 import Link from "next/link";
 
 export const config = {
   mdxOptions: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm, remarkMath],
+    rehypePlugins: [rehypeKatex],
   },
 };
 

@@ -1,0 +1,155 @@
+---
+title: "Machine Learning Series: What the heck are optimization algorithms?! — A Mathematical Perspective"
+date: "2024-10-29"
+author: "Melike Vurucu"
+tags: ["AI", "Artifical Intelligence", "Machine Learning", "Deep Learning", "Machine Learning Series"]
+---
+
+Well, this blog post (tutorial) is dedicated to _a precious person_ who values math so much, Burak. 💕
+
+In this blog post, we will discuss methods to optimize the loss (cost) function in machine learning models. We will start with the basics and then dive into the details of optimization algorithms. We will also discuss the mathematical perspective of optimization algorithms.
+
+## Why optimize the loss?
+
+In the [previous blog post](how-does-the-machine-learn), we also discussed that the machine learning models should trained in a way that they can make the best predictions. 
+
+To achieve this, we need to optimize the loss function, _the smaller the loss, the better the model._
+
+## Well, how?
+
+We will use gradient descent algorithms to optimize the loss function.
+
+> Before going on, please ensure that you have read (upcoming) blog post about partial derivatives.
+
+### What is gradient descent?
+
+Gradient descent is an optimization algorithm used to _minimize the loss function_ by **iteratively moving** in the direction of the steepest descent.
+
+> What did you say? The steepest descent? 🤔
+>
+> Think of it as a mountain. You are at the top of the mountain and you want to reach the bottom. 
+> 
+> You will take steps in the direction of the **steepest downhill** to reach the bottom as soon as possible.
+
+Mathematically, gradient descent looks like this:
+
+$$
+\theta = \theta - \alpha \cdot \nabla_{\theta} J(\theta)
+$$
+
+where:
+- $\theta$: parameters of the model **(is a vector!)**
+    - **For example:** $\theta = [\theta_0, \theta_1, \theta_2, \ldots, \theta_n]$ (you have $n$ parameters in your model)
+- $\alpha$: learning rate
+- $J(\theta)$: loss function
+- $\nabla_{\theta} J(\theta)$: gradient of the loss function with respect to the parameters **(is a vector!)**
+
+> There is a caveat, the gradient descent algorithm may **converge** to a **local minimum** instead of the **global minimum**.
+
+### What is the learning rate?
+
+Learning rate is a _hyperparameter_ that determines the size of the steps taken in the direction of the steepest descent.
+
+However, this parameter should be chosen carefully.
+- If the learning rate is **too small**, the model would take **too long** to converge.
+- If the learning rate is **too large**, the model may **miss** the optimal point.
+
+> Size of steps, converge, miss the optimal point... 🤔
+>
+> Think like you will go downhill. You may go _fast_ or _slow_.
+>
+> If you go _fast_, you may _miss_ the bottom. If you go _slow_, you may _take too long_ to reach the bottom.
+
+Here are two videos to visualize the impact of the learning rate on the optimization process:
+
+<figure style={{textAlign: "center", display: "flex", alignItems: "center", flexDirection: "column"}}>
+    <video style={{width: "100%", maxWidth:"800px", height: "auto"}} controls>
+        <source src="/videos/ai-series/machine-learning/optimization-algorithms/GradientDescentHighLR.mp4" type="video/mp4" />
+        Your browser does not support the video tag
+    </video>
+    <figcaption style={{margin: 0}}>
+        When the learning rate is **too high**, the model **misses** the optimal point.
+    </figcaption>
+</figure>
+
+<figure style={{textAlign: "center", display: "flex", alignItems: "center", flexDirection: "column"}}>
+    <video style={{width: "100%", maxWidth:"800px", height: "auto"}} controls>
+        <source src="/videos/ai-series/machine-learning/optimization-algorithms/GradientDescentLowLR.mp4" type="video/mp4" />
+        Your browser does not support the video tag
+    </video>
+    <figcaption style={{margin: 0}}>
+        When the learning rate is **too low**, the model would take **longer** to converge.
+    </figcaption>
+</figure>
+
+## Is that all?
+
+Of course no! There are many optimization algorithms that are developed to optimize the loss function in machine learning models.
+
+Did you think that _gradient descent_ is perfect as is? 🤔
+
+Well, one who considers **all the data on the dataset** will eat up all the **memory** and **time**.
+
+Therefore, we need to consider to divide the dataset into **smaller pieces**. And there are optimization algorithms actually use this idea.
+
+> **Note:** Classical gradient descent algorithm is also called as **Batch Gradient Descent**. Because it uses the **whole dataset** to update the parameters.
+
+## Stochastic Gradient Descent (SGD)
+
+Stochastic Gradient Descent is an optimization algorithm that uses a **random sample** of the dataset to update the parameters.
+
+> What does random sample mean?
+>
+> Random sample means we take a **random data point** from the dataset, for **SGD**.
+
+### How does it work?
+
+1. **Randomly shuffle** the dataset.
+2. **Iterate** over the dataset, **one data point at a time**.
+3. **Update** the parameters using the **random sample**. (at each iteration)
+
+Mathematically, stochastic gradient descent looks like this:
+
+$$
+\theta = \theta - \alpha \cdot \nabla_{\theta} J(\theta; x^{(i)}, y^{(i)})
+$$
+
+where:
+- $\theta$: parameters of the model **(is a vector!)**
+- $\alpha$: learning rate
+- $J(\theta; x^{(i)}, y^{(i)})$: loss function with respect to the **random sample** $(x^{(i)}, y^{(i)})$
+
+> There is a caveat, the stochastic gradient descent algorithm may **oscillate** around the **optimal point**.
+>
+> Because, the algorithm uses **random samples** to update the parameters. (we go **through a random surrounding**, in the road example 🛣️)
+
+(coming soon)
+
+## Mini-batch Gradient Descent
+
+Mini-batch Gradient Descent is an optimization algorithm that uses a **random sample** of the dataset to update the parameters.
+
+> Well? Is it the same as **SGD**?
+>
+> No, it is not. **Mini-batch Gradient Descent** uses a **random subset** of the dataset, not a **random data point**.
+
+### How does it work?
+
+1. **Randomly shuffle** the dataset.
+2. **Divide** the dataset into **small batches**.
+3. **Iterate** over the small batches, **one batch at a time**.
+4. **Update** the parameters using the **small batch**. (at each iteration)
+
+Mathematically, mini-batch gradient descent looks like this:
+
+$$
+\theta = \theta - \alpha \cdot \nabla_{\theta} J(\theta; x^{(i:i+n)}, y^{(i:i+n)})
+$$
+
+where:
+- $\theta$: parameters of the model **(is a vector!)**
+- $\alpha$: learning rate
+- $J(\theta; x^{(i:i+n)}, y^{(i:i+n)})$: loss function with respect to the **small batch** $(x^{(i:i+n)}, y^{(i:i+n)})$
+- $n$: batch size
+
+(to be revised later)
