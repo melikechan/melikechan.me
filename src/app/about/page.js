@@ -2,6 +2,11 @@ export async function generateMetadata() {
   return {
     title: "About | melikechan",
     description: "About melikechan.",
+
+    openGraph: {
+      title: "About | melikechan",
+      description: "About melikechan.",
+    },
   };
 }
 

@@ -4,6 +4,12 @@ export async function generateMetadata() {
   return {
     title: "Contact | melikechan",
     description: "Contact information of melikechan.",
+
+    openGraph: {
+      title: "Contact | melikechan",
+      description: "Contact information of melikechan.",
+    },
+
     robots: {
       index: false,
       follow: false,
@@ -21,19 +27,35 @@ export default function Home() {
       <section className="flex flex-col">
         <ul className="flex flex-col gap-4">
           <li>
-            <a href="https://www.linkedin.com/in/melikechan" target="_blank" rel="noreferrer" className="flex flex-row gap-2 items-center">
+            <a
+              href="https://www.linkedin.com/in/melikechan"
+              target="_blank"
+              rel="noreferrer"
+              className="flex flex-row gap-2 items-center"
+            >
               <SiLinkedin size={24} />
-              <span className="hover:underline focus:underline active:underline">LinkedIn</span>
+              <span className="hover:underline focus:underline active:underline">
+                LinkedIn
+              </span>
             </a>
           </li>
           <li>
-            <a href="mailto:melikechan@tuta.io" target="_blank" rel="noreferrer" className="flex flex-row gap-2 items-center">
+            <a
+              href="mailto:melikechan@tuta.io"
+              target="_blank"
+              rel="noreferrer"
+              className="flex flex-row gap-2 items-center"
+            >
               <SiTutanota size={24} />
-              <span className="hover:underline focus:underline active:underline">melikechan[at]tuta.io</span>
+              <span className="hover:underline focus:underline active:underline">
+                melikechan[at]tuta.io
+              </span>
             </a>
           </li>
         </ul>
-        <p className="text-sm">For my resume, please reach out to me via email or LinkedIn.</p>
+        <p className="text-sm">
+          For my resume, please reach out to me via email or LinkedIn.
+        </p>
       </section>
     </main>
   );

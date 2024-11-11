@@ -12,7 +12,6 @@ const inter = Inter({
 
 export const metadata = {
   title: "melikechan",
-  applicationName: "melikechan",
   description: "melikechan's personal website.",
   referrer: "origin-when-cross-origin",
   creator: "Melike Vurucu (melikechan)",

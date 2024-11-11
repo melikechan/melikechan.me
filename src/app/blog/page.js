@@ -5,6 +5,11 @@ export async function generateMetadata() {
   return {
     title: "Blog | melikechan",
     description: "melikechan's blog posts.",
+
+    openGraph: {
+      title: "Blog | melikechan",
+      description: "melikechan's blog posts.",
+    },
   };
 }
 
