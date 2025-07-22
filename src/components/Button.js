@@ -14,7 +14,7 @@ export default function Button({
   return (
     <a href={href} target="_blank" rel="noreferrer">
       <button
-        className={`px-4 py-2 rounded-lg ${variants[variant]}`}
+        className={`px-4 py-2 rounded-lg text-white ${variants[variant]}`}
         {...props}
       >
         {children}
