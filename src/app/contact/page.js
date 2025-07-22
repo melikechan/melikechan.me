@@ -2,18 +2,17 @@ import { SiLinkedin, SiTutanota } from "@icons-pack/react-simple-icons";
 
 export async function generateMetadata() {
   return {
-    title: "Contact | melikechan",
+    title: "Contact",
     description: "Contact information of melikechan.",
 
     openGraph: {
-      title: "Contact | melikechan",
+      title: "Contact",
       description: "Contact information of melikechan.",
     },
 
     robots: {
       index: false,
       follow: false,
-      nocache: true,
     },
   };
 }

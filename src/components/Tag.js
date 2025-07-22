@@ -1,7 +1,11 @@
-export default function Tag({ children, ...props }) {
+export default function Tag({ variant = "primary", children, ...props }) {
+  const variants = {
+    primary: "bg-primary",
+    secondary: "bg-secondary",
+  };
+  
   return (
-    <div className={`px-4 py-2 text-white bg-melikechan-pink dark:bg-melikechan-blue
-      rounded-lg`} {...props}>
+    <div className={`px-4 py-2 rounded-lg ${variants[variant]}`} {...props}>
       {children}
     </div>
   );
