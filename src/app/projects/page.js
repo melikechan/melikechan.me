@@ -2,11 +2,11 @@ import ProjectCard from "@/components/ProjectCard";
 
 export async function generateMetadata() {
   return {
-    title: "Projects | melikechan",
+    title: "Projects",
     description: "Projects of melikechan.",
 
     openGraph: {
-      title: "Projects | melikechan",
+      title: "Projects",
       description: "Projects of melikechan.",
     },
   };

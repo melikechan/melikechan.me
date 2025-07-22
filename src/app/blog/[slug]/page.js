@@ -7,11 +7,11 @@ export async function generateMetadata({ params }) {
   const postData = getPostData(params.slug);
 
   return {
-    title: postData.title + " | melikechan",
+    title: postData.title,
     description: postData.description,
     keywords: postData.tags,
     openGraph: {
-      title: postData.title + " | melikechan",
+      title: postData.title,
       description: postData.description,
       type: "article",
     },

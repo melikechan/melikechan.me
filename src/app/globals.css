@@ -1,6 +1,43 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Custom Colors */
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+
+  /* Shadows */
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+
+  /* Keyframes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
 
 @layer utilities {
   .text-balance {
@@ -8,10 +45,38 @@
   }
 }
 
+:root {
+  --background: hsl(210, 41%, 96%);
+  --foreground: hsl(222, 47%, 11%);
+
+  /* Custom Colors */
+  --primary: hsl(332, 81%, 50%);
+  --secondary: hsl(36, 81%, 50%);
+
+  /* Shadows */
+  --shadow-2xs: 0 1px 2px 0 hsl(from var(--foreground) h s l / 0.05);
+  --shadow-xs: 0 1px 2px 0 hsl(from var(--foreground) h s l / 0.1),
+    0 1px 1px 0 hsl(from var(--foreground) h s l / 0.06);
+  --shadow-sm: 0 1px 3px 0 hsl(from var(--foreground) h s l / 0.1),
+    0 1px 2px -1px hsl(from var(--foreground) h s l / 0.1);
+  --shadow: 0 4px 6px -1px hsl(from var(--foreground) h s l / 0.1),
+    0 2px 4px -2px hsl(from var(--foreground) h s l / 0.1);
+  --shadow-md: 0 10px 15px -3px hsl(from var(--foreground) h s l / 0.1),
+    0 4px 6px -4px hsl(from var(--foreground) h s l / 0.1);
+  --shadow-lg: 0 20px 25px -5px hsl(from var(--foreground) h s l / 0.1),
+    0 8px 10px -6px hsl(from var(--foreground) h s l / 0.1);
+  --shadow-xl: 0 25px 50px -12px hsl(from var(--foreground) h s l / 0.25);
+  --shadow-2xl: 0 25px 50px -12px hsl(from var(--foreground) h s l / 0.25);
+}
+
+.dark {
+  --background: hsl(222, 47%, 11%);
+  --foreground: hsl(210, 41%, 96%);
+
+  --primary: hsl(264, 85%, 50%);
+  --secondary: hsl(316, 85%, 35%);
+}
+
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }

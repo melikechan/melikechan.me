@@ -1,10 +1,10 @@
 export async function generateMetadata() {
   return {
-    title: "About | melikechan",
+    title: "About",
     description: "About melikechan.",
 
     openGraph: {
-      title: "About | melikechan",
+      title: "About",
       description: "About melikechan.",
     },
   };

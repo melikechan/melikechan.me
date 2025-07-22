@@ -3,11 +3,11 @@ import { getSortedPostsData } from "@/lib/posts";
 
 export async function generateMetadata() {
   return {
-    title: "Blog | melikechan",
+    title: "Blog",
     description: "melikechan's blog posts.",
 
     openGraph: {
-      title: "Blog | melikechan",
+      title: "Blog",
       description: "melikechan's blog posts.",
     },
   };
