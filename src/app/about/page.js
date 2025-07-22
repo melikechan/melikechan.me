@@ -12,16 +12,15 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <main className="flex flex-col mx-8 my-4 min-h-screen space-y-4 animate-fadeIn">
+    <div className="flex flex-col mx-8 my-4 text-center items-center min-h-screen space-y-6 animate-fadeIn">
       <h1 className="text-4xl font-bold">About</h1>
       <p className="text-lg">
-        I am currently a <b>junior</b> in computer engineering at Ankara
-        University.
-      </p>
-      <p className="text-lg">
+        I am currently a <b>senior</b> in computer engineering at Ankara
+        University. <br />
         I am interested in AI and I would like to work as a research scientist
         in the future.
       </p>
+
 
       <section className="flex flex-col">
         <h2 className="text-2xl font-bold">Skills</h2>
@@ -30,6 +29,7 @@ export default function Home() {
           <li>C++</li>
           <li>TensorFlow</li>
           <li>Keras</li>
+          <li>PyTorch</li>
           <li>CMake</li>
         </ul>
       </section>
@@ -39,13 +39,10 @@ export default function Home() {
         <ul className="flex flex-col flex-wrap gap-2 md:flex-row md:gap-4">
           <li>Computer Vision*</li>
           <li>Machine Perception*</li>
-          <li>Natural Language Processing*</li>
-          <li>Deep Learning</li>
-          <li>Quantum Computing*</li>
-          <li>Systems Programming*</li>
+          <li>Deep Learning*</li>
         </ul>
         <p className="text-sm">(*) I am currently learning about that field.</p>
       </section>
-    </main>
+    </div>
   );
 }

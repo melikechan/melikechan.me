@@ -44,8 +44,8 @@ export default async function Home() {
   ];
 
   return (
-    <main className="flex flex-col mx-8 my-4 min-h-screen space-y-4 animate-fadeIn">
-      <h1 className="text-4xl font-bold">Projects</h1>
+    <>
+      <h1 className="text-4xl font-bold text-center">Projects</h1>
 
       <h2 className="text-2xl text-center font-bold">Featured Projects</h2>
       <section className="flex flex-wrap items-center justify-center flex-col gap-2 xs:flex-row xs:gap-4 sm:gap-8 h-max">
@@ -53,6 +53,6 @@ export default async function Home() {
           <ProjectCard key={index} {...project} />
         ))}
       </section>
-    </main>
+    </>
   );
 }

@@ -5,7 +5,7 @@ import Button from "@/components/Button";
 
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen space-y-4">
+    <div className="flex flex-col min-h-screen items-center justify-center space-y-4 mx-8 my-4 animate-fadeIn">
       <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary">
         melikechan
       </h1>
@@ -39,6 +39,6 @@ export default function Home() {
           <SiKaggle size={24} />
         </Button>
       </div>
-    </section>
+    </div>
   );
 }
