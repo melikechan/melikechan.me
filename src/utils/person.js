@@ -194,9 +194,9 @@ const person = {
     },
   ],
   interests: [
-    techGlossary.areas.compVision,
-    techGlossary.areas.deepLearning,
-    techGlossary.areas.perception,
+    { ...techGlossary.areas.compVision, stillLearning: true },
+    { ...techGlossary.areas.deepLearning, stillLearning: true },
+    { ...techGlossary.areas.perception, stillLearning: true },
   ],
 };
 

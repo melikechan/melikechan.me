@@ -1,5 +1,5 @@
 import { Lato } from "next/font/google";
-import Navbar from "../components/Navbar";
+import { Navbar } from "@/components/Navbar";
 import Footer from "../components/Footer";
 import { ThemeProvider } from "next-themes";
 
@@ -67,9 +67,7 @@ export default function RootLayout({ children }) {
       <body className="bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          <main className="flex flex-col min-h-screen">
-            {children}
-          </main>
+          <main className="flex flex-col min-h-screen mx-2">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

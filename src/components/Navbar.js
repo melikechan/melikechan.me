@@ -1,46 +1,45 @@
-'use client'
+import Link from "next/link";
+import Image from "next/image";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { useState } from 'react';
-import ThemeToggle from './ThemeToggler';
-import MenuButton from './MenuButton';
-import MobileMenu from './MobileMenu';
+import { MobileMenu } from "@/components/MobileMenu"; // Assuming this is your NavBarSheet from earlier
+import { ThemeSwitcher } from "@/components/ThemeSwitcher"; // Assuming this handles your theme toggle
+import { siteConfig } from "@/config/site"; // Your site navigation configuration
 
-const NAV_ITEMS = ['about', 'projects', 'blog', 'contact'];
-
-export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-
+export function Navbar() {
   return (
-    <nav className="flex justify-between items-center py-4 w-full px-4 bg-background">
-      <Link href="/">
-        <Image
-          src="/logo.svg"
-          alt="melikechan-logo"
-          width={64}
-          height={64}
-          priority
-        />
-      </Link>
-      <div className="flex items-center space-x-4">
-        <div className="lg:hidden">
-          <MenuButton isOpen={menuOpen} toggleMenu={toggleMenu} />
-        </div>
-        <ul className="hidden lg:flex space-x-4 items-center">
-          <li>
-            <ThemeToggle />
-          </li>
-          {NAV_ITEMS.map((item) => (
-            <li key={item}>
-              <Link href={`/${item}`} className="capitalize">{item}</Link>
-            </li>
-          ))}
-        </ul>
+    <nav className="sticky inset-x-0 top-0 h-20 z-50 flex items-center justify-between px-4 py-4 bg-background shadow-sm">
+      <div className="flex items-center gap-6">
+        <Link href="/" aria-label="Home">
+          <Image
+            src="/logo.svg"
+            alt="melikechan-logo"
+            width={48}
+            height={48}
+            priority
+          />
+        </Link>
       </div>
-      <MobileMenu isOpen={menuOpen} closeMenu={() => setMenuOpen(false)} navLinks={NAV_ITEMS} />
+
+      <div className="flex items-center gap-4">
+        <div className="hidden lg:flex items-center space-x-6">
+          {siteConfig.navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-center font-medium text-foreground hover:text-primary transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+        <div className="hidden lg:block">
+          <ThemeSwitcher />
+        </div>
+        <div className="flex items-center gap-4 lg:hidden">
+          <ThemeSwitcher />
+          <MobileMenu />
+        </div>
+      </div>
     </nav>
   );
 }

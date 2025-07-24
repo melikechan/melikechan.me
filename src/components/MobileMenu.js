@@ -1,37 +1,57 @@
-'use client'
+"use client";
 
-import Link from 'next/link';
-import ThemeToggle from './ThemeToggler';
-import { useEffect } from 'react';
+import { useState } from "react";
+import Link from "next/link";
 
-export default function MobileMenu({ isOpen, closeMenu, navLinks }) {
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "auto";
-  }, [isOpen]);
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+
+export function MobileMenu() {
+  const [open, setOpen] = useState(false);
+
+  const handleLinkClick = () => {
+    setOpen(false);
+  };
 
   return (
-    <div
-      className={`fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      onClick={closeMenu}
-    >
-      <div
-        className="bg-white dark:bg-gray-900 w-64 h-full p-4"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <ul className="space-y-4">
-          {navLinks.map((item) => (
-            <li key={item}>
-              <Link href={`/${item}`} onClick={closeMenu} className="capitalize">
-                {item}
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
+        <Button
+          variant="ghost"
+          size="icon"
+          aria-label="dropdown menu for linking the website"
+        >
+          <span className="material-symbols-outlined w-5 h-5 text-muted-foreground">
+            menu
+          </span>
+        </Button>
+      </SheetTrigger>
+      <SheetContent onOpenAutoFocus={(e) => e.preventDefault()}>
+        <SheetHeader>
+          <SheetTitle>Navigate</SheetTitle>
+        </SheetHeader>
+        <div className="mt-4 flex flex-col gap-2">
+          {siteConfig.navItems.map((item, index) => (
+            <Button
+              key={index}
+              variant="ghost"
+              className="w-full text-left"
+              asChild
+            >
+              <Link href={item.href} onClick={handleLinkClick}>
+                {item.label}
               </Link>
-            </li>
+            </Button>
           ))}
-          <li>
-            <ThemeToggle />
-          </li>
-        </ul>
-      </div>
-    </div>
+        </div>
+      </SheetContent>
+    </Sheet>
   );
 }
