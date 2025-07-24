@@ -37,7 +37,7 @@ export const metadata = {
     url: new URL(defaultUrl),
     locale: "en_US",
     type: "website",
-    images: [`${defaultUrl}/logo.svg`],
+    images: [`${defaultUrl}/logo.png`],
   },
   alternates: {
     canonical: "./",
