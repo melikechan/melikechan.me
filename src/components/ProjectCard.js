@@ -1,34 +1,80 @@
-import Button from "./Button";
 import Image from "next/image";
-import Tag from "./Tag";
 
-export default function ProjectCard({ title, ...props }) {
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+
+import {
+  Card,
+  CardContent,
+  CardDescription, // Still useful for specific description styling if needed
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { CardAction } from "@/components/ui/card"; // Ensure this is correctly imported and available in your shadcn setup
+
+export default function ProjectCard({
+  title,
+  img,
+  description,
+  progress,
+  href,
+  tags,
+}) {
   return (
-    <section className="flex flex-col items-center justify-center space-y-4 h-full max-w-80 shadow-md p-4 rounded-lg">
-      <h1 className="text-2xl text-center text-balance font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary">
-        {title}
-      </h1>
-      {props.img && (
-        <Image src={props.img} alt={title} width={240} height={80} />
-      )}
-      {props.description && (
-        <p className="text-lg text-center">{props.description}</p>
-      )}
-      {props.progress && (
-        <p className="text-lg text-center">{props.progress}% completed.</p>
-      )}
-
-      {props.href && <Button variant="gradient_x" href={props.href}>View Project</Button>}
-
-      {props.tags && (
-        <>
-          <h2 className="text-lg font-bold"> Used Technologies </h2>
-          <div className="flex flex-row items-center justify-center flex-wrap gap-2">
-            {props.tags &&
-              props.tags.map((tag, index) => <Tag key={index}>{tag}</Tag>)}
+    <Card className="flex flex-col items-center justify-between space-y-2 sm:space-y-3 md:space-y-4 h-full w-full sm:max-w-xs md:max-w-sm lg:max-w-80 xl:max-w-96 shadow-md p-3 sm:p-4 rounded-lg">
+      <CardHeader className="flex flex-col items-center w-full mb-0 sm:mb-1">
+        <CardTitle className="text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-alt text-balance mb-2">
+          {title}
+        </CardTitle>
+        {img && (
+          <div className="relative w-full h-24 sm:h-32 md:h-36 lg:h-40">
+            <Image
+              src={img}
+              alt={title}
+              fill
+              style={{ objectFit: "contain" }}
+              className="rounded-md"
+            />
           </div>
-        </>
-      )}
-    </section>
+        )}
+      </CardHeader>
+      <CardContent className="flex flex-col items-center text-center gap-2 w-full flex-grow">
+        {description && (
+          <CardDescription className="text-lg">{description}</CardDescription>
+        )}
+
+        {progress && (
+          <div className="w-full">
+            <Progress value={progress} />
+            <p className="text-sm font-medium text-muted-foreground">
+              {progress}% completed.
+            </p>
+          </div>
+        )}
+      </CardContent>
+      <CardFooter className="flex flex-col items-center gap-3 w-full pt-3">
+        {href && (
+          <CardAction className="w-full">
+            <Button variant="gradient_x" asChild className="w-full">
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                View Project
+              </a>
+            </Button>
+          </CardAction>
+        )}
+        {tags && tags.length > 0 && (
+          <div className="flex flex-col items-center gap-3 w-full">
+            <h3 className="text-lg font-semibold mt-2">Used Technologies</h3>
+            <div className="flex flex-row items-center justify-center flex-wrap gap-2">
+              {tags.map((tag, index) => (
+                <Badge key={index}>{tag}</Badge>
+              ))}
+            </div>
+          </div>
+        )}
+      </CardFooter>
+    </Card>
   );
 }

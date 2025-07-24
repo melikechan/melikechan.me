@@ -17,7 +17,7 @@ export default function Blog() {
   const allPostsData = getSortedPostsData();
 
   return (
-    <>
+    <main className="flex flex-col min-h-screen items-center space-y-4 mx-8 my-4 animate-fade-in">
       <h1 className="text-4xl font-bold">Blog</h1>
       <ul className="flex flex-col gap-4">
         {allPostsData.map(({ id, date, title }) => (
@@ -33,6 +33,6 @@ export default function Blog() {
           </li>
         ))}
       </ul>
-    </>
+    </main>
   );
 }

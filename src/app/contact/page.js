@@ -1,5 +1,5 @@
-import { SiTuta } from "@icons-pack/react-simple-icons";
-import Image from "next/image";
+import person from "@/utils/person"; // Make sure this path is correct
+import React from "react";
 
 export async function generateMetadata() {
   return {
@@ -20,49 +20,34 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <>
-      <h1 className="text-4xl text-center font-bold">Contact</h1>
-      <p className="text-lg text-center">You can contact me via:</p>
+    <main className="flex flex-col min-h-screen items-center space-y-4 mx-8 my-4 animate-fade-in">
+      <h1 className="text-4xl font-bold">Contact</h1>
+      <p className="text-lg">You can contact me via:</p>
 
       <section className="flex flex-col">
         <ul className="flex flex-col gap-4">
-          <li>
-            <a
-              href="https://www.linkedin.com/in/melikechan"
-              target="_blank"
-              rel="noreferrer"
-              className="flex flex-row gap-2 items-center"
-            >
-              <Image
-                className="h-6 w-6"
-                src="icons/linkedin.svg"
-                alt="linkedin-icon"
-                width={24}
-                height={24}
-              />
-              <span className="hover:underline focus:underline active:underline">
-                LinkedIn
-              </span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="mailto:melikechan@tuta.io"
-              target="_blank"
-              rel="noreferrer"
-              className="flex flex-row gap-2 items-center"
-            >
-              <SiTuta size={24} />
-              <span className="hover:underline focus:underline active:underline">
-                melikechan[at]tuta.io
-              </span>
-            </a>
-          </li>
+          {Object.entries(person.links)
+            .filter(([, link]) => link.contact === true)
+            .map(([key, { href, icon, title }]) => (
+              <li key={key}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex flex-row gap-2 items-center"
+                >
+                  {React.cloneElement(icon, { className: "w-9 h-9" })}
+                  <span className="hover:underline focus:underline active:underline">
+                    {title}
+                  </span>
+                </a>
+              </li>
+            ))}
         </ul>
-        <p className="text-sm">
+        <p className="text-sm mt-4">
           For my resume, please reach out to me via email or LinkedIn.
         </p>
       </section>
-    </>
+    </main>
   );
 }

@@ -67,7 +67,7 @@ export default function RootLayout({ children }) {
       <body className="bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          <main className="flex flex-col min-h-screen items-center space-y-4 mx-8 my-4 animate-fadeIn">
+          <main className="flex flex-col min-h-screen">
             {children}
           </main>
           <Footer />
