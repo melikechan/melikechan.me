@@ -6,7 +6,7 @@ export default function Navbar() {
     yearString = `2024 - ${yearString}`;
   }
   return (
-    <footer className="flex justify-center items-center py-4 w-full px-4">
+    <footer className="flex justify-center items-center py-4 w-full px-4 bg-background">
       made with love 🤍 by melikechan | {yearString}
     </footer>
   );

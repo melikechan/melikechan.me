@@ -51,7 +51,7 @@ export default function ThemeSwitcher() {
         >
           <DropdownMenuRadioItem
             className="flex items-center gap-2"
-            value="dark"
+            value="light"
           >
             <span className="material-symbols-outlined text-base text-muted-foreground">
               light_mode
