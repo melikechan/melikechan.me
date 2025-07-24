@@ -15,7 +15,7 @@ export default function Navbar() {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <nav className="flex justify-between items-center py-4 w-full px-4">
+    <nav className="flex justify-between items-center py-4 w-full px-4 bg-background">
       <Link href="/">
         <Image
           src="/logo.svg"
