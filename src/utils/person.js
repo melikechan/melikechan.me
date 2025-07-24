@@ -2,11 +2,13 @@ import {
   SiGithub,
   SiKaggle,
   SiOrcid,
-  SiPytorch,
   SiTuta,
 } from "@icons-pack/react-simple-icons";
 import Linkedin from "@/icons/linkedin.svg";
 import AnkaraUni from "@/icons/education/ankara-uni.svg";
+import Getir from "@/icons/experience/getir.svg";
+
+import { techGlossary } from "@/utils/glossary";
 
 const person = {
   fullname: "Melike Vurucu",
@@ -96,74 +98,105 @@ const person = {
       },
     },
   ],
-  experience: [],
-  skills: [
+  experience: [
     {
-      title: "Programming Languages",
-      elements: [
+      compName: "Getir",
+      icon: <Getir />,
+      positions: [
         {
-          name: "Python",
-        },
-        {
-          name: "C++",
-        },
-      ],
-    },
-    {
-      title: "Build Tools",
-      elements: [
-        {
-          name: "CMake",
-        },
-      ],
-    },
-    {
-      title: "Frameworks/Libraries",
-      elements: [
-        {
-          name: "PyTorch",
-          tooltip: (
+          posName: "Software Engineering Intern",
+          type: "Part-time",
+          location: "Ankara, Türkiye",
+          dates: {
+            startDate: new Date("2024-12-13"),
+            endDate: null, // It can be null if end date is unknown
+            continue: true,
+          },
+          description: (
             <>
-              <div className="flex items-center space-x-2 mb-2">
-                <SiPytorch className="text-[#EE4C2C] dark:text-foreground w-6 h-6" />{" "}
-                <a
-                  href="https://pytorch.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold hover:underline"
-                >
-                  PyTorch
-                </a>
-              </div>
-              <p className="text-sm text-muted-foreground mb-2">
-                is a Python package that provides two high-level features:
-              </p>
-              <ul className="list-disc list-inside text-sm text-muted-foreground">
-                <li className="mb-1">
-                  Tensor computation (like NumPy) with strong GPU acceleration
-                </li>
+              <ul className="list-disc pl-5 text-sm">
                 <li>
-                  Deep neural networks built on a tape-based autograd system
+                  Currently working in the Map Engine team, which is involved in
+                  providing accurate and flexible routing, distance, and
+                  duration services by utilizing map-related data and routing
+                  engines.
                 </li>
               </ul>
             </>
           ),
+          areas: [],
+          usedTechnologies: [techGlossary.progLangs.python],
         },
+      ],
+    },
+    {
+      compName: "Ankara University",
+      icon: <AnkaraUni />,
+      positions: [
         {
-          name: "Keras",
-          tooltip: "Deep Learning",
-        },
-        {
-          name: "Tensorflow",
-          tooltip: "Deep Learning",
+          posName: "Undergraduate Researcher",
+          type: "Full-time [on hiatus]",
+          location: "Ankara, Türkiye",
+          dates: {
+            startDate: new Date("2024-05-15"),
+            endDate: null, // It can be null if end date is unknown
+            continue: true,
+          },
+          description: (
+            <>
+              <ul className="list-disc pl-5 text-sm">
+                <li>Working on a domain-specific image segmentation task.</li>
+              </ul>
+              <br />
+              <p className="text-sm">
+                Working in a research group (size of 2, contains another{" "}
+                <i>undergraduate</i> student) under{" "}
+                <a
+                  href="https://scholar.google.com/citations?user=8LKy_XoAAAAJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline transition underline-offset-2 hover:no-underline hover:text-primary"
+                >
+                  Asst. Prof. Dr. Merve Özkan
+                </a>
+                .
+              </p>
+            </>
+          ),
+          areas: [
+            techGlossary.areas.compVision,
+            techGlossary.areas.deepLearning,
+          ],
+          usedTechnologies: [
+            techGlossary.frameworks.pytorch,
+            techGlossary.progLangs.python,
+          ],
         },
       ],
     },
   ],
+  skills: [
+    {
+      title: "Programming Languages",
+      elements: [techGlossary.progLangs.python, techGlossary.progLangs.cpp],
+    },
+    {
+      title: "Build Tools",
+      elements: [techGlossary.buildTools.cmake],
+    },
+    {
+      title: "Frameworks/Libraries",
+      elements: [
+        techGlossary.frameworks.pytorch,
+        techGlossary.frameworks.keras,
+        techGlossary.frameworks.tensorflow,
+      ],
+    },
+  ],
   interests: [
-    { name: "Computer Vision", stillLearning: true },
-    { name: "Machine Perception", stillLearning: true },
-    { name: "Deep Learning", stillLearning: true },
+    techGlossary.areas.compVision,
+    techGlossary.areas.deepLearning,
+    techGlossary.areas.perception,
   ],
 };
 
