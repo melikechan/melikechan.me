@@ -43,6 +43,142 @@ export default function Home() {
         collapsible
       >
         <AccordionItem
+          value="experience"
+          className="rounded-lg border-0 shadow-md"
+        >
+          <AccordionTrigger className="text-2xl font-bold bg-primary/80 text-primary-foreground">
+            Experience
+          </AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-4 text-balance mt-4">
+            <Timeline
+              items={person.experience.map((exp) => ({
+                children: (
+                  <div className="flex flex-col">
+                    <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+                      {exp.icon && React.isValidElement(exp.icon) && (
+                        <div className="flex-shrink-0">
+                          {React.cloneElement(exp.icon, {
+                            className: "w-12 h-12",
+                          })}
+                        </div>
+                      )}
+
+                      <h2 className="font-bold text-lg text-primary-text mb-1">
+                        {exp.compName}
+                      </h2>
+                    </div>
+
+                    {/* Positions */}
+                    <div className="mt-4">
+                      {exp.positions.map((pos, posIndex) => (
+                        <div key={posIndex} className="mb-4 last:mb-0">
+                          <h3 className="font-semibold text-base text-primary-text">
+                            {pos.posName}
+                            {pos.type && (
+                              <span className="text-secondary-text text-sm ml-2">
+                                ({pos.type})
+                              </span>
+                            )}
+                          </h3>
+                          <p className="text-secondary-text text-sm mb-1">
+                            {pos.location}
+                          </p>
+                          <p className="text-muted-foreground text-xs mb-2">
+                            {formatTimePeriod(
+                              pos.dates.startDate,
+                              pos.dates.endDate,
+                              pos.dates.continue
+                            )}
+                          </p>
+                          {pos.description && (
+                            <div className="text-sm text-foreground">
+                              {pos.description}
+                            </div>
+                          )}
+
+                          {pos.areas && pos.areas.length > 0 && (
+                            <>
+                              <h3 className="text-xl font-semibold mb-2 mt-4">
+                                Areas:
+                              </h3>
+                              <ul className="flex flex-wrap items-center gap-2">
+                                {pos.areas.map((area, areaIndex) => (
+                                  <li key={areaIndex}>
+                                    {area.tooltip ? (
+                                      <HoverCard>
+                                        <HoverCardTrigger asChild>
+                                          <Badge className="px-2 py-2 text-xs font-bold">
+                                            {area.name}
+                                          </Badge>
+                                        </HoverCardTrigger>
+                                        <HoverCardContent className="w-80">
+                                          {area.tooltip}
+                                        </HoverCardContent>
+                                      </HoverCard>
+                                    ) : (
+                                      <Badge className="px-2 py-2 text-xs font-bold">
+                                        {area.name}
+                                      </Badge>
+                                    )}
+                                  </li>
+                                ))}
+                              </ul>
+                            </>
+                          )}
+
+                          {pos.usedTechnologies &&
+                            pos.usedTechnologies.length > 0 && (
+                              <>
+                                <h3 className="text-xl font-semibold mb-2 mt-4">
+                                  Used Technologies:
+                                </h3>
+                                <ul className="flex flex-wrap items-center gap-2">
+                                  {pos.usedTechnologies.map(
+                                    (tech, techIndex) => (
+                                      <li key={techIndex}>
+                                        {tech.tooltip ? (
+                                          <HoverCard>
+                                            <HoverCardTrigger asChild>
+                                              <Badge className="px-2 py-2 text-xs font-bold bg-primary-alt">
+                                                {tech.name}
+                                              </Badge>
+                                            </HoverCardTrigger>
+                                            <HoverCardContent className="w-80">
+                                              {tech.tooltip}
+                                            </HoverCardContent>
+                                          </HoverCard>
+                                        ) : (
+                                          <Badge className="px-2 py-2 text-xs font-bold bg-primary-alt">
+                                            {tech.name}
+                                          </Badge>
+                                        )}
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </>
+                            )}
+
+                          {posIndex < exp.positions.length - 1 && (
+                            <div className="flex items-center justify-center gap-4 my-4">
+                              <div className="h-0.5 w-1/3 bg-gradient-to-r from-transparent to-primary/70"></div>
+                              <span className="material-symbols-outlined text-primary text-md">
+                                star
+                              </span>
+                              <div className="h-0.5 w-1/3 bg-gradient-to-r from-primary/70 to-transparent"></div>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ),
+              }))}
+            />
+          </AccordionContent>
+        </AccordionItem>
+
+        <AccordionItem
           value="education"
           className="rounded-lg border-0 shadow-md"
         >
@@ -153,7 +289,7 @@ export default function Home() {
                           </Badge>
                         </HoverCardTrigger>
                         <HoverCardContent className="w-80">
-                          <p>{interest.tooltip}</p>
+                          {interest.tooltip}
                         </HoverCardContent>
                       </HoverCard>
                     ) : (

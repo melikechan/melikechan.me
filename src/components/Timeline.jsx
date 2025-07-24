@@ -14,7 +14,7 @@ function Timeline({
   lineColor = "bg-primary",
   dotColor = "bg-primary",
   renderItemContent = ({ children: itemChildren }) => (
-    <article className="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 bg-card rounded-lg border border-primary/20 shadow-sm">
+    <article className="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 bg-card rounded-lg border border-primary/20 shadow-sm text-wrap">
       {itemChildren}
     </article>
   ),
