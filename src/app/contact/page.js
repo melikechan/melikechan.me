@@ -1,4 +1,10 @@
-import person from "@/utils/person"; // Make sure this path is correct
+import { TypographyH1 } from "@/components/typography/headings";
+import {
+  TypographyLead,
+  TypographySmall,
+} from "@/components/typography/paragraph";
+
+import person from "@/utils/person";
 import React from "react";
 
 export async function generateMetadata() {
@@ -21,8 +27,8 @@ export async function generateMetadata() {
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen items-center space-y-4 mx-8 my-4 animate-fade-in">
-      <h1 className="text-4xl font-bold">Contact</h1>
-      <p className="text-lg">You can contact me via:</p>
+      <TypographyH1 className="text-4xl font-bold">Contact</TypographyH1>
+      <TypographyLead className="mt-2">You can contact me via:</TypographyLead>
 
       <section className="flex flex-col">
         <ul className="flex flex-col gap-4">
@@ -44,9 +50,9 @@ export default function Home() {
               </li>
             ))}
         </ul>
-        <p className="text-sm mt-4">
+        <TypographySmall className="mt-4">
           For my resume, please reach out to me via email or LinkedIn.
-        </p>
+        </TypographySmall>
       </section>
     </main>
   );

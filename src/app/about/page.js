@@ -18,6 +18,16 @@ import { Badge } from "@/components/ui/badge";
 
 import person from "@/utils/person";
 import { formatTimePeriod } from "@/utils/date";
+import { TypographyHr } from "@/components/typography/hr";
+import {
+  TypographyH1,
+  TypographyH2,
+  TypographyH3,
+} from "@/components/typography/headings";
+import {
+  TypographyMuted,
+  TypographyParagraph,
+} from "@/components/typography/paragraph";
 
 export async function generateMetadata() {
   return {
@@ -34,8 +44,10 @@ export async function generateMetadata() {
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 mx-1 animate-fade-in">
-      <h1 className="text-4xl font-bold">About</h1>
-      <p className="text-lg text-center">{person.intro}</p>
+      <TypographyH1>About</TypographyH1>
+      <TypographyParagraph className="text-lg text-center mt-4">
+        {person.intro}
+      </TypographyParagraph>
 
       <Accordion
         type="single"
@@ -63,33 +75,33 @@ export default function Home() {
                         </div>
                       )}
 
-                      <h2 className="font-bold text-lg text-primary-text mb-1">
+                      <TypographyH2 className="font-bold text-lg mb-1">
                         {exp.compName}
-                      </h2>
+                      </TypographyH2>
                     </div>
 
                     {/* Positions */}
                     <div className="mt-4">
                       {exp.positions.map((pos, posIndex) => (
                         <div key={posIndex} className="mb-4 last:mb-0">
-                          <h3 className="font-semibold text-base text-primary-text">
+                          <TypographyH3 className="text-base mt-2">
                             {pos.posName}
                             {pos.type && (
                               <span className="text-secondary-text text-sm ml-2">
                                 ({pos.type})
                               </span>
                             )}
-                          </h3>
+                          </TypographyH3>
                           <p className="text-secondary-text text-sm mb-1">
                             {pos.location}
                           </p>
-                          <p className="text-muted-foreground text-xs mb-2">
+                          <TypographyMuted className="text-xs mb-2">
                             {formatTimePeriod(
                               pos.dates.startDate,
                               pos.dates.endDate,
                               pos.dates.continue
                             )}
-                          </p>
+                          </TypographyMuted>
                           {pos.description && (
                             <div className="text-sm text-foreground">
                               {pos.description}
@@ -98,9 +110,9 @@ export default function Home() {
 
                           {pos.areas && pos.areas.length > 0 && (
                             <>
-                              <h3 className="text-xl font-semibold mb-2 mt-4">
+                              <TypographyH3 className="text-lg font-semibold mb-2 mt-4">
                                 Areas:
-                              </h3>
+                              </TypographyH3>
                               <ul className="flex flex-wrap items-center gap-2">
                                 {pos.areas.map((area, areaIndex) => (
                                   <li key={areaIndex}>
@@ -129,9 +141,9 @@ export default function Home() {
                           {pos.usedTechnologies &&
                             pos.usedTechnologies.length > 0 && (
                               <>
-                                <h3 className="text-xl font-semibold mb-2 mt-4">
+                                <TypographyH3 className="text-lg font-semibold mb-2 mt-4">
                                   Used Technologies:
-                                </h3>
+                                </TypographyH3>
                                 <ul className="flex flex-wrap items-center gap-2">
                                   {pos.usedTechnologies.map(
                                     (tech, techIndex) => (
@@ -160,13 +172,7 @@ export default function Home() {
                             )}
 
                           {posIndex < exp.positions.length - 1 && (
-                            <div className="flex items-center justify-center gap-4 my-4">
-                              <div className="h-0.5 w-1/3 bg-gradient-to-r from-transparent to-primary/70"></div>
-                              <span className="material-symbols-outlined text-primary text-md">
-                                star
-                              </span>
-                              <div className="h-0.5 w-1/3 bg-gradient-to-r from-primary/70 to-transparent"></div>
-                            </div>
+                            <TypographyHr />
                           )}
                         </div>
                       ))}
@@ -190,7 +196,6 @@ export default function Home() {
               items={person.education.map((edu) => ({
                 children: (
                   <>
-                    {/* Icon */}
                     {edu.icon && React.isValidElement(edu.icon) && (
                       <div className="flex-shrink-0">
                         {React.cloneElement(edu.icon, {
@@ -199,11 +204,10 @@ export default function Home() {
                       </div>
                     )}
 
-                    {/* Details */}
                     <div className="flex-grow">
-                      <h2 className="font-bold text-lg text-primary-text mb-1">
+                      <TypographyH2 className="font-bold text-lg mb-1">
                         {edu.insName}
-                      </h2>
+                      </TypographyH2>
                       <h3 className="text-secondary-text mb-1">
                         {edu.degree} in {edu.subject}
                       </h3>
@@ -215,7 +219,6 @@ export default function Home() {
                         )}
                       </p>
 
-                      {/* GPA */}
                       {edu.gpa && (
                         <Badge className="text-sm">
                           <span className="font-bold">GPA:</span>{" "}

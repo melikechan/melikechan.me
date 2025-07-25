@@ -1,4 +1,5 @@
 import ProjectCard from "@/components/ProjectCard";
+import { TypographyH1, TypographyH2 } from "@/components/typography/headings";
 
 export async function generateMetadata() {
   return {
@@ -47,9 +48,9 @@ const projects = [
 export default async function Home() {
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 animate-fade-in">
-      <h1 className="text-4xl font-bold">Projects</h1>
+      <TypographyH1>Projects</TypographyH1>
 
-      <h2 className="text-2xl font-bold">Featured Projects</h2>
+      <TypographyH2>Featured Projects</TypographyH2>
       <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 px-4">
         {projects.map((project, index) => (
           <ProjectCard key={index} {...project} />
