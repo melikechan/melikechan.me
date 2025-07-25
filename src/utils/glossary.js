@@ -226,7 +226,7 @@ export const techGlossary = {
             </a>
           </div>
           <p className="text-sm text-muted-foreground mb-2">
-            is a Python package that provides two high-level features:
+            Pytorch is a Python package that provides two high-level features:
           </p>
           <ul className="list-disc list-inside text-sm text-muted-foreground">
             <li className="mb-1">
