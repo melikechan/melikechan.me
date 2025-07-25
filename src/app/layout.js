@@ -67,7 +67,9 @@ export default function RootLayout({ children }) {
       <body className="bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          <main className="flex flex-col min-h-screen mx-2">{children}</main>
+          <main className="flex flex-col min-h-screen mx-2 mt-4">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>
