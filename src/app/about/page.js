@@ -27,6 +27,7 @@ import {
 import {
   TypographyMuted,
   TypographyParagraph,
+  TypographySmall,
 } from "@/components/typography/paragraph";
 
 export async function generateMetadata() {
@@ -45,7 +46,7 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 mx-1 animate-fade-in">
       <TypographyH1>About</TypographyH1>
-      <TypographyParagraph className="text-lg text-center mt-4">
+      <TypographyParagraph className="text-lg text-center">
         {person.intro}
       </TypographyParagraph>
 
@@ -87,14 +88,10 @@ export default function Home() {
                           <TypographyH3 className="text-base mt-2">
                             {pos.posName}
                             {pos.type && (
-                              <span className="text-secondary-text text-sm ml-2">
-                                ({pos.type})
-                              </span>
+                              <span className="text-sm ml-2">({pos.type})</span>
                             )}
                           </TypographyH3>
-                          <p className="text-secondary-text text-sm mb-1">
-                            {pos.location}
-                          </p>
+                          <TypographySmall>{pos.location}</TypographySmall>
                           <TypographyMuted className="text-xs mb-2">
                             {formatTimePeriod(
                               pos.dates.startDate,
@@ -103,9 +100,7 @@ export default function Home() {
                             )}
                           </TypographyMuted>
                           {pos.description && (
-                            <div className="text-sm text-foreground">
-                              {pos.description}
-                            </div>
+                            <div className="text-sm">{pos.description}</div>
                           )}
 
                           {pos.areas && pos.areas.length > 0 && (
@@ -205,19 +200,19 @@ export default function Home() {
                     )}
 
                     <div className="flex-grow">
-                      <TypographyH2 className="font-bold text-lg mb-1">
+                      <TypographyH2 className="font-bold text-lg my-1">
                         {edu.insName}
                       </TypographyH2>
-                      <h3 className="text-secondary-text mb-1">
+                      <TypographyH3 className="text-md mt-0">
                         {edu.degree} in {edu.subject}
-                      </h3>
-                      <p className="text-muted-foreground text-sm mb-2">
+                      </TypographyH3>
+                      <TypographyMuted className="mt-1 mb-2">
                         {formatTimePeriod(
                           edu.dates.startDate,
                           edu.dates.endDate,
                           edu.dates.continue
                         )}
-                      </p>
+                      </TypographyMuted>
 
                       {edu.gpa && (
                         <Badge className="text-sm">
@@ -244,9 +239,10 @@ export default function Home() {
                   key={categoryIndex}
                   className="flex flex-col items-center justify-center gap-2"
                 >
-                  <h3 className="text-xl font-semibold mb-2">
+                  <TypographyH3 className="text-xl mb-1">
                     {skillCategory.title}
-                  </h3>
+                  </TypographyH3>
+
                   <ul className="flex flex-wrap gap-2">
                     {skillCategory.elements.map((skill) => (
                       <li key={skill.name}>
@@ -306,10 +302,10 @@ export default function Home() {
               )}
             </ul>
 
-            <p className="text-sm text-center text-muted-foreground mt-2">
+            <TypographyMuted className="text-center">
               (<span className="font-black">*</span>) I am currently learning
               about that field.
-            </p>
+            </TypographyMuted>
           </AccordionContent>
         </AccordionItem>
       </Accordion>

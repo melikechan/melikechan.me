@@ -30,15 +30,15 @@ export function ThemeSwitcher() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="text-center" size={"sm"}>
           {theme === "light" ? (
-            <span className="material-symbols-outlined w-5 h-5 text-muted-foreground">
+            <span className="material-symbols-outlined text-muted-foreground">
               light_mode
             </span>
           ) : theme === "dark" ? (
-            <span className="material-symbols-outlined w-5 h-5 text-muted-foreground">
+            <span className="material-symbols-outlined text-muted-foreground">
               dark_mode
             </span>
           ) : (
-            <span className="material-symbols-outlined w-5 h-5 text-muted-foreground">
+            <span className="material-symbols-outlined text-muted-foreground">
               computer
             </span>
           )}
@@ -53,7 +53,7 @@ export function ThemeSwitcher() {
             className="flex items-center gap-2"
             value="light"
           >
-            <span className="material-symbols-outlined text-base text-muted-foreground">
+            <span className="material-symbols-outlined text-muted-foreground">
               light_mode
             </span>{" "}
             <span>Light</span>
@@ -62,7 +62,7 @@ export function ThemeSwitcher() {
             className="flex items-center gap-2"
             value="dark"
           >
-            <span className="material-symbols-outlined text-base text-muted-foreground">
+            <span className="material-symbols-outlined text-muted-foreground">
               dark_mode
             </span>{" "}
             <span>Dark</span>
@@ -71,7 +71,7 @@ export function ThemeSwitcher() {
             className="flex items-center gap-2"
             value="system"
           >
-            <span className="material-symbols-outlined text-base text-muted-foreground">
+            <span className="material-symbols-outlined text-muted-foreground">
               computer
             </span>{" "}
             <span>System</span>

@@ -9,6 +9,11 @@ import AnkaraUni from "@/icons/education/ankara-uni.svg";
 import Getir from "@/icons/experience/getir.svg";
 
 import { techGlossary } from "@/utils/glossary";
+import { TypographyUnorderedList } from "@/components/typography/list";
+import {
+  TypographyLink,
+  TypographyParagraph,
+} from "@/components/typography/paragraph";
 
 const person = {
   fullname: "Melike Vurucu",
@@ -16,25 +21,23 @@ const person = {
   title: (
     <>
       swe intern{" "}
-      <a
+      <TypographyLink
         key="company-link"
         href="https://getir.com/"
         target="_blank"
         rel="noopener noreferrer"
-        className="underline transition underline-offset-2 hover:no-underline hover:text-primary"
       >
         @getir
-      </a>
+      </TypographyLink>
       , undergraduate researcher/computer engineering student{" "}
-      <a
+      <TypographyLink
         key="uni-link"
         href="https://ankara.edu.tr/"
         target="_blank"
         rel="noopener noreferrer"
-        className="underline transition underline-offset-2 hover:no-underline hover:text-primary"
       >
         @ankara university
-      </a>
+      </TypographyLink>
     </>
   ),
   intro: (
@@ -114,14 +117,14 @@ const person = {
           },
           description: (
             <>
-              <ul className="list-disc pl-5 text-sm">
+              <TypographyUnorderedList className="text-sm">
                 <li>
                   Currently working in the Map Engine team, which is involved in
                   providing accurate and flexible routing, distance, and
                   duration services by utilizing map-related data and routing
                   engines.
                 </li>
-              </ul>
+              </TypographyUnorderedList>
             </>
           ),
           areas: [],
@@ -144,23 +147,21 @@ const person = {
           },
           description: (
             <>
-              <ul className="list-disc pl-5 text-sm">
+              <TypographyUnorderedList className="text-sm">
                 <li>Working on a domain-specific image segmentation task.</li>
-              </ul>
-              <br />
-              <p className="text-sm">
+              </TypographyUnorderedList>
+              <TypographyParagraph className="text-sm">
                 Working in a research group (size of 2, contains another{" "}
                 <i>undergraduate</i> student) under{" "}
-                <a
+                <TypographyLink
                   href="https://scholar.google.com/citations?user=8LKy_XoAAAAJ"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline transition underline-offset-2 hover:no-underline hover:text-primary"
                 >
                   Asst. Prof. Dr. Merve Özkan
-                </a>
+                </TypographyLink>
                 .
-              </p>
+              </TypographyParagraph>
             </>
           ),
           areas: [

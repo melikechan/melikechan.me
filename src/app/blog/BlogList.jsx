@@ -26,7 +26,10 @@ import {
 
 import { MultiSelect } from "@/components/MultiSelect";
 import { TypographyH1 } from "@/components/typography/headings";
-import { TypographyLead } from "@/components/typography/paragraph";
+import {
+  TypographyLead,
+  TypographyMuted,
+} from "@/components/typography/paragraph";
 
 const POSTS_PER_PAGE = 5;
 
@@ -195,7 +198,9 @@ export default function BlogList({ allPostsData, allTags }) {
                   <CardDescription>{date}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{description}</p>
+                  <TypographyMuted className="text-base">
+                    {description}
+                  </TypographyMuted>
                 </CardContent>
                 <CardFooter className="flex flex-wrap gap-2">
                   {tags.map((tag) => (
@@ -208,9 +213,9 @@ export default function BlogList({ allPostsData, allTags }) {
             )
           )
         ) : (
-          <p className="text-center text-muted-foreground py-16">
+          <TypographyLead className="text-center py-16">
             No posts found.
-          </p>
+          </TypographyLead>
         )}
       </div>
 
