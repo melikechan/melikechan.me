@@ -13,6 +13,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { CardAction } from "@/components/ui/card"; // Ensure this is correctly imported and available in your shadcn setup
+import { TypographyH3 } from "./typography/headings";
+import { TypographyMuted } from "./typography/paragraph";
 
 export default function ProjectCard({
   title,
@@ -48,9 +50,7 @@ export default function ProjectCard({
         {progress && (
           <div className="w-full">
             <Progress value={progress} />
-            <p className="text-sm font-medium text-muted-foreground">
-              {progress}% completed.
-            </p>
+            <TypographyMuted className="mt-1">{progress}% completed.</TypographyMuted>
           </div>
         )}
       </CardContent>
@@ -66,7 +66,9 @@ export default function ProjectCard({
         )}
         {tags && tags.length > 0 && (
           <div className="flex flex-col items-center gap-3 w-full">
-            <h3 className="text-lg font-semibold mt-2">Used Technologies</h3>
+            <TypographyH3 className="text-lg mt-2">
+              Used Technologies
+            </TypographyH3>
             <div className="flex flex-row items-center justify-center flex-wrap gap-2">
               {tags.map((tag, index) => (
                 <Badge key={index}>{tag}</Badge>

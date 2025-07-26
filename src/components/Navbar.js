@@ -20,7 +20,7 @@ export function Navbar() {
         </Link>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center align-center gap-4">
         <div className="hidden lg:flex items-center space-x-6">
           {siteConfig.navItems.map((item) => (
             <Link

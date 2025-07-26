@@ -21,7 +21,7 @@ export function MobileMenu() {
   };
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
+    <Sheet open={open} onOpenChange={setOpen} className>
       <SheetTrigger asChild>
         <Button
           variant="ghost"
@@ -33,8 +33,11 @@ export function MobileMenu() {
           </span>
         </Button>
       </SheetTrigger>
-      <SheetContent onOpenAutoFocus={(e) => e.preventDefault()}>
-        <SheetHeader>
+      <SheetContent
+        onOpenAutoFocus={(e) => e.preventDefault()}
+        className="border-0"
+      >
+        <SheetHeader className="flex items-center w-full">
           <SheetTitle>Navigate</SheetTitle>
         </SheetHeader>
         <div className="mt-4 flex flex-col gap-2">

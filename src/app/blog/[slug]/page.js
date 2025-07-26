@@ -2,10 +2,9 @@ import Link from "next/link";
 import { getSortedPostsData, getPostData } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
-import { ChevronLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { siteConfig } from '@/config/site';
+import { siteConfig } from "@/config/site";
 
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -106,7 +105,9 @@ export default async function Post({ params }) {
             href="/blog"
             className="flex items-center gap-2 text-muted-foreground"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <span className="material-symbols-outlined !text-[1.25rem] size-5">
+              chevron_left
+            </span>
             Back to Blog
           </Link>
         </Button>
