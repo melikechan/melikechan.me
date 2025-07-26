@@ -99,7 +99,7 @@ export default async function Post({ params }) {
 
   return (
     <main className="flex flex-col items-center gap-8 py-8 px-4 animate-fade-in">
-      <div className="w-full max-w-3xl">
+      <div className="w-full md:max-w-3xl lg:max-w-4xl">
         <Button asChild variant="ghost" className="-ml-4">
           <Link
             href="/blog"
