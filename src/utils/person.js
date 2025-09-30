@@ -20,16 +20,7 @@ const person = {
   nickname: "melikechan",
   title: (
     <>
-      swe intern{" "}
-      <TypographyLink
-        key="company-link"
-        href="https://getir.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        @getir
-      </TypographyLink>
-      , undergraduate researcher/computer engineering student{" "}
+      undergraduate researcher/computer engineering student{" "}
       <TypographyLink
         key="uni-link"
         href="https://ankara.edu.tr/"
@@ -112,17 +103,30 @@ const person = {
           location: "Ankara, Türkiye",
           dates: {
             startDate: new Date("2024-12-13"),
-            endDate: null, // It can be null if end date is unknown
-            continue: true,
+            endDate: new Date("2025-09-30"), // It can be null if end date is unknown
+            continue: false,
           },
           description: (
             <>
               <TypographyUnorderedList className="text-sm">
                 <li>
-                  Currently working in the Map Engine team, which is involved in
-                  providing accurate and flexible routing, distance, and
-                  duration services by utilizing map-related data and routing
-                  engines.
+                  Involved in providing accurate and flexible routing, distance,
+                  and duration services by utilizing map-related data and
+                  routing engines, impacting millions of end-users and thousands
+                  of couriers.
+                </li>
+                <li>
+                  Improved service reliability by implementing key stability
+                  logic for the distance/duration calculation, significantly
+                  reducing prediction anomalies.
+                </li>
+                <li>
+                  Mostly used Python as the main programming language, also
+                  having some exposure to Go.
+                </li>
+                <li>
+                  Utilized data visualization libraries like Seaborn to
+                  visualize data for making interpretations.
                 </li>
               </TypographyUnorderedList>
             </>
