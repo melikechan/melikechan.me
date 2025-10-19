@@ -28,3 +28,23 @@ export function formatTimePeriod(startDateObj, endDateObj, isOngoing) {
     }
   }
 }
+
+export function dateListSort(datesA, datesB) {
+  const endDateA = datesA?.endDate;
+  const endDateB = datesB?.endDate;
+
+  // B is ongoing (null), A is not -> B comes first
+  if (endDateB === null && endDateA !== null) return 1;
+  // A is ongoing (null), B is not -> A comes first
+  if (endDateA === null && endDateB !== null) return -1;
+
+  // If both are ongoing, sort by start date (descending)
+  if (endDateA === null && endDateB === null) {
+    return (
+      (datesB?.startDate?.getTime() || 0) - (datesA?.startDate?.getTime() || 0)
+    );
+  }
+
+  // Neither is ongoing, sort by end date (descending)
+  return (endDateB?.getTime() || 0) - (endDateA?.getTime() || 0);
+}

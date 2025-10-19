@@ -15,6 +15,8 @@ import {
   TypographyParagraph,
 } from "@/components/typography/paragraph";
 
+import { dateListSort } from "./date";
+
 const person = {
   fullname: "Melike Vurucu",
   nickname: "melikechan",
@@ -142,7 +144,7 @@ const person = {
       positions: [
         {
           posName: "Undergraduate Researcher",
-          type: "Full-time [on hiatus]",
+          type: "Part-time",
           location: "Ankara, Türkiye",
           dates: {
             startDate: new Date("2024-05-15"),
@@ -204,5 +206,11 @@ const person = {
     { ...techGlossary.areas.perception, stillLearning: true },
   ],
 };
+
+person.experience.sort((a, b) =>
+  dateListSort(a.positions[0]?.dates, b.positions[0]?.dates)
+);
+
+person.education.sort((a, b) => date(a.dates, b.dates));
 
 export default person;
