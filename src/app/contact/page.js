@@ -1,8 +1,5 @@
 import { TypographyH1 } from "@/components/typography/headings";
-import {
-  TypographyLead,
-  TypographySmall,
-} from "@/components/typography/paragraph";
+import { TypographyLead } from "@/components/typography/paragraph";
 
 import person from "@/utils/person";
 import React from "react";
@@ -50,9 +47,6 @@ export default function Home() {
               </li>
             ))}
         </ul>
-        <TypographySmall className="mt-4">
-          For my resume, please reach out to me via email or LinkedIn.
-        </TypographySmall>
       </section>
     </main>
   );

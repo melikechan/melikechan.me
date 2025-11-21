@@ -69,13 +69,6 @@ const person = {
       featured: true,
       contact: false,
     },
-    mail: {
-      href: "mailto:melikechan@tuta.io",
-      title: "melikechan[at]tuta.io",
-      icon: <SiTuta />,
-      featured: false,
-      contact: true,
-    },
   },
   education: [
     {
