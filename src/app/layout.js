@@ -1,4 +1,4 @@
-import { Lato } from "next/font/google";
+import localFont from 'next/font/local';
 import { Navbar } from "@/components/Navbar";
 import Footer from "../components/Footer";
 import { ThemeProvider } from "next-themes";
@@ -9,10 +9,13 @@ import { env } from "@/env";
 import "katex/dist/katex.min.css";
 import "@/app/globals.css";
 
-const sansSerif = Lato({
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "700", "900"],
-  display: "swap",
+import localFont from 'next/font/local'
+
+const monaspaceNeon = localFont({
+  src: './fonts/MonaspaceNeon-Var.woff2',
+  display: 'swap',
+  variable: '--font-monaspace',
+  weight: '200 800',
 });
 
 const defaultUrl = env.NEXT_PUBLIC_SITE_URL;
@@ -53,7 +56,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={cn(sansSerif.className)}
+      className={cn(monaspaceNeon.className)}
       suppressHydrationWarning
     >
       <head>

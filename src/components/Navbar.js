@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site"; // Your site navigation configuratio
 
 export function Navbar() {
   return (
-    <nav className="sticky inset-x-0 top-0 h-20 z-50 flex items-center justify-between px-4 py-4 bg-background shadow-sm">
+    <nav className="sticky inset-x-0 top-0 h-20 z-50 flex items-center justify-between px-4 py-4 bg-background border-b">
       <div className="flex items-center gap-6">
         <Link href="/" aria-label="Home">
           <Image

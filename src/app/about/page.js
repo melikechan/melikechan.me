@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 mx-1 animate-fade-in">
       <TypographyH1>About</TypographyH1>
-      <TypographyParagraph className="text-lg text-center">
+      <TypographyParagraph className="text-center">
         {person.intro}
       </TypographyParagraph>
 

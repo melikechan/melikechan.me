@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 export function TypographyParagraph({ className, children, ...props }) {
   return (
     <p
-      className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
+      className={cn("leading-7 [&:not(:first-child)]:mt-3", className)}
       {...props}
     >
       {children}
