@@ -45,7 +45,7 @@ export default function BlogList({ allPostsData, allTags }) {
   const processedPosts = useMemo(() => {
     let filtered = allPostsData
       .filter((post) =>
-        post.title?.toLowerCase().includes(searchTerm.toLowerCase())
+        post.title?.toLowerCase().includes(searchTerm.toLowerCase()),
       )
       .filter((post) => {
         if (selectedTags.length === 0) return true;
@@ -73,7 +73,7 @@ export default function BlogList({ allPostsData, allTags }) {
     const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
     const paginatedPosts = sorted.slice(
       startIndex,
-      startIndex + POSTS_PER_PAGE
+      startIndex + POSTS_PER_PAGE,
     );
 
     return { paginatedPosts, totalPages };
@@ -210,7 +210,7 @@ export default function BlogList({ allPostsData, allTags }) {
                   ))}
                 </CardFooter>
               </Card>
-            )
+            ),
           )
         ) : (
           <TypographyLead className="text-center py-16">

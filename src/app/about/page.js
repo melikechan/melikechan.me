@@ -94,7 +94,7 @@ export default function About() {
                             {formatTimePeriod(
                               pos.dates.startDate,
                               pos.dates.endDate,
-                              pos.dates.continue
+                              pos.dates.continue,
                             )}
                           </TypographyMuted>
                           {pos.description && (
@@ -158,7 +158,7 @@ export default function About() {
                                           </Badge>
                                         )}
                                       </li>
-                                    )
+                                    ),
                                   )}
                                 </ul>
                               </>
@@ -206,7 +206,7 @@ export default function About() {
                         {formatTimePeriod(
                           edu.dates.startDate,
                           edu.dates.endDate,
-                          edu.dates.continue
+                          edu.dates.continue,
                         )}
                       </TypographyMuted>
 
@@ -258,7 +258,7 @@ export default function About() {
                     ))}
                   </ul>
                 </div>
-              )
+              ),
             )}
           </AccordionContent>
         </AccordionItem>
@@ -294,7 +294,7 @@ export default function About() {
                       </Badge>
                     )}
                   </li>
-                )
+                ),
               )}
             </ul>
 

@@ -38,7 +38,9 @@ export default function Contact() {
                   rel="noreferrer"
                   className="flex flex-row gap-2 items-center"
                 >
-                  <span className="w-9 h-9 [&>svg]:w-9 [&>svg]:h-9">{icon}</span>
+                  <span className="w-9 h-9 [&>svg]:w-9 [&>svg]:h-9">
+                    {icon}
+                  </span>
                   <span className="hover:underline focus:underline active:underline">
                     {title}
                   </span>

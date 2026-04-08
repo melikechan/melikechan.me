@@ -47,12 +47,17 @@ export default function Admonition({
       className={cn(
         "border-l-4 border-r-0 border-t-0 border-b-0 shadow-sm rounded-none gap-2",
         config.border,
-        className
+        className,
       )}
     >
       <CardHeader className="px-4">
         <div className="flex items-center gap-2">
-          <span className={cn("material-symbols-outlined text-[20px]", config.color)}>
+          <span
+            className={cn(
+              "material-symbols-outlined text-[20px]",
+              config.color,
+            )}
+          >
             {config.iconName}
           </span>
           <CardTitle className={cn("text-base font-semibold", config.color)}>
@@ -60,9 +65,7 @@ export default function Admonition({
           </CardTitle>
         </div>
       </CardHeader>
-      <CardContent className="text-sm opacity-90 px-4">
-        {children}
-      </CardContent>
+      <CardContent className="text-sm opacity-90 px-4">{children}</CardContent>
     </Card>
   );
 }

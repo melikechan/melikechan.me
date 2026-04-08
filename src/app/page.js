@@ -1,5 +1,5 @@
 import HeroSocialButton from "@/components/HeroSocialButton";
-import ShootingStars from "@/components/ShootingStars"; // Import the new component
+import ShootingStars from "@/components/ShootingStars";
 import person from "@/utils/person";
 
 export default function Home() {

@@ -7,7 +7,6 @@ const ShootingStars = () => {
   const [starColor, setStarColor] = useState("rgba(255, 255, 255, 0.8)"); // Default fallback color
 
   useEffect(() => {
-
     const getCssVariable = (variableName) => {
       if (typeof window !== "undefined") {
         const value = getComputedStyle(document.documentElement)
@@ -22,7 +21,7 @@ const ShootingStars = () => {
 
     const getColorWithAlpha = (color, alpha) => {
       let hslMatch = color.match(
-        /hsla?\((\d+\.?\d*)\s*,?\s*(\d+\.?\d*%)?\s*,?\s*(\d+\.?\d*%)?\s*(?:[,/]\s*(\d*\.?\d+))?\)/
+        /hsla?\((\d+\.?\d*)\s*,?\s*(\d+\.?\d*%)?\s*,?\s*(\d+\.?\d*%)?\s*(?:[,/]\s*(\d*\.?\d+))?\)/,
       );
       if (hslMatch) {
         const h = hslMatch[1];
@@ -32,7 +31,7 @@ const ShootingStars = () => {
       }
 
       let spaceSeparatedHslMatch = color.match(
-        /^(\d+\.?\d*)\s+(\d+\.?\d*%)?\s+(\d+\.?\d*%)?\s*(\/\s*\d*\.?\d+)?$/
+        /^(\d+\.?\d*)\s+(\d+\.?\d*%)?\s+(\d+\.?\d*%)?\s*(\/\s*\d*\.?\d+)?$/,
       );
       if (spaceSeparatedHslMatch) {
         const h = spaceSeparatedHslMatch[1];
@@ -46,8 +45,7 @@ const ShootingStars = () => {
         if (parts && parts.length >= 3) {
           return `rgba(${parts[0]}, ${parts[1]}, ${parts[2]}, ${alpha})`;
         }
-      }
-      else if (color.startsWith("#")) {
+      } else if (color.startsWith("#")) {
         let r = 0,
           g = 0,
           b = 0;
@@ -66,7 +64,7 @@ const ShootingStars = () => {
       }
 
       console.warn(
-        `Could not parse color "${color}" to apply alpha. Falling back to default white.`
+        `Could not parse color "${color}" to apply alpha. Falling back to default white.`,
       );
       return `rgba(255, 255, 255, ${alpha})`;
     };
@@ -86,7 +84,7 @@ const ShootingStars = () => {
           newColor = primaryColor;
         } else {
           console.warn(
-            "CSS variable '--color-primary' not found or empty. Falling back to default star color for light mode."
+            "CSS variable '--color-primary' not found or empty. Falling back to default star color for light mode.",
           );
           newColor = "hsla(0, 0%, 100%, 0.8)";
         }
@@ -172,7 +170,7 @@ const ShootingStars = () => {
           this.x - Math.cos(this.angle) * this.length,
           this.y - Math.sin(this.angle) * this.length,
           this.x,
-          this.y
+          this.y,
         );
 
         gradient.addColorStop(0, getColorWithAlpha(starColor, 0));
@@ -183,7 +181,7 @@ const ShootingStars = () => {
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(
           this.x - Math.cos(this.angle) * this.length,
-          this.y - Math.sin(this.angle) * this.length
+          this.y - Math.sin(this.angle) * this.length,
         );
         ctx.stroke();
       };
@@ -213,12 +211,7 @@ const ShootingStars = () => {
     };
   }, [starColor]);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 -z-1"
-    />
-  );
+  return <canvas ref={canvasRef} className="fixed top-0 left-0 -z-1" />;
 };
 
 export default ShootingStars;

@@ -1,4 +1,4 @@
-import localFont from 'next/font/local';
+import localFont from "next/font/local";
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "next-themes";
@@ -10,10 +10,10 @@ import "katex/dist/katex.min.css";
 import "@/app/globals.css";
 
 const monaspaceNeon = localFont({
-  src: './fonts/MonaspaceNeon-Var.woff2',
-  display: 'swap',
-  variable: '--font-monaspace',
-  weight: '200 800',
+  src: "./fonts/MonaspaceNeon-Var.woff2",
+  display: "swap",
+  variable: "--font-monaspace",
+  weight: "200 800",
 });
 
 const defaultUrl = env.NEXT_PUBLIC_SITE_URL;

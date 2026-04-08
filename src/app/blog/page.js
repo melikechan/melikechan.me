@@ -1,5 +1,5 @@
-import { getSortedPostsData, getAllTags } from '@/lib/posts';
-import BlogList from './BlogList';
+import { getSortedPostsData, getAllTags } from "@/lib/posts";
+import BlogList from "./BlogList";
 
 export async function generateMetadata() {
   return {

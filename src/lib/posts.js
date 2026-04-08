@@ -67,7 +67,7 @@ export function getAllTags() {
 export function getPostData(slug) {
   const allMdxFiles = getCachedMdxFiles();
   const fullPath = allMdxFiles.find(
-    (filePath) => path.basename(filePath, ".mdx") === slug
+    (filePath) => path.basename(filePath, ".mdx") === slug,
   );
 
   if (!fullPath) {

@@ -1,8 +1,4 @@
-import {
-  SiGithub,
-  SiKaggle,
-  SiOrcid,
-} from "@icons-pack/react-simple-icons";
+import { SiGithub, SiKaggle, SiOrcid } from "@icons-pack/react-simple-icons";
 import Linkedin from "@/icons/linkedin.svg";
 import AnkaraUni from "@/icons/education/ankara-uni.svg";
 import Getir from "@/icons/experience/getir.svg";
@@ -200,7 +196,7 @@ const person = {
 };
 
 person.experience.sort((a, b) =>
-  dateListSort(a.positions[0]?.dates, b.positions[0]?.dates)
+  dateListSort(a.positions[0]?.dates, b.positions[0]?.dates),
 );
 
 person.education.sort((a, b) => dateListSort(a.dates, b.dates));

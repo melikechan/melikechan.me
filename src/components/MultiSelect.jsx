@@ -1,24 +1,29 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { ChevronsUpDown, X, Check } from 'lucide-react';
+import * as React from "react";
+import { ChevronsUpDown, X, Check } from "lucide-react";
 
-import { cn } from '@/lib/utils';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
+} from "@/components/ui/popover";
 
-export function MultiSelect({ allTags, selectedTags, onTagsChange, className }) {
+export function MultiSelect({
+  allTags,
+  selectedTags,
+  onTagsChange,
+  className,
+}) {
   const [open, setOpen] = React.useState(false);
-  const [searchTerm, setSearchTerm] = React.useState('');
+  const [searchTerm, setSearchTerm] = React.useState("");
 
-  const filteredTags = allTags.filter(tag => 
-    tag.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredTags = allTags.filter((tag) =>
+    tag.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const handleUnselect = (tag) => {
@@ -45,11 +50,7 @@ export function MultiSelect({ allTags, selectedTags, onTagsChange, className }) 
           <div className="flex gap-1 flex-wrap">
             {selectedTags.length > 0 ? (
               selectedTags.map((tag) => (
-                <Badge
-                  key={tag}
-                  variant="secondary"
-                  className="mr-1"
-                >
+                <Badge key={tag} variant="secondary" className="mr-1">
                   {tag}
                   <span
                     role="button"
@@ -86,34 +87,36 @@ export function MultiSelect({ allTags, selectedTags, onTagsChange, className }) 
       </PopoverTrigger>
       <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
         <div className="flex flex-col space-y-2 p-2">
-            <Input
-              placeholder="Search tags..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full"
-            />
-            <div className="max-h-60 overflow-y-auto">
-              {filteredTags.length > 0 ? (
-                filteredTags.map((tag) => {
-                  const isSelected = selectedTags.includes(tag);
-                  return (
-                    <Button
-                      key={tag}
-                      variant="ghost"
-                      className="w-full justify-start font-normal"
-                      onClick={() => toggleTag(tag)}
-                    >
-                      <div className="flex items-center justify-between w-full">
-                          <span>{tag}</span>
-                          {isSelected && <Check className="h-4 w-4" />}
-                      </div>
-                    </Button>
-                  );
-                })
-              ) : (
-                <p className="text-center text-sm text-muted-foreground py-4">No tag found.</p>
-              )}
-            </div>
+          <Input
+            placeholder="Search tags..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full"
+          />
+          <div className="max-h-60 overflow-y-auto">
+            {filteredTags.length > 0 ? (
+              filteredTags.map((tag) => {
+                const isSelected = selectedTags.includes(tag);
+                return (
+                  <Button
+                    key={tag}
+                    variant="ghost"
+                    className="w-full justify-start font-normal"
+                    onClick={() => toggleTag(tag)}
+                  >
+                    <div className="flex items-center justify-between w-full">
+                      <span>{tag}</span>
+                      {isSelected && <Check className="h-4 w-4" />}
+                    </div>
+                  </Button>
+                );
+              })
+            ) : (
+              <p className="text-center text-sm text-muted-foreground py-4">
+                No tag found.
+              </p>
+            )}
+          </div>
         </div>
       </PopoverContent>
     </Popover>

@@ -62,7 +62,7 @@ export function TypographyLink({ className, variant = "primary", ...props }) {
       className={cn(
         "underline font-medium underline-offset-4 transition-colors",
         linkClasses[variant],
-        className
+        className,
       )}
       {...props}
     />

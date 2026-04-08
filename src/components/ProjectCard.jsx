@@ -49,7 +49,9 @@ export default function ProjectCard({
         {progress && (
           <div className="w-full">
             <Progress value={progress} />
-            <TypographyMuted className="mt-1">{progress}% completed.</TypographyMuted>
+            <TypographyMuted className="mt-1">
+              {progress}% completed.
+            </TypographyMuted>
           </div>
         )}
       </CardContent>

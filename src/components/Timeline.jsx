@@ -21,7 +21,7 @@ function Timeline({
 }) {
   if (!items || !Array.isArray(items)) {
     console.error(
-      "Timeline component requires an 'items' prop which must be an array."
+      "Timeline component requires an 'items' prop which must be an array.",
     );
     return null;
   }
