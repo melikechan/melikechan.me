@@ -26,8 +26,8 @@ export function ThemeSwitcher() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="text-center" size={"sm"}>
+      <DropdownMenuTrigger aria-label="Open theme menu" asChild>
+        <Button variant="ghost" className="text-center" size="sm">
           {theme === "light" ? (
             <span className="material-symbols-outlined text-muted-foreground">
               light_mode
