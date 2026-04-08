@@ -8,8 +8,17 @@ export const siteConfig = {
       label: "About",
     },
     {
-      href: "/projects",
-      label: "Projects",
+      label: "Works",
+      subitems: [
+        {
+          href: "/research",
+          label: "Research",
+        },
+        {
+          href: "/projects",
+          label: "Projects",
+        },
+      ],
     },
     {
       href: "/blog",
