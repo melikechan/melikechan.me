@@ -41,9 +41,9 @@ export function MobileMenu() {
           <SheetTitle>Navigate</SheetTitle>
         </SheetHeader>
         <div className="mt-4 flex flex-col gap-2">
-          {siteConfig.navItems.map((item, index) => (
+          {siteConfig.navItems.map((item) => (
             <Button
-              key={index}
+              key={item.href}
               variant="ghost"
               className="w-full text-left"
               asChild

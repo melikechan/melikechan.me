@@ -1,4 +1,4 @@
-import React from "react";
+import { isValidElement } from "react";
 
 import Timeline from "@/components/Timeline";
 import {
@@ -42,7 +42,7 @@ export async function generateMetadata() {
   };
 }
 
-export default function Home() {
+export default function About() {
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 mx-1 animate-fade-in">
       <TypographyH1>About</TypographyH1>
@@ -68,11 +68,9 @@ export default function Home() {
                 children: (
                   <div className="flex flex-col">
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
-                      {exp.icon && React.isValidElement(exp.icon) && (
-                        <div className="flex-shrink-0">
-                          {React.cloneElement(exp.icon, {
-                            className: "w-12 h-12",
-                          })}
+                      {exp.icon && isValidElement(exp.icon) && (
+                        <div className="shrink-0 w-12 h-12 [&>svg]:w-full [&>svg]:h-full">
+                          {exp.icon}
                         </div>
                       )}
 
@@ -191,15 +189,13 @@ export default function Home() {
               items={person.education.map((edu) => ({
                 children: (
                   <>
-                    {edu.icon && React.isValidElement(edu.icon) && (
-                      <div className="flex-shrink-0">
-                        {React.cloneElement(edu.icon, {
-                          className: "w-12 h-12",
-                        })}
+                    {edu.icon && isValidElement(edu.icon) && (
+                      <div className="shrink-0 w-12 h-12 [&>svg]:w-full [&>svg]:h-full">
+                        {edu.icon}
                       </div>
                     )}
 
-                    <div className="flex-grow">
+                    <div className="grow">
                       <TypographyH2 className="font-bold text-lg my-1">
                         {edu.insName}
                       </TypographyH2>

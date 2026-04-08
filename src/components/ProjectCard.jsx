@@ -7,12 +7,12 @@ import { Progress } from "@/components/ui/progress";
 import {
   Card,
   CardContent,
-  CardDescription, // Still useful for specific description styling if needed
+  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { CardAction } from "@/components/ui/card"; // Ensure this is correctly imported and available in your shadcn setup
+import { CardAction } from "@/components/ui/card";
 import { TypographyH3 } from "./typography/headings";
 import { TypographyMuted } from "./typography/paragraph";
 
@@ -27,7 +27,7 @@ export default function ProjectCard({
   return (
     <Card className="flex flex-col items-center justify-between space-y-2 sm:space-y-3 md:space-y-4 h-full w-full sm:max-w-xs md:max-w-sm lg:max-w-80 xl:max-w-96 shadow-md p-3 sm:p-4 rounded-lg">
       <CardHeader className="flex flex-col items-center w-full mb-0 sm:mb-1">
-        <CardTitle className="text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-alt text-balance mb-2 text-center">
+        <CardTitle className="text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-primary-alt text-balance mb-2 text-center">
           {title}
         </CardTitle>
         {img && (
@@ -36,13 +36,12 @@ export default function ProjectCard({
               src={img}
               alt={title}
               fill
-              style={{ objectFit: "contain" }}
-              className="rounded-md"
+              className="object-contain rounded-md"
             />
           </div>
         )}
       </CardHeader>
-      <CardContent className="flex flex-col items-center text-center gap-2 w-full flex-grow">
+      <CardContent className="flex flex-col items-center text-center gap-2 w-full grow">
         {description && (
           <CardDescription className="text-lg">{description}</CardDescription>
         )}
@@ -70,8 +69,8 @@ export default function ProjectCard({
               Used Technologies
             </TypographyH3>
             <div className="flex flex-row items-center justify-center flex-wrap gap-2">
-              {tags.map((tag, index) => (
-                <Badge key={index}>{tag}</Badge>
+              {tags.map((tag) => (
+                <Badge key={tag}>{tag}</Badge>
               ))}
             </div>
           </div>

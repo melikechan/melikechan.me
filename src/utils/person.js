@@ -2,7 +2,6 @@ import {
   SiGithub,
   SiKaggle,
   SiOrcid,
-  SiTuta,
 } from "@icons-pack/react-simple-icons";
 import Linkedin from "@/icons/linkedin.svg";
 import AnkaraUni from "@/icons/education/ankara-uni.svg";
@@ -22,7 +21,7 @@ const person = {
   nickname: "melikechan",
   title: (
     <>
-      undergraduate researcher/computer engineering student{" "}
+      computer engineering student{" "}
       <TypographyLink
         key="uni-link"
         href="https://ankara.edu.tr/"
@@ -78,11 +77,11 @@ const person = {
       subject: "Computer Engineering",
       dates: {
         startDate: new Date("2022-09-21"),
-        endDate: new Date("2026-06-19"), // It can be null if end date is unknown
+        endDate: new Date("2026-07-01"), // It can be null if end date is unknown
         continue: true,
       },
       gpa: {
-        cgpa: 3.74,
+        cgpa: 3.8,
         scale: 4.0,
       },
     },
@@ -141,16 +140,16 @@ const person = {
           location: "Ankara, Türkiye",
           dates: {
             startDate: new Date("2024-05-15"),
-            endDate: null, // It can be null if end date is unknown
-            continue: true,
+            endDate: new Date("2025-03-15"), // It can be null if end date is unknown
+            continue: false,
           },
           description: (
             <>
               <TypographyUnorderedList className="text-sm">
-                <li>Working on a domain-specific image segmentation task.</li>
+                <li>Worked on a domain-specific image segmentation task.</li>
               </TypographyUnorderedList>
               <TypographyParagraph className="text-sm">
-                Working in a research group (size of 2, contains another{" "}
+                Worked in a research group (size of 2, contains another{" "}
                 <i>undergraduate</i> student) under{" "}
                 <TypographyLink
                   href="https://scholar.google.com/citations?user=8LKy_XoAAAAJ"
@@ -204,6 +203,6 @@ person.experience.sort((a, b) =>
   dateListSort(a.positions[0]?.dates, b.positions[0]?.dates)
 );
 
-person.education.sort((a, b) => date(a.dates, b.dates));
+person.education.sort((a, b) => dateListSort(a.dates, b.dates));
 
 export default person;

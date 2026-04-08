@@ -45,15 +45,15 @@ const projects = [
   },
 ];
 
-export default async function Home() {
+export default async function Projects() {
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 animate-fade-in">
       <TypographyH1>Projects</TypographyH1>
 
       <TypographyH2>Featured Projects</TypographyH2>
       <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 px-4">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} {...project} />
+        {projects.map((project) => (
+          <ProjectCard key={project.title} {...project} />
         ))}
       </section>
     </main>

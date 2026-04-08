@@ -1,5 +1,6 @@
 export const siteConfig = {
   name: "melikechan",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   description: "melikechan's personal website.",
   navItems: [
     {

@@ -1,4 +1,4 @@
-export default function Navbar() {
+export default function Footer() {
   const now = new Date();
   const year = now.getFullYear();
   let yearString = year.toString();

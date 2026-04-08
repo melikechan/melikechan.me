@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import katex from "katex";
 
 export const Latex = ({ latexString, displayMode = false }) => {
@@ -16,9 +16,8 @@ export const Latex = ({ latexString, displayMode = false }) => {
       } catch (error) {
         console.error("KaTeX rendering error:", error);
         if (ref.current) {
-          ref.current.innerHTML = `<span class="text-red-500">Error: ${
-            error ?? "LaTeX is not working"
-          }</span>`;
+          ref.current.textContent = `Error: ${error?.message ?? "LaTeX is not working"}`;
+          ref.current.className = "text-red-500";
         }
       }
     }

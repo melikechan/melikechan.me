@@ -21,12 +21,12 @@ export function Navbar() {
       </div>
 
       <div className="flex items-center align-center gap-4">
-        <div className="hidden lg:flex items-center space-x-6">
+        <div className="hidden lg:flex items-center space-x-6 font-medium">
           {siteConfig.navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-center font-medium text-foreground hover:text-primary transition-colors"
+              className="text-center text-foreground hover:text-primary transition-colors"
             >
               {item.label}
             </Link>

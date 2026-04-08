@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ShootingStars = () => {
   const canvasRef = useRef(null);
@@ -216,7 +216,7 @@ const ShootingStars = () => {
   return (
     <canvas
       ref={canvasRef}
-      style={{ position: "fixed", top: 0, left: 0, zIndex: -1 }}
+      className="fixed top-0 left-0 -z-1"
     />
   );
 };

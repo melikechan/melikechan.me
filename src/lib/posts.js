@@ -1,12 +1,10 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { serialize } from "next-mdx-remote/serialize";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
 
 const postsDirectory = path.join(process.cwd(), "posts");
+
+let mdxFilesCache = null;
 
 function getAllMdxFiles(dirPath, arrayOfFiles = []) {
   const files = fs.readdirSync(dirPath);
@@ -22,8 +20,15 @@ function getAllMdxFiles(dirPath, arrayOfFiles = []) {
   return arrayOfFiles;
 }
 
+function getCachedMdxFiles() {
+  if (!mdxFilesCache) {
+    mdxFilesCache = getAllMdxFiles(postsDirectory);
+  }
+  return mdxFilesCache;
+}
+
 export function getSortedPostsData() {
-  const allMdxFiles = getAllMdxFiles(postsDirectory);
+  const allMdxFiles = getCachedMdxFiles();
   const allPostsData = allMdxFiles.map((filePath) => {
     const id = path.basename(filePath, ".mdx");
     const fileContents = fs.readFileSync(filePath, "utf8");
@@ -59,19 +64,8 @@ export function getAllTags() {
   return Array.from(allTags).sort();
 }
 
-export function getAllPostIds() {
-  const allMdxFiles = getAllMdxFiles(postsDirectory);
-  return allMdxFiles.map((filePath) => {
-    return {
-      params: {
-        id: path.basename(filePath, ".mdx"),
-      },
-    };
-  });
-}
-
 export function getPostData(slug) {
-  const allMdxFiles = getAllMdxFiles(postsDirectory);
+  const allMdxFiles = getCachedMdxFiles();
   const fullPath = allMdxFiles.find(
     (filePath) => path.basename(filePath, ".mdx") === slug
   );

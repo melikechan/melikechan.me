@@ -1,6 +1,6 @@
 import localFont from 'next/font/local';
 import { Navbar } from "@/components/Navbar";
-import Footer from "../components/Footer";
+import Footer from "@/components/Footer";
 import { ThemeProvider } from "next-themes";
 
 import { cn } from "@/utils/styling";
@@ -8,8 +8,6 @@ import { env } from "@/env";
 
 import "katex/dist/katex.min.css";
 import "@/app/globals.css";
-
-import localFont from 'next/font/local'
 
 const monaspaceNeon = localFont({
   src: './fonts/MonaspaceNeon-Var.woff2',

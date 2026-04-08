@@ -28,6 +28,8 @@ import {
 } from "@/components/typography/list";
 import { TypographyInlineCode } from "@/components/typography/inline-code";
 
+import Admonition from "@/components/Admonition";
+
 const headings = {
   h1: TypographyH1,
   h2: TypographyH2,
@@ -56,6 +58,7 @@ export const mdxComponents = {
   ...textBlocks,
   ...lists,
   ...inlineElements,
+  Admonition,
 };
 
 const mdxOptions = {
@@ -68,7 +71,7 @@ const mdxOptions = {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const postData = getPostData(slug);
-  if (!postData) return notFound();
+  if (!postData) return {};
   return {
     title: postData.title,
     description: postData.description,
