@@ -8,10 +8,17 @@ export async function generateMetadata() {
   return {
     title: "Research",
     description: "Research projects affiliated with melikechan.",
-
+    alternates: {
+      canonical: "/research",
+    },
     openGraph: {
       title: "Research",
       description: "Research projects affiliated with melikechan.",
+      url: "/research",
+    },
+    twitter: {
+      card: "summary",
+      title: "Research | melikechan",
     },
   };
 }

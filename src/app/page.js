@@ -2,6 +2,25 @@ import HeroSocialButton from "@/components/HeroSocialButton";
 import ShootingStars from "@/components/ShootingStars";
 import person from "@/utils/person";
 
+export const metadata = {
+  title: {
+    absolute: "melikechan",
+  },
+  description: "Melike Vurucu's (melikechan) personal website.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "melikechan",
+    url: "/",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "melikechan",
+  },
+};
+
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen items-center justify-center">

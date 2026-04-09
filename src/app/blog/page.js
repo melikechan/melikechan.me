@@ -5,9 +5,17 @@ export async function generateMetadata() {
   return {
     title: "Blog",
     description: "Blog posts by melikechan.",
+    alternates: {
+      canonical: "/blog",
+    },
     openGraph: {
       title: "Blog",
       description: "Blog posts by melikechan.",
+      url: "/blog",
+    },
+    twitter: {
+      card: "summary",
+      title: "Blog | melikechan",
     },
   };
 }

@@ -7,12 +7,14 @@ export async function generateMetadata() {
   return {
     title: "Contact",
     description: "Contact information of melikechan.",
-
+    alternates: {
+      canonical: "/contact",
+    },
     openGraph: {
       title: "Contact",
       description: "Contact information of melikechan.",
+      url: "/contact",
     },
-
     robots: {
       index: false,
       follow: false,

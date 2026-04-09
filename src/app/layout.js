@@ -25,11 +25,13 @@ export const metadata = {
     default: "melikechan",
   },
   description: "melikechan's personal website.",
-  creator: "Melike Vurucu (melikechan)",
-  publisher: "Melike Vurucu (melikechan)",
+  keywords: ["melikechan", "Melike Vurucu"],
+  authors: [{ name: "Melike Vurucu", url: defaultUrl }],
+  creator: "Melike Vurucu",
+  publisher: "Melike Vurucu",
   referrer: "origin-when-cross-origin",
   openGraph: {
-    site_name: "melikechan",
+    siteName: "melikechan",
     title: {
       template: "%s | melikechan",
       default: "melikechan",
@@ -38,10 +40,21 @@ export const metadata = {
     url: new URL(defaultUrl),
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: `${defaultUrl}/logo.png`,
+        alt: "melikechan logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "melikechan",
+    description: "melikechan's personal website.",
     images: [`${defaultUrl}/logo.png`],
   },
   alternates: {
-    canonical: "./",
+    canonical: "/",
   },
   robots: {
     index: true,

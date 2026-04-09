@@ -9,10 +9,17 @@ export async function generateMetadata() {
   return {
     title: "Projects",
     description: "Projects of melikechan.",
-
+    alternates: {
+      canonical: "/projects",
+    },
     openGraph: {
       title: "Projects",
       description: "Projects of melikechan.",
+      url: "/projects",
+    },
+    twitter: {
+      card: "summary",
+      title: "Projects | melikechan",
     },
   };
 }
@@ -41,7 +48,6 @@ const projects = [
     img: "https://repository-images.githubusercontent.com/191201679/10394d00-968c-11ea-8879-4f06b3e59af5",
     progress: 15,
   },
-
   {
     title: "Super Secret Project 2",
     description: "TBA!",
@@ -71,8 +77,8 @@ export default async function Projects() {
 
       <TypographyH2>Featured Projects</TypographyH2>
       <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 px-4">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} {...project} />
+        {projects.map((project, projectIndex) => (
+          <ProjectCard key={projectIndex} {...project} />
         ))}
       </section>
     </main>

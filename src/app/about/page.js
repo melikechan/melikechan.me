@@ -34,10 +34,17 @@ export async function generateMetadata() {
   return {
     title: "About",
     description: "About melikechan.",
-
+    alternates: {
+      canonical: "/about",
+    },
     openGraph: {
       title: "About",
       description: "About melikechan.",
+      url: "/about",
+    },
+    twitter: {
+      card: "summary",
+      title: "About | melikechan",
     },
   };
 }

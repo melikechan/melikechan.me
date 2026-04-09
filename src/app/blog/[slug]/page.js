@@ -76,13 +76,29 @@ export async function generateMetadata({ params }) {
     title: postData.title,
     description: postData.description,
     keywords: postData.keywords ?? postData.tags,
+    authors: postData.author
+      ? [{ name: postData.author }]
+      : [{ name: "Melike Vurucu" }],
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
       title: postData.title,
       description: postData.description,
       url: siteConfig.url + "/blog/" + postData.slug,
-      locale: postData.locale,
+      locale: postData.locale ?? "en_US",
       type: "article",
       siteName: siteConfig.name,
+      publishedTime: postData.date
+        ? new Date(postData.date).toISOString()
+        : undefined,
+      authors: postData.author ? [postData.author] : ["Melike Vurucu"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: postData.title,
+      description: postData.description,
+      images: [`${siteConfig.url}/logo.png`],
     },
   };
 }
@@ -108,7 +124,7 @@ export default async function Post({ params }) {
             href="/blog"
             className="flex items-center gap-2 text-muted-foreground"
           >
-            <span className="material-symbols-outlined !text-[1.25rem] size-5">
+            <span className="material-symbols-outlined text-[1.25rem]! size-5">
               chevron_left
             </span>
             Back to Blog
