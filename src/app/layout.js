@@ -43,6 +43,8 @@ export const metadata = {
     images: [
       {
         url: `${defaultUrl}/logo.png`,
+        width: 512,
+        height: 512,
         alt: "melikechan logo",
       },
     ],
