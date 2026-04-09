@@ -51,7 +51,10 @@ export const metadata = {
   },
   twitter: {
     card: "summary",
-    title: "melikechan",
+    title: {
+      template: "%s | melikechan",
+      default: "melikechan",
+    },
     description: "melikechan's personal website.",
     images: [`${defaultUrl}/logo.png`],
   },

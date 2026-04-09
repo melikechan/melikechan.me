@@ -1,7 +1,8 @@
 import { getSortedPostsData, getAllTags } from "@/lib/posts";
 import BlogList from "./BlogList";
 
-export async function generateMetadata() {
+export async function generateMetadata(_params, parent) {
+  const parentMetadata = await parent;
   return {
     title: "Blog",
     description: "Blog posts by melikechan.",
@@ -9,13 +10,15 @@ export async function generateMetadata() {
       canonical: "/blog",
     },
     openGraph: {
+      ...parentMetadata.openGraph,
       title: "Blog",
       description: "Blog posts by melikechan.",
       url: "/blog",
     },
     twitter: {
-      card: "summary",
-      title: "Blog | melikechan",
+      ...parentMetadata.twitter,
+      title: "Blog",
+      description: "Blog posts by melikechan.",
     },
   };
 }

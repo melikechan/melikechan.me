@@ -3,7 +3,8 @@ import { TypographyLead } from "@/components/typography/paragraph";
 
 import person from "@/utils/person";
 
-export async function generateMetadata() {
+export async function generateMetadata(_params, parent) {
+  const parentMetadata = await parent;
   return {
     title: "Contact",
     description: "Contact information of melikechan.",
@@ -11,9 +12,15 @@ export async function generateMetadata() {
       canonical: "/contact",
     },
     openGraph: {
+      ...parentMetadata.openGraph,
       title: "Contact",
       description: "Contact information of melikechan.",
       url: "/contact",
+    },
+    twitter: {
+      ...parentMetadata.twitter,
+      description: "Contact information of melikechan.",
+      title: "Contact",
     },
     robots: {
       index: false,

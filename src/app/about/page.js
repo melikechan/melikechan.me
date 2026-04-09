@@ -30,7 +30,8 @@ import {
   TypographySmall,
 } from "@/components/typography/paragraph";
 
-export async function generateMetadata() {
+export async function generateMetadata(_params, parent) {
+  const parentMetadata = await parent;
   return {
     title: "About",
     description: "About melikechan.",
@@ -38,13 +39,15 @@ export async function generateMetadata() {
       canonical: "/about",
     },
     openGraph: {
+      ...parentMetadata.openGraph,
       title: "About",
       description: "About melikechan.",
       url: "/about",
     },
     twitter: {
-      card: "summary",
-      title: "About | melikechan",
+      ...parentMetadata.twitter,
+      title: "About",
+      description: "About melikechan.",
     },
   };
 }

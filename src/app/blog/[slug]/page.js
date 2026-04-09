@@ -68,10 +68,11 @@ const mdxOptions = {
   },
 };
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }, parent) {
   const { slug } = await params;
   const postData = getPostData(slug);
   if (!postData) return {};
+  const parentMetadata = await parent;
   return {
     title: postData.title,
     description: postData.description,
@@ -83,6 +84,7 @@ export async function generateMetadata({ params }) {
       canonical: `/blog/${slug}`,
     },
     openGraph: {
+      ...parentMetadata.openGraph,
       title: postData.title,
       description: postData.description,
       url: siteConfig.url + "/blog/" + postData.slug,
@@ -95,10 +97,10 @@ export async function generateMetadata({ params }) {
       authors: postData.author ? [postData.author] : ["Melike Vurucu"],
     },
     twitter: {
+      ...parentMetadata.twitter,
       card: "summary_large_image",
       title: postData.title,
       description: postData.description,
-      images: [`${siteConfig.url}/logo.png`],
     },
   };
 }

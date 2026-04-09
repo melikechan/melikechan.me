@@ -5,7 +5,8 @@ import {
   TypographyParagraph,
 } from "@/components/typography/paragraph";
 
-export async function generateMetadata() {
+export async function generateMetadata(_params, parent) {
+  const parentMetadata = await parent;
   return {
     title: "Projects",
     description: "Projects of melikechan.",
@@ -13,13 +14,15 @@ export async function generateMetadata() {
       canonical: "/projects",
     },
     openGraph: {
+      ...parentMetadata.openGraph,
       title: "Projects",
       description: "Projects of melikechan.",
       url: "/projects",
     },
     twitter: {
-      card: "summary",
-      title: "Projects | melikechan",
+      ...parentMetadata.twitter,
+      title: "Projects",
+      description: "Projects of melikechan.",
     },
   };
 }

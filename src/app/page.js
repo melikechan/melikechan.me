@@ -2,24 +2,25 @@ import HeroSocialButton from "@/components/HeroSocialButton";
 import ShootingStars from "@/components/ShootingStars";
 import person from "@/utils/person";
 
-export const metadata = {
-  title: {
-    absolute: "melikechan",
-  },
-  description: "melikechan's personal website.",
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title: "melikechan",
-    url: "/",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "melikechan",
-  },
-};
+export async function generateMetadata(_params, parent) {
+  const parentMetadata = await parent;
+  return {
+    title: {
+      absolute: "melikechan",
+    },
+    alternates: {
+      canonical: "/",
+    },
+    openGraph: {
+      ...parentMetadata.openGraph,
+      title: "melikechan",
+    },
+    twitter: {
+      ...parentMetadata.twitter,
+      title: "melikechan",
+    },
+  };
+}
 
 export default function Home() {
   return (
