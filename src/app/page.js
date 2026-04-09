@@ -6,7 +6,7 @@ export const metadata = {
   title: {
     absolute: "melikechan",
   },
-  description: "Melike Vurucu's (melikechan) personal website.",
+  description: "melikechan's personal website.",
   alternates: {
     canonical: "/",
   },
