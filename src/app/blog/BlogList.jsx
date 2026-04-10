@@ -25,7 +25,6 @@ import {
 } from "@/components/ui/card";
 
 import { MultiSelect } from "@/components/MultiSelect";
-import { TypographyH1 } from "@/components/typography/headings";
 import {
   TypographyLead,
   TypographyMuted,
@@ -129,14 +128,7 @@ export default function BlogList({ allPostsData, allTags }) {
   };
 
   return (
-    <main className="flex flex-col min-h-screen items-center gap-6 mt-2 mx-1 animate-fade-in">
-      <div className="text-center">
-        <TypographyH1>Blog</TypographyH1>
-        <TypographyLead className="mt-2">
-          Search, sort, and read my latest thoughts.
-        </TypographyLead>
-      </div>
-
+    <div className="mb-4">
       <div className="flex flex-col gap-4 w-full md:max-w-3xl lg:max-w-4xl">
         <Input
           type="text"
@@ -272,6 +264,6 @@ export default function BlogList({ allPostsData, allTags }) {
           </Button>
         </div>
       )}
-    </main>
+    </div>
   );
 }

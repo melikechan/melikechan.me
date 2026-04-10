@@ -2,7 +2,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { TypographyH1, TypographyH2 } from "@/components/typography/headings";
 import {
   TypographyLink,
-  TypographyParagraph,
+  TypographyLead,
 } from "@/components/typography/paragraph";
 
 export async function generateMetadata(_params, parent) {
@@ -63,7 +63,7 @@ export default async function Projects() {
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 animate-fade-in">
       <TypographyH1>Projects</TypographyH1>
-      <TypographyParagraph className="text-center">
+      <TypographyLead className="mt-2 text-center">
         Here is a list of featured software projects for which I am working (or
         worked) on.
         <br />
@@ -76,7 +76,7 @@ export default async function Projects() {
           Github
         </TypographyLink>
         .
-      </TypographyParagraph>
+      </TypographyLead>
 
       <TypographyH2>Featured Projects</TypographyH2>
       <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 px-4">

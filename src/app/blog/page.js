@@ -1,5 +1,7 @@
 import { getSortedPostsData, getAllTags } from "@/lib/posts";
 import BlogList from "./BlogList";
+import { TypographyH1 } from "@/components/typography/headings";
+import { TypographyLead } from "@/components/typography/paragraph";
 
 export async function generateMetadata(_params, parent) {
   const parentMetadata = await parent;
@@ -27,5 +29,15 @@ export default function BlogPage() {
   const allPostsData = getSortedPostsData();
   const allTags = getAllTags();
 
-  return <BlogList allPostsData={allPostsData} allTags={allTags} />;
+  return (
+    <main className="flex flex-col min-h-screen items-center gap-6 mt-2 mx-1 animate-fade-in">
+      <div className="text-center">
+        <TypographyH1>Blog</TypographyH1>
+        <TypographyLead className="mt-2">
+          Search, sort, and read my latest thoughts.
+        </TypographyLead>
+      </div>
+      <BlogList allPostsData={allPostsData} allTags={allTags} />
+    </main>
+  );
 }

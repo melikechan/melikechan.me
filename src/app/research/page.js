@@ -1,7 +1,7 @@
 import { TypographyH1, TypographyH2 } from "@/components/typography/headings";
 import {
+  TypographyLead,
   TypographyMuted,
-  TypographyParagraph,
 } from "@/components/typography/paragraph";
 
 export async function generateMetadata(params, parent) {
@@ -30,10 +30,10 @@ export default async function Projects() {
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 animate-fade-in">
       <TypographyH1>Research</TypographyH1>
-      <TypographyParagraph className="text-center">
+      <TypographyLead className="mt-2 text-center">
         Here is a list of featured research projects for which I am the author
         or co-author.
-      </TypographyParagraph>
+      </TypographyLead>
 
       <TypographyH2>Featured Work</TypographyH2>
       <TypographyMuted className="text-center">
