@@ -73,7 +73,7 @@ const person = {
       subject: "Computer Engineering",
       dates: {
         startDate: new Date("2022-09-21"),
-        endDate: new Date("2026-07-01"), // It can be null if end date is unknown
+        endDate: null, // It can be null if end date is unknown
         continue: true,
       },
       gpa: {
