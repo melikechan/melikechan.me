@@ -16,6 +16,15 @@ const withMdx = nextMdx({
 const nextConfig = {
   reactStrictMode: true, // Recommended for Next.js applications
 
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
+      },
+    },
+  },
+
   // MDX Configuration
   pageExtensions: ["md", "mdx", "tsx", "ts", "jsx", "js"],
 
