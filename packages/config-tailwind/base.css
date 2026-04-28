@@ -1,0 +1,3 @@
+/* Shared Tailwind v4 base — @import this before app-specific tokens */
+@import "tailwindcss";
+@import "tw-animate-css";

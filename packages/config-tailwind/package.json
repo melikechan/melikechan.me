@@ -1,0 +1,9 @@
+{
+  "name": "@melikechan/config-tailwind",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./postcss": "./postcss.js",
+    "./base.css": "./base.css"
+  }
+}
