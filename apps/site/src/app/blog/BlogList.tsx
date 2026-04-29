@@ -3,32 +3,27 @@
 import Link from "next/link";
 import { useState, useMemo, useEffect } from "react";
 
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
+  Input,
+  Label,
+  Button,
+  Badge,
+  RadioGroup,
+  RadioGroupItem,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-
+} from "@melikechan/ui";
+import { TypographyLead, TypographyMuted } from "@melikechan/ui/typography";
 import { MultiSelect } from "@/components/MultiSelect";
-import {
-  TypographyLead,
-  TypographyMuted,
-} from "@/components/typography/paragraph";
 import type { PostData } from "@/lib/posts";
 
 const POSTS_PER_PAGE = 5;
@@ -141,8 +136,8 @@ export default function BlogList({ allPostsData, allTags }: BlogListProps) {
   };
 
   return (
-    <div className="mb-4">
-      <div className="flex flex-col gap-4 w-full md:max-w-3xl lg:max-w-4xl">
+    <div className="mb-4 w-full">
+      <div className="flex flex-col gap-4 w-full">
         <Input
           type="text"
           placeholder="Search posts by title..."
@@ -191,7 +186,7 @@ export default function BlogList({ allPostsData, allTags }: BlogListProps) {
         </Select>
       </div>
 
-      <div className="grid gap-6 w-full md:max-w-3xl lg:max-w-4xl">
+      <div className="grid gap-6 w-full mt-4">
         {processedPosts.paginatedPosts.length > 0 ? (
           processedPosts.paginatedPosts.map(
             ({ id, date, title, description, tags }) => (

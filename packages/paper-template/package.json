@@ -10,8 +10,7 @@
   },
   "devDependencies": {
     "@melikechan/config-tsconfig": "workspace:*",
-    "@types/react": "^19.1.4",
-    "typescript": "^5.8.3"
+    "@types/react": "^19.1.4"
   },
   "peerDependencies": {
     "next": "^16.2.4",

@@ -1,13 +1,14 @@
+const START_YEAR = 2024;
+const currentYear = new Date().getFullYear();
+const yearLabel =
+  currentYear === START_YEAR
+    ? `${START_YEAR}`
+    : `${START_YEAR} – ${currentYear}`;
+
 export default function Footer() {
-  const now = new Date();
-  const year = now.getFullYear();
-  let yearString = year.toString();
-  if (year !== 2024) {
-    yearString = `2024 - ${yearString}`;
-  }
   return (
     <footer className="flex justify-center items-center py-4 w-full px-4 bg-background">
-      made with love 🤍 by melikechan | {yearString}
+      made with love 🤍 by melikechan | {yearLabel}
     </footer>
   );
 }

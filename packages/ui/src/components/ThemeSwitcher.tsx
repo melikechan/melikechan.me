@@ -2,7 +2,6 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-
 import { Button } from "./ui/button";
 import {
   DropdownMenu,
@@ -12,6 +11,12 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
+const THEME_ICONS: Record<string, string> = {
+  light: "light_mode",
+  dark: "dark_mode",
+  system: "computer",
+};
+
 export function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -20,63 +25,42 @@ export function ThemeSwitcher() {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return null;
-  }
+  const icon = mounted
+    ? (THEME_ICONS[theme ?? "system"] ?? "computer")
+    : "computer";
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger aria-label="Open theme menu" asChild>
-        <Button variant="ghost" className="text-center" size="sm">
-          {theme === "light" ? (
-            <span className="material-symbols-outlined text-muted-foreground">
-              light_mode
-            </span>
-          ) : theme === "dark" ? (
-            <span className="material-symbols-outlined text-muted-foreground">
-              dark_mode
-            </span>
-          ) : (
-            <span className="material-symbols-outlined text-muted-foreground">
-              computer
-            </span>
-          )}
+        <Button
+          variant="ghost"
+          className="text-center"
+          size="sm"
+          suppressHydrationWarning
+        >
+          <span className="material-symbols-outlined text-muted-foreground">
+            {icon}
+          </span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-content" align="start">
-        <DropdownMenuRadioGroup
-          value={theme}
-          onValueChange={(e) => setTheme(e)}
-        >
-          <DropdownMenuRadioItem
-            className="flex items-center gap-2"
-            value="light"
-          >
-            <span className="material-symbols-outlined text-muted-foreground">
-              light_mode
-            </span>{" "}
-            <span>Light</span>
-          </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem
-            className="flex items-center gap-2"
-            value="dark"
-          >
-            <span className="material-symbols-outlined text-muted-foreground">
-              dark_mode
-            </span>{" "}
-            <span>Dark</span>
-          </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem
-            className="flex items-center gap-2"
-            value="system"
-          >
-            <span className="material-symbols-outlined text-muted-foreground">
-              computer
-            </span>{" "}
-            <span>System</span>
-          </DropdownMenuRadioItem>
-        </DropdownMenuRadioGroup>
-      </DropdownMenuContent>
+      {mounted && (
+        <DropdownMenuContent className="w-content" align="start">
+          <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
+            {Object.entries(THEME_ICONS).map(([value, iconName]) => (
+              <DropdownMenuRadioItem
+                key={value}
+                className="flex items-center gap-2"
+                value={value}
+              >
+                <span className="material-symbols-outlined text-muted-foreground">
+                  {iconName}
+                </span>
+                <span className="capitalize">{value}</span>
+              </DropdownMenuRadioItem>
+            ))}
+          </DropdownMenuRadioGroup>
+        </DropdownMenuContent>
+      )}
     </DropdownMenu>
   );
 }

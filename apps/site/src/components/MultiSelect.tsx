@@ -2,16 +2,15 @@
 
 import * as React from "react";
 import { ChevronsUpDown, X, Check } from "lucide-react";
-
-import { cn } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
+  cn,
+  Badge,
+  Button,
+  Input,
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@melikechan/ui";
 
 interface MultiSelectProps {
   allTags: string[];
@@ -29,21 +28,26 @@ export function MultiSelect({
   const [open, setOpen] = React.useState(false);
   const [searchTerm, setSearchTerm] = React.useState("");
 
-  const filteredTags = allTags.filter((tag) =>
-    tag.toLowerCase().includes(searchTerm.toLowerCase()),
+  const filteredTags = React.useMemo(
+    () =>
+      allTags.filter((tag) =>
+        tag.toLowerCase().includes(searchTerm.toLowerCase()),
+      ),
+    [allTags, searchTerm],
   );
 
-  const handleUnselect = (tag: string) => {
-    onTagsChange(selectedTags.filter((t) => t !== tag));
-  };
+  const handleUnselect = React.useCallback(
+    (tag: string) => onTagsChange(selectedTags.filter((t) => t !== tag)),
+    [onTagsChange, selectedTags],
+  );
 
-  const toggleTag = (tag: string) => {
-    if (selectedTags.includes(tag)) {
-      handleUnselect(tag);
-    } else {
-      onTagsChange([...selectedTags, tag]);
-    }
-  };
+  const toggleTag = React.useCallback(
+    (tag: string) =>
+      selectedTags.includes(tag)
+        ? onTagsChange(selectedTags.filter((t) => t !== tag))
+        : onTagsChange([...selectedTags, tag]),
+    [onTagsChange, selectedTags],
+  );
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -65,7 +69,7 @@ export function MultiSelect({
                     aria-label={`Remove ${tag}`}
                     className="ml-1 ring-offset-background rounded-full outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
                     onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === "Space") {
+                      if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
                         e.stopPropagation();
                         handleUnselect(tag);
@@ -93,12 +97,11 @@ export function MultiSelect({
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
-        <div className="flex flex-col space-y-2 p-2">
+        <div className="flex flex-col gap-2 p-2">
           <Input
             placeholder="Search tags..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full"
           />
           <div className="max-h-60 overflow-y-auto">
             {filteredTags.length > 0 ? (
@@ -108,13 +111,11 @@ export function MultiSelect({
                   <Button
                     key={tag}
                     variant="ghost"
-                    className="w-full justify-start font-normal"
+                    className="w-full justify-between font-normal"
                     onClick={() => toggleTag(tag)}
                   >
-                    <div className="flex items-center justify-between w-full">
-                      <span>{tag}</span>
-                      {isSelected && <Check className="h-4 w-4" />}
-                    </div>
+                    {tag}
+                    {isSelected && <Check className="h-4 w-4" />}
                   </Button>
                 );
               })

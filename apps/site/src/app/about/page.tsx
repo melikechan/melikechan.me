@@ -7,29 +7,23 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-
-import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/ui/hover-card";
-
-import { Badge } from "@/components/ui/badge";
-
-import person from "@/utils/person";
-import { formatTimePeriod } from "@/utils/date";
-import { TypographyHr } from "@/components/typography/hr";
+  Badge,
+} from "@melikechan/ui";
 import {
+  TypographyHr,
   TypographyH1,
   TypographyH2,
   TypographyH3,
-} from "@/components/typography/headings";
-import {
   TypographyMuted,
   TypographyParagraph,
   TypographySmall,
-} from "@/components/typography/paragraph";
+} from "@melikechan/ui/typography";
+
+import person from "@/utils/person";
+import { formatTimePeriod } from "@/utils/date";
 
 export async function generateMetadata(
   _params: object,
@@ -58,7 +52,7 @@ export async function generateMetadata(
 
 export default function About() {
   return (
-    <main className="flex flex-col min-h-screen items-center gap-6 mt-2 mx-1 animate-fade-in">
+    <main className="flex flex-col min-h-screen items-center gap-6 mt-2 animate-fade-in">
       <TypographyH1>About</TypographyH1>
       <TypographyParagraph className="text-center">
         {person.intro}
@@ -79,6 +73,7 @@ export default function About() {
           <AccordionContent className="flex flex-col gap-4 text-balance mt-4">
             <Timeline
               items={person.experience.map((exp) => ({
+                id: exp.compName,
                 children: (
                   <div className="flex flex-col">
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
@@ -200,6 +195,7 @@ export default function About() {
           <AccordionContent className="flex flex-col gap-4 text-balance mt-4">
             <Timeline
               items={person.education.map((edu) => ({
+                id: edu.insName,
                 children: (
                   <>
                     {edu.icon && isValidElement(edu.icon) && (

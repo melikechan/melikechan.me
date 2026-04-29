@@ -1,10 +1,9 @@
 import Image from "next/image";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-
 import {
+  Badge,
+  Button,
+  Progress,
   Card,
   CardContent,
   CardDescription,
@@ -12,9 +11,8 @@ import {
   CardHeader,
   CardTitle,
   CardAction,
-} from "@/components/ui/card";
-import { TypographyH3 } from "./typography/headings";
-import { TypographyMuted } from "./typography/paragraph";
+} from "@melikechan/ui";
+import { TypographyH3, TypographyMuted } from "@melikechan/ui/typography";
 
 interface ProjectCardProps {
   title: string;

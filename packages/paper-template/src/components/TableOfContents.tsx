@@ -1,4 +1,5 @@
-import { cn } from "@melikechan/ui";
+import { cn } from "@melikechan/ui/utils";
+import { TypographyH2, TypographyLink } from "@melikechan/ui/typography";
 
 interface TocItem {
   href: string;
@@ -14,20 +15,19 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
   return (
     <nav
       aria-label="Table of contents"
-      className={cn(
-        "flex flex-wrap items-center justify-center gap-x-4 gap-y-1",
-        className,
-      )}
+      className={cn("flex flex-col items-center gap-3", className)}
     >
-      {items.map((item) => (
-        <a
-          key={item.href}
-          href={item.href}
-          className="text-sm font-medium text-primary underline-offset-4 hover:underline transition-colors"
-        >
-          {item.label}
-        </a>
-      ))}
+      <TypographyH2>Table of Contents</TypographyH2>
+      <ol className="flex flex-col gap-1">
+        {items.map((item, i) => (
+          <li key={item.href} className="flex items-baseline gap-2">
+            <span className="text-muted-foreground text-sm tabular-nums w-5 text-right shrink-0">
+              {i + 1}.
+            </span>
+            <TypographyLink href={item.href}>{item.label}</TypographyLink>
+          </li>
+        ))}
+      </ol>
     </nav>
   );
 }

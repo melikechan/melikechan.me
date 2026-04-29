@@ -3,31 +3,25 @@ import type { ResolvingMetadata, Metadata } from "next";
 import { getSortedPostsData, getPostData } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
-
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-
+import { Badge, Button } from "@melikechan/ui";
 import {
   TypographyH1,
   TypographyH2,
   TypographyH3,
   TypographyH4,
-} from "@/components/typography/headings";
-import {
   TypographyParagraph,
   TypographyLink,
-} from "@/components/typography/paragraph";
-import { TypographyBlockquote } from "@/components/typography/blockquote";
-import { TypographyHr } from "@/components/typography/hr";
-import {
+  TypographyBlockquote,
+  TypographyHr,
   TypographyUnorderedList,
   TypographyOrderedList,
-} from "@/components/typography/list";
-import { TypographyInlineCode } from "@/components/typography/inline-code";
+  TypographyInlineCode,
+} from "@melikechan/ui/typography";
+import { siteConfig } from "@/config/site";
+
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 import Admonition from "@/components/Admonition";
 
@@ -129,8 +123,8 @@ export default async function Post({
   }
 
   return (
-    <main className="flex flex-col items-center gap-8 py-8 px-4 animate-fade-in">
-      <div className="w-full md:max-w-3xl lg:max-w-4xl">
+    <main className="flex flex-col items-center gap-8 py-8 animate-fade-in">
+      <div className="w-full max-w-4xl">
         <Button asChild variant="ghost" className="-ml-4">
           <Link
             href="/blog"

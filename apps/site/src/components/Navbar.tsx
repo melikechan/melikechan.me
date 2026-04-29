@@ -3,9 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { MobileMenu } from "@/components/MobileMenu";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import {
+  MobileMenu,
+  ThemeSwitcher,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -13,7 +13,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@melikechan/ui";
 import { siteConfig } from "@/config/site";
 import type { NavItem } from "@/config/site";
 
@@ -88,7 +88,7 @@ export function Navbar() {
 
         <div className="flex lg:hidden items-center gap-4">
           <ThemeSwitcher />
-          <MobileMenu />
+          <MobileMenu items={siteConfig.navItems} />
         </div>
       </div>
     </nav>

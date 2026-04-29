@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { cn } from "@melikechan/ui";
+import { cn } from "@melikechan/ui/utils";
+import { TypographyMuted } from "@melikechan/ui/typography";
 
 interface FigureWithCaptionProps {
   src?: string;
@@ -23,7 +24,7 @@ export function FigureWithCaption({
       {src ? (
         <Image src={src} alt={alt} fill className="object-cover" />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-foreground opacity-50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-alt opacity-50" />
       )}
     </div>
   );
@@ -34,8 +35,8 @@ export function FigureWithCaption({
         <figure className="flex flex-col gap-2">
           {visualContent}
           {caption && (
-            <figcaption className="text-xs text-muted-foreground text-center">
-              {caption}
+            <figcaption>
+              <TypographyMuted className="text-xs text-center">{caption}</TypographyMuted>
             </figcaption>
           )}
         </figure>
@@ -48,8 +49,8 @@ export function FigureWithCaption({
     <figure className={cn("flex flex-col gap-2", className)}>
       {visualContent}
       {caption && (
-        <figcaption className="text-xs text-muted-foreground text-center">
-          {caption}
+        <figcaption>
+          <TypographyMuted className="text-xs text-center">{caption}</TypographyMuted>
         </figcaption>
       )}
     </figure>

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@melikechan/ui";
 
 interface HeroSocialButtonProps {
   href: string;

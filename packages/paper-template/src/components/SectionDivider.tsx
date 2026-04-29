@@ -12,7 +12,7 @@ export function SectionDivider({
   return (
     <div
       className={cn(
-        "flex items-center justify-center py-4 text-muted-foreground select-none",
+        "flex items-center justify-center py-4 text-border text-2xl font-bold select-none",
         className,
       )}
       aria-hidden="true"

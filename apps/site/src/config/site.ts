@@ -1,8 +1,6 @@
-export interface NavItem {
-  href?: string;
-  label: string;
-  subitems?: NavItem[];
-}
+import type { NavItem } from "@melikechan/ui";
+
+export type { NavItem };
 
 export interface SiteConfig {
   name: string;

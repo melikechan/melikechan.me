@@ -1,5 +1,4 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { Card, CardHeader, CardTitle, CardContent, cn } from "@melikechan/ui";
 
 interface AdmonitionVariant {
   title: string;

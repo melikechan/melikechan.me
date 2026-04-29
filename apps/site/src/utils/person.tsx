@@ -5,12 +5,11 @@ import AnkaraUni from "@/icons/education/ankara-uni.svg";
 import Getir from "@/icons/experience/getir.svg";
 
 import { techGlossary, type GlossaryEntry } from "@/utils/glossary";
-import { TypographyUnorderedList } from "@/components/typography/list";
 import {
+  TypographyUnorderedList,
   TypographyLink,
   TypographyParagraph,
-} from "@/components/typography/paragraph";
-
+} from "@melikechan/ui/typography";
 import { dateListSort } from "./date";
 
 interface DateRange {

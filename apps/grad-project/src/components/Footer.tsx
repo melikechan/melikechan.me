@@ -1,8 +1,9 @@
+const year = new Date().getFullYear();
+
 export default function Footer() {
-  const year = new Date().getFullYear();
   return (
-    <footer className="flex justify-center items-center py-4 w-full px-4 bg-background border-t text-sm text-muted-foreground">
-      <p className="text-center text-xs text-muted-foreground py-4">
+    <footer className="flex justify-center items-center py-4 w-full px-4 bg-background border-t">
+      <p className="text-center text-xs text-muted-foreground">
         Project page design by{" "}
         <a
           href="https://melikechan.me"

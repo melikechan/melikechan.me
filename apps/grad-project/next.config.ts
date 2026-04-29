@@ -4,7 +4,10 @@ const nextConfig: NextConfig = {
   basePath: "/research/grad-project",
   assetPrefix: "/research/grad-project",
   reactStrictMode: true,
-  transpilePackages: ["@melikechan/ui", "@melikechan/paper-template"],
+  transpilePackages: ["@melikechan/assets", "@melikechan/ui", "@melikechan/paper-template"],
+  images: {
+    remotePatterns: [{ hostname: "melikechan.me" }],
+  },
   turbopack: {
     rules: {
       "*.svg": {

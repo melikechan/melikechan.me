@@ -1,11 +1,11 @@
 import type { ResolvingMetadata, Metadata } from "next";
 import ProjectCard from "@/components/ProjectCard";
-import { TypographyH1, TypographyH2 } from "@/components/typography/headings";
 import {
+  TypographyH1,
+  TypographyH2,
   TypographyLink,
   TypographyLead,
-} from "@/components/typography/paragraph";
-
+} from "@melikechan/ui/typography";
 export async function generateMetadata(
   _params: object,
   parent: ResolvingMetadata,

@@ -2,36 +2,42 @@
 
 import { useState } from "react";
 import Link from "next/link";
-
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from "./ui/sheet";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
-import type { NavItem } from "@/config/site";
+} from "./ui/accordion";
+import { Button } from "./ui/button";
+
+export interface NavItem {
+  href?: string;
+  label: string;
+  external?: boolean;
+  subitems?: NavItem[];
+}
 
 const topLinkClass =
   "block w-full rounded-md px-3 py-2 text-base font-medium transition-colors hover:text-primary";
 const subLinkClass =
   "block w-full rounded-md px-3 py-2 text-base font-medium transition-colors text-muted-foreground hover:bg-primary/20 hover:text-primary";
 
-interface NavItemsProps {
+function NavItems({
+  items,
+  onClose,
+  depth = 0,
+}: {
   items: NavItem[];
   onClose: () => void;
   depth?: number;
-}
-
-function NavItems({ items, onClose, depth = 0 }: NavItemsProps) {
+}) {
   const linkClass = depth === 0 ? topLinkClass : subLinkClass;
 
   return items.map((item) => {
@@ -65,6 +71,9 @@ function NavItems({ items, onClose, depth = 0 }: NavItemsProps) {
           href={item.href}
           className={linkClass}
           onClick={onClose}
+          {...(item.external
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
         >
           {item.label}
         </Link>
@@ -74,7 +83,12 @@ function NavItems({ items, onClose, depth = 0 }: NavItemsProps) {
   });
 }
 
-export function MobileMenu() {
+interface MobileMenuProps {
+  items: NavItem[];
+  title?: string;
+}
+
+export function MobileMenu({ items, title = "Navigate" }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -91,13 +105,10 @@ export function MobileMenu() {
         className="border-0"
       >
         <SheetHeader className="flex items-center w-full">
-          <SheetTitle>Navigate</SheetTitle>
+          <SheetTitle>{title}</SheetTitle>
         </SheetHeader>
         <nav className="mt-4 flex flex-col gap-1">
-          <NavItems
-            items={siteConfig.navItems}
-            onClose={() => setOpen(false)}
-          />
+          <NavItems items={items} onClose={() => setOpen(false)} />
         </nav>
       </SheetContent>
     </Sheet>

@@ -1,126 +1,82 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+
+function getColorWithAlpha(color: string, alpha: number): string {
+  const hslMatch = color.match(
+    /hsla?\((\d+\.?\d*)\s*,?\s*(\d+\.?\d*%?)\s*,?\s*(\d+\.?\d*%?)/,
+  );
+  if (hslMatch) {
+    return `hsla(${hslMatch[1]}, ${hslMatch[2]}, ${hslMatch[3]}, ${alpha})`;
+  }
+  const spaceSepMatch = color.match(
+    /^(\d+\.?\d*)\s+(\d+\.?\d*%?)\s+(\d+\.?\d*%?)/,
+  );
+  if (spaceSepMatch) {
+    return `hsla(${spaceSepMatch[1]}, ${spaceSepMatch[2]}, ${spaceSepMatch[3]}, ${alpha})`;
+  }
+  if (color.startsWith("rgb")) {
+    const parts = color.match(/\d+(\.\d+)?/g);
+    if (parts && parts.length >= 3) {
+      return `rgba(${parts[0]}, ${parts[1]}, ${parts[2]}, ${alpha})`;
+    }
+  } else if (color.startsWith("#")) {
+    const full =
+      color.length === 4
+        ? `#${color[1]}${color[1]}${color[2]}${color[2]}${color[3]}${color[3]}`
+        : color;
+    const r = parseInt(full.substring(1, 3), 16);
+    const g = parseInt(full.substring(3, 5), 16);
+    const b = parseInt(full.substring(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+  return `rgba(255, 255, 255, ${alpha})`;
+}
+
+function readStarColor(): string {
+  const isDark = document.documentElement.classList.contains("dark");
+  if (isDark) return "hsla(0, 0%, 100%, 0.8)";
+  const primary = getComputedStyle(document.documentElement)
+    .getPropertyValue("--color-primary")
+    .trim()
+    .replace(/^"|"$/g, "");
+  return primary || "hsla(0, 0%, 100%, 0.8)";
+}
 
 const ShootingStars = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [starColor, setStarColor] = useState("rgba(255, 255, 255, 0.8)");
+  const colorRef = useRef<string>("hsla(0, 0%, 100%, 0.8)");
 
   useEffect(() => {
-    const getCssVariable = (variableName: string): string => {
-      if (typeof window !== "undefined") {
-        const value = getComputedStyle(document.documentElement)
-          .getPropertyValue(variableName)
-          .trim();
-        return value.startsWith('"') && value.endsWith('"')
-          ? value.slice(1, -1)
-          : value;
-      }
-      return "";
+    colorRef.current = readStarColor();
+
+    const updateColor = () => {
+      colorRef.current = readStarColor();
     };
 
-    const getColorWithAlpha = (color: string, alpha: number): string => {
-      const hslMatch = color.match(
-        /hsla?\((\d+\.?\d*)\s*,?\s*(\d+\.?\d*%)?\s*,?\s*(\d+\.?\d*%)?\s*(?:[,/]\s*(\d*\.?\d+))?\)/,
-      );
-      if (hslMatch) {
-        const h = hslMatch[1];
-        const s = hslMatch[2] ?? "0%";
-        const l = hslMatch[3] ?? "0%";
-        return `hsla(${h}, ${s}, ${l}, ${alpha})`;
-      }
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    mq.addEventListener("change", updateColor);
 
-      const spaceSeparatedHslMatch = color.match(
-        /^(\d+\.?\d*)\s+(\d+\.?\d*%)?\s+(\d+\.?\d*%)?\s*(\/\s*\d*\.?\d+)?$/,
-      );
-      if (spaceSeparatedHslMatch) {
-        const h = spaceSeparatedHslMatch[1];
-        const s = spaceSeparatedHslMatch[2] ?? "0%";
-        const l = spaceSeparatedHslMatch[3] ?? "0%";
-        return `hsla(${h}, ${s}, ${l}, ${alpha})`;
-      }
-
-      if (color.startsWith("rgb")) {
-        const parts = color.match(/\d+(\.\d+)?/g);
-        if (parts && parts.length >= 3) {
-          return `rgba(${parts[0]}, ${parts[1]}, ${parts[2]}, ${alpha})`;
-        }
-      } else if (color.startsWith("#")) {
-        let r = 0,
-          g = 0,
-          b = 0;
-        if (color.length === 4) {
-          r = parseInt(color[1] + color[1], 16);
-          g = parseInt(color[2] + color[2], 16);
-          b = parseInt(color[3] + color[3], 16);
-        } else if (color.length === 7) {
-          r = parseInt(color.substring(1, 3), 16);
-          g = parseInt(color.substring(3, 5), 16);
-          b = parseInt(color.substring(5, 7), 16);
-        }
-        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-      }
-
-      console.warn(
-        `Could not parse color "${color}" to apply alpha. Falling back to default white.`,
-      );
-      return `rgba(255, 255, 255, ${alpha})`;
-    };
-
-    const updateStarColor = () => {
-      const isDarkModeClass =
-        document.documentElement.classList.contains("dark");
-      let newColor: string;
-
-      if (isDarkModeClass) {
-        newColor = "hsla(0, 0%, 100%, 0.8)";
-      } else {
-        const primaryColor = getCssVariable("--color-primary");
-        if (primaryColor) {
-          newColor = primaryColor;
-        } else {
-          console.warn(
-            "CSS variable '--color-primary' not found or empty. Falling back to default star color for light mode.",
-          );
-          newColor = "hsla(0, 0%, 100%, 0.8)";
-        }
-      }
-      setStarColor(newColor);
-    };
-
-    updateStarColor();
-
-    const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
-    mediaQueryList.addEventListener("change", updateStarColor);
-
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (
-          mutation.type === "attributes" &&
-          mutation.attributeName === "class"
-        ) {
-          updateStarColor();
-        }
-      });
+    const observer = new MutationObserver(() => updateColor());
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
     });
-    observer.observe(document.documentElement, { attributes: true });
 
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    // Shadow as non-null consts so TypeScript narrows inside the class below
     const c: HTMLCanvasElement = canvas;
     const cx: CanvasRenderingContext2D = ctx;
-    let animationFrameId: number;
+    let rafId: number;
 
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    const resize = () => {
+      c.width = window.innerWidth;
+      c.height = window.innerHeight;
     };
-
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
+    window.addEventListener("resize", resize);
+    resize();
 
     class Star {
       x: number;
@@ -144,19 +100,19 @@ const ShootingStars = () => {
       update() {
         this.x += Math.cos(this.angle) * this.speed;
         this.y += Math.sin(this.angle) * this.speed;
-
         if (
           this.x > c.width + this.length ||
           this.y > c.height + this.length ||
           this.x < -this.length ||
           this.y < -this.length
         ) {
-          this.x = Math.random() * c.width;
-          this.y = -this.length;
-          this.angle =
-            Math.PI / 2 +
-            ((Math.random() * Math.PI) / 4) * (Math.random() < 0.5 ? 1 : -1);
           if (Math.random() < 0.5) {
+            this.x = Math.random() * c.width;
+            this.y = -this.length;
+            this.angle =
+              Math.PI / 2 +
+              ((Math.random() * Math.PI) / 4) * (Math.random() < 0.5 ? 1 : -1);
+          } else {
             this.x = -this.length;
             this.y = Math.random() * c.height;
             this.angle =
@@ -167,21 +123,21 @@ const ShootingStars = () => {
       }
 
       draw() {
+        const color = colorRef.current;
         cx.beginPath();
         cx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        cx.fillStyle = starColor;
+        cx.fillStyle = color;
         cx.fill();
 
-        const gradient = cx.createLinearGradient(
+        const grad = cx.createLinearGradient(
           this.x - Math.cos(this.angle) * this.length,
           this.y - Math.sin(this.angle) * this.length,
           this.x,
           this.y,
         );
-
-        gradient.addColorStop(0, getColorWithAlpha(starColor, 0));
-        gradient.addColorStop(1, getColorWithAlpha(starColor, 0.6));
-        cx.strokeStyle = gradient;
+        grad.addColorStop(0, getColorWithAlpha(color, 0));
+        grad.addColorStop(1, getColorWithAlpha(color, 0.6));
+        cx.strokeStyle = grad;
         cx.lineWidth = this.size;
         cx.beginPath();
         cx.moveTo(this.x, this.y);
@@ -193,30 +149,25 @@ const ShootingStars = () => {
       }
     }
 
-    const stars: Star[] = [];
-    const numStars = 50;
-    for (let i = 0; i < numStars; i++) {
-      stars.push(new Star());
-    }
+    const stars = Array.from({ length: 50 }, () => new Star());
 
     const animate = () => {
       cx.clearRect(0, 0, c.width, c.height);
-      stars.forEach((star) => {
+      for (const star of stars) {
         star.update();
         star.draw();
-      });
-      animationFrameId = requestAnimationFrame(animate);
+      }
+      rafId = requestAnimationFrame(animate);
     };
-
     animate();
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
-      mediaQueryList.removeEventListener("change", updateStarColor);
+      window.removeEventListener("resize", resize);
+      mq.removeEventListener("change", updateColor);
       observer.disconnect();
-      cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(rafId);
     };
-  }, [starColor]);
+  }, []);
 
   return <canvas ref={canvasRef} className="fixed top-0 left-0 -z-1" />;
 };

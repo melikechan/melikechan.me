@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useMemo } from "react";
 import katex from "katex";
 
 interface LatexProps {
@@ -9,24 +9,16 @@ interface LatexProps {
 }
 
 export const Latex = ({ latexString, displayMode = false }: LatexProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (ref.current) {
-      try {
-        katex.render(latexString, ref.current, {
-          throwOnError: false,
-          displayMode,
-        });
-      } catch (error) {
-        console.error("KaTeX rendering error:", error);
-        if (ref.current) {
-          ref.current.textContent = `Error: ${error instanceof Error ? error.message : "LaTeX is not working"}`;
-          ref.current.className = "text-red-500";
-        }
-      }
+  const html = useMemo(() => {
+    try {
+      return katex.renderToString(latexString, {
+        throwOnError: false,
+        displayMode,
+      });
+    } catch {
+      return `<span class="text-red-500">LaTeX error</span>`;
     }
   }, [latexString, displayMode]);
 
-  return <div ref={ref} />;
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
 };

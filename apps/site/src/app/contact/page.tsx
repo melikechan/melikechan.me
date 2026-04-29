@@ -1,7 +1,5 @@
 import type { ResolvingMetadata, Metadata } from "next";
-import { TypographyH1 } from "@/components/typography/headings";
-import { TypographyLead } from "@/components/typography/paragraph";
-
+import { TypographyH1, TypographyLead } from "@melikechan/ui/typography";
 import person from "@/utils/person";
 
 export async function generateMetadata(
@@ -35,7 +33,7 @@ export async function generateMetadata(
 
 export default function Contact() {
   return (
-    <main className="flex flex-col min-h-screen items-center space-y-4 mx-8 my-4 animate-fade-in">
+    <main className="flex flex-col min-h-screen items-center space-y-4 my-4 animate-fade-in">
       <TypographyH1 className="text-4xl font-bold">Contact</TypographyH1>
       <TypographyLead className="mt-2">You can contact me via:</TypographyLead>
 

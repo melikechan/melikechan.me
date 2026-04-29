@@ -10,6 +10,11 @@
   },
   "devDependencies": {
     "turbo": "latest",
-    "typescript": "^5.8.3"
+    "typescript": "^6.0.3"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "next-themes@0.4.6": "patches/next-themes@0.4.6.patch"
+    }
   }
 }

@@ -1,6 +1,8 @@
 import * as React from "react";
-import { TypographyUnorderedList } from "@/components/typography/list";
-import { TypographyMuted } from "@/components/typography/paragraph";
+import {
+  TypographyUnorderedList,
+  TypographyMuted,
+} from "@melikechan/ui/typography";
 import {
   SiPython,
   SiPytorch,

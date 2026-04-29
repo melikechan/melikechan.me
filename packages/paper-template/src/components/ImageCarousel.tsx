@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Button, cn } from "@melikechan/ui";
+import { TypographyMuted } from "@melikechan/ui/typography";
 
 interface CarouselImage {
   src: string;
@@ -53,7 +54,7 @@ export function ImageCarousel({ images, className }: ImageCarouselProps) {
       </div>
 
       {caption && (
-        <p className="text-xs text-muted-foreground text-center">{caption}</p>
+        <TypographyMuted className="text-xs text-center">{caption}</TypographyMuted>
       )}
 
       <div className="flex justify-center gap-1.5">
