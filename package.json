@@ -9,8 +9,7 @@
     "typecheck": "turbo typecheck"
   },
   "devDependencies": {
-    "turbo": "latest",
-    "typescript": "^6.0.3"
+    "turbo": "catalog:tooling"
   },
   "pnpm": {
     "patchedDependencies": {

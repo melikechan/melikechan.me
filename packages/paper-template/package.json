@@ -10,10 +10,10 @@
   },
   "devDependencies": {
     "@melikechan/config-tsconfig": "workspace:*",
-    "@types/react": "^19.1.4"
+    "@types/react": "catalog:typescript"
   },
   "peerDependencies": {
-    "next": "^16.2.4",
-    "react": "^19.2.5"
+    "next": "catalog:framework",
+    "react": "catalog:framework"
   }
 }
