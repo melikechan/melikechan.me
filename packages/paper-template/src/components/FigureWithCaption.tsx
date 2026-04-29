@@ -36,7 +36,9 @@ export function FigureWithCaption({
           {visualContent}
           {caption && (
             <figcaption>
-              <TypographyMuted className="text-xs text-center">{caption}</TypographyMuted>
+              <TypographyMuted className="text-xs text-center">
+                {caption}
+              </TypographyMuted>
             </figcaption>
           )}
         </figure>
@@ -50,7 +52,9 @@ export function FigureWithCaption({
       {visualContent}
       {caption && (
         <figcaption>
-          <TypographyMuted className="text-xs text-center">{caption}</TypographyMuted>
+          <TypographyMuted className="text-xs text-center">
+            {caption}
+          </TypographyMuted>
         </figcaption>
       )}
     </figure>

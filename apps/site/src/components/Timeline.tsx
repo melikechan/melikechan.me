@@ -25,7 +25,7 @@ export default function Timeline({
   renderItemContent = defaultRender,
 }: TimelineProps) {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+    <section className="w-full py-4 sm:py-6">
       <div className="relative">
         <div
           className={`absolute w-0.5 h-full ${lineColor} top-2 left-5 -translate-x-1/2 sm:left-1/2`}

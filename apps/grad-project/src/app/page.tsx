@@ -12,9 +12,9 @@ import {
   SectionDivider,
   TableOfContents,
   FigureWithCaption,
-  ImageCarousel,
   BibtexBlock,
 } from "@melikechan/paper-template";
+import { SiGithub, SiHuggingface } from "@icons-pack/react-simple-icons";
 
 const TOC_ITEMS = [
   { href: "#abstract", label: "Abstract" },
@@ -34,7 +34,7 @@ const BIBTEX = `@misc{turan2025vlmart,
 
 export default function Page() {
   return (
-    <article className="w-full max-w-4xl mx-auto px-4 py-10 animate-fade-in">
+    <article className="w-full max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto py-10 animate-fade-in">
       <header className="flex flex-col items-center text-center gap-3 mb-10">
         <TypographyH1 className="text-3xl sm:text-4xl lg:text-5xl text-balance">
           Summarization of Art Pieces Using Vision-Language Models
@@ -49,24 +49,28 @@ export default function Page() {
           Tuğrul<sup>2</sup>
         </TypographyParagraph>
         <TypographyMuted className="text-base -mt-2">
-          <sup>1</sup>Ankara University, Computer Engineering Department (Students)
+          <sup>1</sup>Ankara University, Computer Engineering Department
+          (Students)
         </TypographyMuted>
         <TypographyMuted className="text-base -mt-2">
-          <sup>2</sup>Ankara University, Computer Engineering Department (Advisor)
+          <sup>2</sup>Ankara University, Computer Engineering Department
+          (Advisor)
         </TypographyMuted>
 
         <div className="flex flex-wrap justify-center gap-3 mt-2">
           <Button variant="default" size="lg" asChild>
             <a href="#playground" rel="noopener noreferrer">
+              <SiHuggingface />
               Playground
             </a>
           </Button>
-          <Button variant="default" size="lg" asChild>
+          <Button variant="alternative" size="lg" asChild>
             <a
               href="#grad-project-link"
               target="_blank"
               rel="noopener noreferrer"
             >
+              <SiGithub />
               GitHub
             </a>
           </Button>

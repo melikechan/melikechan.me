@@ -54,7 +54,9 @@ export function ImageCarousel({ images, className }: ImageCarouselProps) {
       </div>
 
       {caption && (
-        <TypographyMuted className="text-xs text-center">{caption}</TypographyMuted>
+        <TypographyMuted className="text-xs text-center">
+          {caption}
+        </TypographyMuted>
       )}
 
       <div className="flex justify-center gap-1.5">

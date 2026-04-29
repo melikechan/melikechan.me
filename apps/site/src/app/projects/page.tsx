@@ -72,7 +72,7 @@ const projects: Project[] = [
   },
 ];
 
-export default async function Projects() {
+export default function Projects() {
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 animate-fade-in">
       <TypographyH1>Projects</TypographyH1>
@@ -92,7 +92,7 @@ export default async function Projects() {
       </TypographyLead>
 
       <TypographyH2>Featured Projects</TypographyH2>
-      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 px-4">
+      <section className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6 w-full px-4">
         {projects.map((project, projectIndex) => (
           <ProjectCard key={projectIndex} {...project} />
         ))}

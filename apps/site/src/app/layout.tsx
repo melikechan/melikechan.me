@@ -90,7 +90,7 @@ export default function RootLayout({
       <body className="bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          <main className="flex flex-col min-h-screen w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+          <main className="flex flex-col min-h-screen w-full max-w-7xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-16 mt-4">
             {children}
           </main>
           <Footer />

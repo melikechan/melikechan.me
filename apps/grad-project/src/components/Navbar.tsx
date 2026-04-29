@@ -14,8 +14,18 @@ export function Navbar() {
   return (
     <nav className="sticky inset-x-0 top-0 z-50 bg-background border-b">
       <div className="flex items-center justify-between h-16 px-4">
-        <Link href={MAIN_SITE_URL} aria-label="melikechan.me" rel="noopener noreferrer">
-          <Image src={LOGO_URL} alt="melikechan-logo" width={48} height={48} priority />
+        <Link
+          href={MAIN_SITE_URL}
+          aria-label="melikechan.me"
+          rel="noopener noreferrer"
+        >
+          <Image
+            src={LOGO_URL}
+            alt="melikechan-logo"
+            width={48}
+            height={48}
+            priority
+          />
         </Link>
 
         <div className="flex items-center gap-4">

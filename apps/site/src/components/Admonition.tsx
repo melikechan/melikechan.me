@@ -78,7 +78,9 @@ export default function Admonition({
           </CardTitle>
         </div>
       </CardHeader>
-      <CardContent className="text-sm opacity-90 px-4">{children}</CardContent>
+      <CardContent className="text-sm sm:text-base opacity-90 px-4">
+        {children}
+      </CardContent>
     </Card>
   );
 }

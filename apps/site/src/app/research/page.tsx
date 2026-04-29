@@ -30,7 +30,7 @@ export async function generateMetadata(
   };
 }
 
-export default async function Research() {
+export default function Research() {
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 animate-fade-in">
       <TypographyH1>Research</TypographyH1>

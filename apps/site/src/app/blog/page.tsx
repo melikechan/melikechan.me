@@ -33,7 +33,7 @@ export default function BlogPage() {
 
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 animate-fade-in">
-      <div className="flex flex-col gap-6 w-full md:max-w-3xl lg:max-w-4xl mx-auto">
+      <div className="flex flex-col gap-6 w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto">
         <div className="text-center">
           <TypographyH1>Blog</TypographyH1>
           <TypographyLead className="mt-2">

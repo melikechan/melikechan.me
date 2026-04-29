@@ -32,7 +32,7 @@ export default function ProjectCard({
   tags,
 }: ProjectCardProps) {
   return (
-    <Card className="flex flex-col items-center justify-between space-y-2 sm:space-y-3 md:space-y-4 h-full w-full sm:max-w-xs md:max-w-sm lg:max-w-80 xl:max-w-96 shadow-md p-3 sm:p-4 rounded-lg">
+    <Card className="flex flex-col items-center justify-between space-y-2 sm:space-y-3 md:space-y-4 h-full w-full shadow-md p-3 sm:p-4 rounded-lg">
       <CardHeader className="flex flex-col items-center w-full mb-0 sm:mb-1">
         <CardTitle className="text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-primary-alt text-balance mb-2 text-center">
           {title}

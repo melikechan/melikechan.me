@@ -7,7 +7,7 @@ const yearLabel =
 
 export default function Footer() {
   return (
-    <footer className="flex justify-center items-center py-4 w-full px-4 bg-background">
+    <footer className="flex justify-center items-center mt-4 py-4 w-full px-4 bg-background">
       made with love 🤍 by melikechan | {yearLabel}
     </footer>
   );

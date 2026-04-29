@@ -60,7 +60,7 @@ export default function About() {
 
       <Accordion
         type="single"
-        className="flex flex-col gap-2 sm:gap-4 w-full md:max-w-3xl lg:max-w-4xl mx-auto"
+        className="flex flex-col gap-2 sm:gap-4 w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto"
         collapsible
       >
         <AccordionItem

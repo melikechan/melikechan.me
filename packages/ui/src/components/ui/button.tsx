@@ -11,6 +11,8 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+        alternative:
+          "bg-primary-alt text-primary-foreground shadow-xs hover:bg-primary-alt/90",
         gradient_x:
           "text-primary-foreground bg-linear-to-r from-primary to-primary-alt shadow-xs scale-100 hover:scale-105 transition-transform duration-300 ease-in-out",
         gradient_y:

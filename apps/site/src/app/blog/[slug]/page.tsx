@@ -124,7 +124,7 @@ export default async function Post({
 
   return (
     <main className="flex flex-col items-center gap-8 py-8 animate-fade-in">
-      <div className="w-full max-w-4xl">
+      <div className="w-full max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
         <Button asChild variant="ghost" className="-ml-4">
           <Link
             href="/blog"

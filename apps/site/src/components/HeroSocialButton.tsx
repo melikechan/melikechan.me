@@ -13,7 +13,7 @@ export default function HeroSocialButton({
     <Button
       variant="gradient_x"
       size="icon"
-      className="text-primary-foreground h-10 w-12 [&_svg]:w-6 [&_svg]:h-6"
+      className="text-primary-foreground h-10 w-12 sm:h-12 sm:w-14 [&_svg]:w-6 [&_svg]:h-6 sm:[&_svg]:w-7 sm:[&_svg]:h-7"
       asChild
     >
       <a href={href} target="_blank" rel="noopener noreferrer">

@@ -13,9 +13,12 @@ export interface PostData {
   author?: string;
   keywords?: string[];
   locale?: string;
-  slug?: string;
-  content?: string;
   [key: string]: unknown;
+}
+
+export interface PostDataWithContent extends PostData {
+  slug: string;
+  content: string;
 }
 
 let mdxFilesCache: string[] | null = null;
@@ -81,7 +84,7 @@ export function getAllTags(): string[] {
   return Array.from(allTags).sort();
 }
 
-export function getPostData(slug: string): PostData | null {
+export function getPostData(slug: string): PostDataWithContent | null {
   const allMdxFiles = getCachedMdxFiles();
   const fullPath = allMdxFiles.find(
     (filePath) => path.basename(filePath, ".mdx") === slug,
@@ -99,5 +102,5 @@ export function getPostData(slug: string): PostData | null {
     content: matterResult.content,
     ...matterResult.data,
     tags: (matterResult.data.tags as string[]) || [],
-  } as PostData;
+  } as PostDataWithContent;
 }
