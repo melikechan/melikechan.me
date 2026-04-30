@@ -9,6 +9,7 @@ const lexend = Lexend({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-lexend",
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
@@ -39,11 +40,17 @@ export default function RootLayout({
     <html lang="en" className={lexend.className} suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="https://melikechan.me/logo.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=optional"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
         />
-        <link rel="icon" href="https://melikechan.me/logo.svg" />
       </head>
       <body className="bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

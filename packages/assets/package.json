@@ -1,8 +1,0 @@
-{
-  "name": "@melikechan/assets",
-  "version": "0.0.0",
-  "private": true,
-  "exports": {
-    ".": "./src/index.ts"
-  }
-}

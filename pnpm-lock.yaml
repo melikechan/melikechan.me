@@ -151,9 +151,6 @@ importers:
       "@icons-pack/react-simple-icons":
         specifier: catalog:ui
         version: 13.13.0(react@19.2.5)
-      "@melikechan/assets":
-        specifier: workspace:*
-        version: link:../../packages/assets
       "@melikechan/paper-template":
         specifier: workspace:*
         version: link:../../packages/paper-template
@@ -270,8 +267,6 @@ importers:
       typescript:
         specifier: catalog:typescript
         version: 6.0.3
-
-  packages/assets: {}
 
   packages/config-tailwind:
     dependencies:

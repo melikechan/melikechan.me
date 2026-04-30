@@ -8,8 +8,8 @@ function toDate(value: string | undefined): Date | undefined {
   return isNaN(d.getTime()) ? undefined : d;
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getSortedPostsData();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await getSortedPostsData();
   const baseUrl = siteConfig.url;
   const latestPostDate = toDate(posts[0]?.date);
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Card, CardContent, cn } from "@melikechan/ui";
+import { Button, Card, CardAction, CardContent, CardHeader, cn } from "@melikechan/ui";
 
 interface BibtexBlockProps {
   code: string;
@@ -18,21 +18,24 @@ export function BibtexBlock({ code, className }: BibtexBlockProps) {
   };
 
   return (
-    <Card className={cn("relative", className)}>
-      <CardContent className="pt-4">
-        <Button
-          variant="ghost"
-          size="sm"
-          className="absolute top-3 right-3 text-xs"
-          onClick={handleCopy}
-          aria-label="Copy BibTeX"
-        >
-          <span className="material-symbols-outlined text-sm">
-            {copied ? "check" : "content_copy"}
-          </span>
-          {copied ? "Copied" : "Copy"}
-        </Button>
-        <pre className="text-sm font-mono overflow-x-auto whitespace-pre-wrap break-all pr-20">
+    <Card className={cn("border-2 border-border overflow-hidden py-0 gap-0", className)}>
+      <CardHeader className="flex items-center justify-end px-4 py-1 border-b-2 border-border">
+        <CardAction>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            onClick={handleCopy}
+            aria-label="Copy BibTeX"
+          >
+            <span className="material-symbols-outlined text-base">
+              {copied ? "check" : "content_copy"}
+            </span>
+          </Button>
+        </CardAction>
+      </CardHeader>
+      <CardContent className="py-4">
+        <pre className="text-sm font-mono overflow-x-auto whitespace-pre-wrap break-all">
           {code}
         </pre>
       </CardContent>

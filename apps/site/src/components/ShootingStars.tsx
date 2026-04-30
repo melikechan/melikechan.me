@@ -71,12 +71,18 @@ const ShootingStars = () => {
     const cx: CanvasRenderingContext2D = ctx;
     let rafId: number;
 
+    let resizeRaf: number | undefined;
     const resize = () => {
-      c.width = window.innerWidth;
-      c.height = window.innerHeight;
+      if (resizeRaf !== undefined) return;
+      resizeRaf = requestAnimationFrame(() => {
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+        resizeRaf = undefined;
+      });
     };
     window.addEventListener("resize", resize);
-    resize();
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
 
     class Star {
       x: number;
@@ -163,13 +169,21 @@ const ShootingStars = () => {
 
     return () => {
       window.removeEventListener("resize", resize);
+      if (resizeRaf !== undefined) cancelAnimationFrame(resizeRaf);
       mq.removeEventListener("change", updateColor);
       observer.disconnect();
       cancelAnimationFrame(rafId);
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="fixed top-0 left-0 -z-1" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed top-0 left-0 -z-1"
+      style={{ willChange: "transform" }}
+      aria-hidden="true"
+    />
+  );
 };
 
 export default ShootingStars;

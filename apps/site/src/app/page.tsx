@@ -37,9 +37,7 @@ export default function Home() {
         <h2 className="text-2xl sm:text-3xl text-center font-semibold bg-clip-text text-transparent bg-linear-to-r from-primary to-primary-alt">
           {person.fullname}
         </h2>
-        <p className="text-base sm:text-lg text-center">
-          {person.title}
-        </p>
+        <p className="text-base sm:text-lg text-center">{person.title}</p>
 
         <div className="flex gap-4 sm:gap-6 flex-row">
           {Object.entries(person.links)

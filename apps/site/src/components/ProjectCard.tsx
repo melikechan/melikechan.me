@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 import {
   Badge,
   Button,
@@ -43,6 +42,7 @@ export default function ProjectCard({
               src={img}
               alt={title}
               fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-contain rounded-md"
             />
           </div>

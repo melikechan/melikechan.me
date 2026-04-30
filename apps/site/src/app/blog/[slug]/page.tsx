@@ -68,7 +68,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { slug } = await params;
-  const postData = getPostData(slug);
+  const postData = await getPostData(slug);
   if (!postData) return {};
   const parentMetadata = await parent;
   return {
@@ -106,7 +106,7 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const posts = getSortedPostsData();
+  const posts = await getSortedPostsData();
   return posts.map((post) => ({ slug: post.id }));
 }
 
@@ -116,7 +116,7 @@ export default async function Post({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const postData = getPostData(slug);
+  const postData = await getPostData(slug);
 
   if (!postData) {
     return notFound();

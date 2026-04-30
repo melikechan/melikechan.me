@@ -2,6 +2,7 @@ import type { ResolvingMetadata, Metadata } from "next";
 import { getSortedPostsData, getAllTags } from "@/lib/posts";
 import BlogList from "./BlogList";
 import { TypographyH1, TypographyLead } from "@melikechan/ui/typography";
+
 export async function generateMetadata(
   _params: object,
   parent: ResolvingMetadata,
@@ -27,9 +28,9 @@ export async function generateMetadata(
   };
 }
 
-export default function BlogPage() {
-  const allPostsData = getSortedPostsData();
-  const allTags = getAllTags();
+export default async function BlogPage() {
+  const allPostsData = await getSortedPostsData();
+  const allTags = await getAllTags();
 
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 animate-fade-in">

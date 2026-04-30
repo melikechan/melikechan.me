@@ -4,8 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { ThemeSwitcher, MobileMenu } from "@melikechan/ui";
-import { MAIN_SITE_URL, LOGO_URL } from "@melikechan/assets";
 import { siteConfig } from "@/config/site";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 const navLinkClass =
   "rounded-md px-2 py-1.5 text-base font-medium transition-colors hover:text-primary";
@@ -15,16 +16,17 @@ export function Navbar() {
     <nav className="sticky inset-x-0 top-0 z-50 bg-background border-b">
       <div className="flex items-center justify-between h-16 px-4">
         <Link
-          href={MAIN_SITE_URL}
+          href={siteUrl}
           aria-label="melikechan.me"
           rel="noopener noreferrer"
         >
           <Image
-            src={LOGO_URL}
+            src={`${siteUrl}/logo.svg`}
             alt="melikechan-logo"
             width={48}
             height={48}
             priority
+            unoptimized
           />
         </Link>
 

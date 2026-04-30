@@ -1,13 +1,29 @@
 import type { NextConfig } from "next";
 import nextMdx from "@next/mdx";
+import zonesConfig from "../../zones.json";
 
 const withMdx = nextMdx({
   extension: /\.mdx?$/,
   options: {},
 });
 
+type ZoneEntry = { port: number; basePath?: string };
+
+const zones = (Object.entries(zonesConfig) as [string, ZoneEntry][])
+  .filter(
+    (entry): entry is [string, Required<ZoneEntry>] => "basePath" in entry[1],
+  )
+  .map(([name, zone]) => {
+    const envKey = `${name.toUpperCase().replace(/-/g, "_")}_URL`;
+    return {
+      basePath: zone.basePath,
+      url: process.env[envKey] ?? `http://localhost:${zone.port}`,
+    };
+  });
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  cacheComponents: true,
   transpilePackages: ["@melikechan/ui"],
   turbopack: {
     rules: {
@@ -27,14 +43,10 @@ const nextConfig: NextConfig = {
     ],
   },
   async rewrites() {
-    const gradProjectUrl = process.env.GRAD_PROJECT_URL;
-    if (!gradProjectUrl) return [];
-    return [
-      {
-        source: "/research/grad-project/:path*",
-        destination: `${gradProjectUrl}/research/grad-project/:path*`,
-      },
-    ];
+    return zones.map((zone) => ({
+      source: `${zone.basePath}:path(.*)`,
+      destination: `${zone.url}${zone.basePath}:path`,
+    }));
   },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find(

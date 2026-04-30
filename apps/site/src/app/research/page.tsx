@@ -5,6 +5,7 @@ import {
   TypographyLead,
   TypographyMuted,
 } from "@melikechan/ui/typography";
+
 export async function generateMetadata(
   _params: object,
   parent: ResolvingMetadata,

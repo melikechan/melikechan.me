@@ -9,9 +9,8 @@ export const siteConfig: SiteConfig = {
   name: "Summarization of Art Pieces Using VLMs",
   navItems: [
     {
-      href: "/research/grad-project",
+      href: "/",
       label: "About",
-      external: true,
     },
     {
       href: "#playground",

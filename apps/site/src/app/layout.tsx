@@ -3,7 +3,6 @@ import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "next-themes";
 
-import { cn } from "@/utils/styling";
 import { env } from "@/env";
 
 import "katex/dist/katex.min.css";
@@ -14,6 +13,7 @@ const monaspaceNeon = localFont({
   display: "swap",
   variable: "--font-monaspace",
   weight: "200 800",
+  adjustFontFallback: false,
 });
 
 const defaultUrl = env.NEXT_PUBLIC_SITE_URL;
@@ -76,16 +76,22 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(monaspaceNeon.className)}
+      className={monaspaceNeon.className}
       suppressHydrationWarning
     >
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/logo.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
         />
-        <link rel="icon" href="/logo.svg" />
       </head>
       <body className="bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

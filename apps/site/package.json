@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack --port $(node -p \"require('../../zones.json')['site'].port\")",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

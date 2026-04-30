@@ -1,16 +1,29 @@
 import type { NextConfig } from "next";
+import zonesConfig from "../../zones.json";
+
+const { basePath } = zonesConfig["grad-project"];
+const siteHostname = new URL(
+  process.env.NEXT_PUBLIC_SITE_URL ??
+    `http://localhost:${zonesConfig["site"].port}`,
+).hostname;
 
 const nextConfig: NextConfig = {
-  basePath: "/research/grad-project",
-  assetPrefix: "/research/grad-project",
+  basePath,
+  assetPrefix: basePath,
   reactStrictMode: true,
-  transpilePackages: [
-    "@melikechan/assets",
-    "@melikechan/ui",
-    "@melikechan/paper-template",
-  ],
+  transpilePackages: ["@melikechan/ui", "@melikechan/paper-template"],
   images: {
-    remotePatterns: [{ hostname: "melikechan.me" }],
+    remotePatterns: [{ hostname: siteHostname }],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: basePath,
+        permanent: false,
+        basePath: false,
+      },
+    ];
   },
   turbopack: {
     rules: {
