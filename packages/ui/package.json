@@ -1,0 +1,39 @@
+{
+  "name": "@melikechan/ui",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./typography": "./src/components/typography/index.ts",
+    "./utils": "./src/lib/utils.ts"
+  },
+  "dependencies": {
+    "@radix-ui/react-accordion": "catalog:radix",
+    "@radix-ui/react-dialog": "catalog:radix",
+    "@radix-ui/react-dropdown-menu": "catalog:radix",
+    "@radix-ui/react-hover-card": "catalog:radix",
+    "@radix-ui/react-label": "catalog:radix",
+    "@radix-ui/react-popover": "catalog:radix",
+    "@radix-ui/react-progress": "catalog:radix",
+    "@radix-ui/react-radio-group": "catalog:radix",
+    "@radix-ui/react-select": "catalog:radix",
+    "@radix-ui/react-slot": "catalog:radix",
+    "@radix-ui/react-tabs": "catalog:radix",
+    "class-variance-authority": "catalog:ui",
+    "clsx": "catalog:ui",
+    "lucide-react": "catalog:ui",
+    "tailwind-merge": "catalog:ui"
+  },
+  "devDependencies": {
+    "@melikechan/config-tsconfig": "workspace:*",
+    "@types/react": "catalog:typescript",
+    "@types/react-dom": "catalog:typescript",
+    "shadcn": "catalog:tooling"
+  },
+  "peerDependencies": {
+    "next": "catalog:framework",
+    "next-themes": "catalog:ui",
+    "react": "catalog:framework",
+    "react-dom": "catalog:framework"
+  }
+}

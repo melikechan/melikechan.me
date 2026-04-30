@@ -1,0 +1,19 @@
+{
+  "name": "@melikechan/paper-template",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@melikechan/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@melikechan/config-tsconfig": "workspace:*",
+    "@types/react": "catalog:typescript"
+  },
+  "peerDependencies": {
+    "next": "catalog:framework",
+    "react": "catalog:framework"
+  }
+}

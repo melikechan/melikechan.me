@@ -1,0 +1,14 @@
+{
+  "name": "@melikechan/config-tailwind",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./postcss": "./postcss.ts",
+    "./base.css": "./base.css"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "catalog:tailwind",
+    "tailwindcss": "catalog:tailwind",
+    "tw-animate-css": "catalog:tailwind"
+  }
+}

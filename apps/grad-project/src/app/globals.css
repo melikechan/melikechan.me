@@ -1,0 +1,63 @@
+@import "@melikechan/config-tailwind/base.css";
+
+:root {
+  --background: 210 40% 95%;
+  --foreground: 222 46% 11%;
+
+  --card: 0 0% 97%;
+  --card-foreground: 300 2% 10%;
+
+  --popover: 0 0% 97%;
+  --popover-foreground: 300 2% 10%;
+
+  --primary: 332 82% 34%;
+  --primary-alt: 36 69% 33%;
+  --primary-foreground: 0 0% 95%;
+
+  --secondary: 330 8% 85%;
+  --secondary-foreground: 0 0% 10%;
+
+  --muted: 330 8% 85%;
+  --muted-foreground: 334 7% 33%;
+
+  --accent: 330 8% 85%;
+  --accent-foreground: 0 0% 10%;
+
+  --destructive: 0 85% 50%;
+  --destructive-foreground: 0 0% 95%;
+
+  --border: 332 21% 33%;
+  --ring: 332 50% 60%;
+  --input: 330 5% 75%;
+}
+
+.dark {
+  --background: 270 6% 6%;
+  --foreground: 210 40% 95%;
+
+  --card: 255 7% 12%;
+  --card-foreground: 264 37% 92%;
+
+  --popover: 255 7% 12%;
+  --popover-foreground: 264 37% 92%;
+
+  --primary: 264 75% 40%;
+  --primary-alt: 316 75% 40%;
+  --primary-foreground: 0 0% 95%;
+
+  --secondary: 265 17% 12%;
+  --secondary-foreground: 0 0% 95%;
+
+  --muted: 267 10% 17%;
+  --muted-foreground: 250 6% 78%;
+
+  --accent: 265 17% 12%;
+  --accent-foreground: 0 0% 95%;
+
+  --destructive: 0 85% 53%;
+  --destructive-foreground: 0 0% 95%;
+
+  --border: 264 25% 46%;
+  --ring: 264 50% 45%;
+  --input: 255 7% 12%;
+}

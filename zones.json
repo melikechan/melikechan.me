@@ -1,0 +1,9 @@
+{
+  "site": {
+    "port": 3000
+  },
+  "grad-project": {
+    "port": 3001,
+    "basePath": "/research/grad-project"
+  }
+}

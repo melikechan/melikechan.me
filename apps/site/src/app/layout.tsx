@@ -1,0 +1,107 @@
+import localFont from "next/font/local";
+import { Navbar } from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { ThemeProvider } from "next-themes";
+
+import { env } from "@/env";
+
+import "katex/dist/katex.min.css";
+import "@/app/globals.css";
+
+const monaspaceNeon = localFont({
+  src: "./fonts/MonaspaceNeon-Var.woff2",
+  display: "swap",
+  variable: "--font-monaspace",
+  weight: "200 800",
+  adjustFontFallback: false,
+});
+
+const defaultUrl = env.NEXT_PUBLIC_SITE_URL;
+
+export const metadata = {
+  metadataBase: new URL(defaultUrl),
+  title: {
+    template: "%s | melikechan",
+    default: "melikechan",
+  },
+  description: "melikechan's personal website.",
+  keywords: ["melikechan", "Melike Vurucu"],
+  authors: [{ name: "Melike Vurucu", url: defaultUrl }],
+  creator: "Melike Vurucu",
+  publisher: "Melike Vurucu",
+  referrer: "origin-when-cross-origin",
+  openGraph: {
+    siteName: "melikechan",
+    title: {
+      template: "%s | melikechan",
+      default: "melikechan",
+    },
+    description: "melikechan's personal website.",
+    url: new URL(defaultUrl),
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: `${defaultUrl}/logo.png`,
+        width: 512,
+        height: 512,
+        alt: "melikechan logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: {
+      template: "%s | melikechan",
+      default: "melikechan",
+    },
+    description: "melikechan's personal website.",
+    images: [`${defaultUrl}/logo.png`],
+  },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html
+      lang="en"
+      className={monaspaceNeon.className}
+      suppressHydrationWarning
+    >
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/logo.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
+        />
+      </head>
+      <body className="bg-background text-foreground">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
+          <main className="flex flex-col min-h-screen w-full max-w-7xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-16 mt-4">
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
