@@ -82,6 +82,7 @@ export { Tabs, TabsList, TabsTrigger, TabsContent } from "./components/ui/tabs";
 // Shared components
 export { ThemeSwitcher } from "./components/ThemeSwitcher";
 export { MobileMenu, type NavItem } from "./components/MobileMenu";
+export { SectionDivider } from "./components/ui/section-divider";
 
 // Typography
 export { TypographyBlockquote } from "./components/typography/blockquote";
