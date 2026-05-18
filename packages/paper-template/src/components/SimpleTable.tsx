@@ -34,7 +34,10 @@ export function SimpleTable({
         <thead>
           <tr className="border-b-2 border-foreground">
             {columns.map(({ label, align = "left" }) => (
-              <th key={label} className={cn("py-2 px-4 font-semibold", alignCls[align])}>
+              <th
+                key={label}
+                className={cn("py-2 px-4 font-semibold", alignCls[align])}
+              >
                 {label}
               </th>
             ))}
@@ -46,7 +49,10 @@ export function SimpleTable({
               {cells.map((cell, ci) => (
                 <td
                   key={ci}
-                  className={cn("py-1.5 px-4", alignCls[columns[ci]?.align ?? "left"])}
+                  className={cn(
+                    "py-1.5 px-4",
+                    alignCls[columns[ci]?.align ?? "left"],
+                  )}
                 >
                   {cell}
                 </td>

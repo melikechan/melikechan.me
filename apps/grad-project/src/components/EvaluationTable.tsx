@@ -86,7 +86,8 @@ export function EvaluationTable({
                       variantCls[variant],
                     )}
                   >
-                    {val}{variantArrow[variant]}
+                    {val}
+                    {variantArrow[variant]}
                   </td>
                 )),
               )}

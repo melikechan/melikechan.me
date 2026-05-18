@@ -1,7 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { Button, Card, CardAction, CardContent, CardHeader, cn } from "@melikechan/ui";
+import { useState, useEffect, useRef } from "react";
+import {
+  Button,
+  Card,
+  CardAction,
+  CardContent,
+  CardHeader,
+  cn,
+} from "@melikechan/ui";
 
 interface BibtexBlockProps {
   code: string;
@@ -10,15 +17,31 @@ interface BibtexBlockProps {
 
 export function BibtexBlock({ code, className }: BibtexBlockProps) {
   const [copied, setCopied] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current !== null) clearTimeout(timerRef.current);
+    };
+  }, []);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
+    if (timerRef.current !== null) clearTimeout(timerRef.current);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    timerRef.current = setTimeout(() => {
+      setCopied(false);
+      timerRef.current = null;
+    }, 2000);
   };
 
   return (
-    <Card className={cn("border-2 border-border overflow-hidden py-0 gap-0", className)}>
+    <Card
+      className={cn(
+        "border-2 border-border overflow-hidden py-0 gap-0",
+        className,
+      )}
+    >
       <CardHeader className="flex items-center justify-end px-4 py-1 border-b-2 border-border">
         <CardAction>
           <Button

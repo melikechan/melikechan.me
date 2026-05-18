@@ -76,6 +76,18 @@ export {
   SheetTitle,
   SheetDescription,
 } from "./components/ui/sheet";
+export {
+  Dialog,
+  DialogPortal,
+  DialogOverlay,
+  DialogClose,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+} from "./components/ui/dialog";
 export { Skeleton } from "./components/ui/skeleton";
 export { Tabs, TabsList, TabsTrigger, TabsContent } from "./components/ui/tabs";
 

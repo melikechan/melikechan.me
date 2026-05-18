@@ -66,7 +66,9 @@ export default function Page() {
           alt="Example art piece with generated caption"
           caption="The Crucifixion with the Virgin, Saint John, Saint Jerome, and Saint Mary Magdalene [left panel] by Pietro Perugino (c. 1482/1485)"
           variant="aside"
-          figureHeight="80vh"
+          containerClassName="h-[45vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh]"
+          priority
+          zoomable
         >
           <div className="flex flex-col gap-3">
             <TypographyH3 className="text-base font-semibold text-primary mt-0">
@@ -183,9 +185,9 @@ export default function Page() {
                 src="/research/grad-project/images/nga-gt-word-count.jpeg"
                 alt="Word counts on NGA Open Data train and test set"
                 caption="Fig 1. Word count distribution of NGA Open Data dataset's train and test splits."
-                aspectRatio="11/4"
-                figureWidth="85%"
+                containerClassName="aspect-[11/4] w-full md:w-[85%]"
                 className="mt-4"
+                zoomable
               />
             </li>
             <li>
@@ -273,17 +275,17 @@ export default function Page() {
         <div className="mt-4">
           <TypographyH3>Ablation Studies and Findings</TypographyH3>
 
+          <TypographyUnorderedList>
+            <li>
+              IFT on PixelProse yielded no performance gains on the NGA
+              evaluation set.
+            </li>
+            <li>
+              Using multiple similar prompts during training degraded the
+              results.
+            </li>
+          </TypographyUnorderedList>
           <TypographyParagraph>
-            <TypographyUnorderedList>
-              <li>
-                IFT on PixelProse yielded no performance gains on the NGA
-                evaluation set.
-              </li>
-              <li>
-                Using multiple similar prompts during training degraded the
-                results.
-              </li>
-            </TypographyUnorderedList>
             Consequently, all final models were trained using a standardized
             configuration{" "}
             <strong>
@@ -297,25 +299,25 @@ export default function Page() {
           <TypographyParagraph>
             We scored model outputs on a 1–5 scale across four axes using an{" "}
             <strong>LLM-as-a-Judge framework</strong> (Claude Sonnet):
-            <TypographyUnorderedList>
-              <li>
-                <strong>Coverage:</strong> Proportion of ground-truth entities
-                accurately captured.
-              </li>
-              <li>
-                <strong>Correctness:</strong> Factual accuracy of the described
-                entity attributes.
-              </li>
-              <li>
-                <strong>Hallucination:</strong> Avoidance of fabricated or
-                ungrounded visual elements.
-              </li>
-              <li>
-                <strong>Tone:</strong> Strict adherence to NGA’s image
-                description guidelines.
-              </li>
-            </TypographyUnorderedList>
           </TypographyParagraph>
+          <TypographyUnorderedList>
+            <li>
+              <strong>Coverage:</strong> Proportion of ground-truth entities
+              accurately captured.
+            </li>
+            <li>
+              <strong>Correctness:</strong> Factual accuracy of the described
+              entity attributes.
+            </li>
+            <li>
+              <strong>Hallucination:</strong> Avoidance of fabricated or
+              ungrounded visual elements.
+            </li>
+            <li>
+              <strong>Tone:</strong> Strict adherence to NGA’s image description
+              guidelines.
+            </li>
+          </TypographyUnorderedList>
         </div>
       </section>
 
@@ -360,7 +362,8 @@ export default function Page() {
           src="/research/grad-project/images/delta-heatmap.jpeg"
           alt="Δ heatmap showing per-model, per-axis fine-tuning deltas; green cells indicate improvement, red cells indicate regression"
           caption="Δ heatmap (green = improvement, red = regression)"
-          figureWidth="60%"
+          containerClassName="w-full aspect-video sm:w-[80%] md:w-[60%]"
+          zoomable
         />
 
         <TypographyParagraph className="mt-4">

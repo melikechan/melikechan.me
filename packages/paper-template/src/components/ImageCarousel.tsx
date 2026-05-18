@@ -30,7 +30,13 @@ export function ImageCarousel({ images, className }: ImageCarouselProps) {
     <div className={cn("flex flex-col gap-3", className)}>
       <div className="relative">
         <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-muted">
-          <Image key={src} src={src} alt={alt} fill className="object-cover" />
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
         </div>
 
         <Button
