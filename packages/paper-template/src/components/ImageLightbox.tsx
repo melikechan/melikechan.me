@@ -432,7 +432,7 @@ export function ImageLightbox({
           className="object-contain z-10"
         />
         <div className="absolute inset-0 z-20 flex items-end justify-end p-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-          <span className="bg-black/60 text-white rounded p-1" aria-hidden>
+          <span className="bg-black/60 text-white rounded p-1 aspect-square flex items-center justify-center" aria-hidden>
             <span className="material-symbols-outlined text-base leading-none">
               zoom_in
             </span>

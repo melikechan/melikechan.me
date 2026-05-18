@@ -12,9 +12,5 @@ export const siteConfig: SiteConfig = {
       href: "/",
       label: "About",
     },
-    {
-      href: "#playground",
-      label: "Playground",
-    },
   ],
 };

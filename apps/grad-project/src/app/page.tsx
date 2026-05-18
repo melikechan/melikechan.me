@@ -49,15 +49,6 @@ export default function Page() {
           <sup>2</sup>Ankara University, Computer Engineering Department
           (Advisor)
         </TypographyMuted>
-
-        <div className="flex flex-wrap justify-center gap-3 mt-2">
-          <Button variant="default" size="lg" asChild>
-            <a href="#playground" rel="noopener noreferrer">
-              <SiHuggingface />
-              Playground
-            </a>
-          </Button>
-        </div>
       </header>
 
       <section className="mb-8">
