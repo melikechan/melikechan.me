@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import type { ResolvingMetadata, Metadata } from "next";
 import { getSortedPostsData, getPostData } from "@/lib/posts";
@@ -135,17 +136,64 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.id }));
 }
 
+function PostSkeleton() {
+  return (
+    <article className="mt-4 animate-pulse">
+      <header className="border-b pb-6 mb-8">
+        <div className="h-9 w-2/3 rounded bg-muted" />
+        <div className="h-4 w-40 rounded bg-muted mt-4" />
+      </header>
+      <div className="space-y-3">
+        <div className="h-4 w-full rounded bg-muted" />
+        <div className="h-4 w-full rounded bg-muted" />
+        <div className="h-4 w-2/3 rounded bg-muted" />
+      </div>
+    </article>
+  );
+}
+
+async function PostArticle({ slug }: { slug: string }) {
+  const postData = await getPostData(slug);
+
+  if (!postData) {
+    return notFound();
+  }
+
+  return (
+    <article className="mt-4">
+      <header className="border-b pb-6 mb-8">
+        <TypographyH1 className="text-4xl font-bold tracking-tight">
+          {postData.title}
+        </TypographyH1>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 text-muted-foreground">
+          <time dateTime={postData.date as string}>
+            {postData.date as string}
+          </time>
+          {postData.author && <span>by {postData.author as string}</span>}
+        </div>
+        {(postData.tags as string[] | undefined)?.map((tag) => (
+          <Badge key={tag} variant="secondary" className="mt-4 mr-2">
+            {tag}
+          </Badge>
+        ))}
+      </header>
+      <div className="prose dark:prose-invert max-w-none">
+        <MDXRemote
+          source={postData.content as string}
+          options={mdxOptions}
+          components={mdxComponents}
+        />
+      </div>
+    </article>
+  );
+}
+
 export default async function Post({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const postData = await getPostData(slug);
-
-  if (!postData) {
-    return notFound();
-  }
 
   return (
     <main className="flex flex-col items-center gap-8 py-8 animate-fade-in">
@@ -161,31 +209,9 @@ export default async function Post({
             Back to Blog
           </Link>
         </Button>
-        <article className="mt-4">
-          <header className="border-b pb-6 mb-8">
-            <TypographyH1 className="text-4xl font-bold tracking-tight">
-              {postData.title}
-            </TypographyH1>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 text-muted-foreground">
-              <time dateTime={postData.date as string}>
-                {postData.date as string}
-              </time>
-              {postData.author && <span>by {postData.author as string}</span>}
-            </div>
-            {(postData.tags as string[] | undefined)?.map((tag) => (
-              <Badge key={tag} variant="secondary" className="mt-4 mr-2">
-                {tag}
-              </Badge>
-            ))}
-          </header>
-          <div className="prose dark:prose-invert max-w-none">
-            <MDXRemote
-              source={postData.content as string}
-              options={mdxOptions}
-              components={mdxComponents}
-            />
-          </div>
-        </article>
+        <Suspense fallback={<PostSkeleton />}>
+          <PostArticle slug={slug} />
+        </Suspense>
       </div>
     </main>
   );
