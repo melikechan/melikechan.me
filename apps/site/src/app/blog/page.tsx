@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { ResolvingMetadata, Metadata } from "next";
 import { getSortedPostsData, getAllTags } from "@/lib/posts";
 import BlogList from "./BlogList";
@@ -28,10 +29,13 @@ export async function generateMetadata(
   };
 }
 
-export default async function BlogPage() {
+async function BlogContent() {
   const allPostsData = await getSortedPostsData();
   const allTags = await getAllTags();
+  return <BlogList allPostsData={allPostsData} allTags={allTags} />;
+}
 
+export default function BlogPage() {
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 animate-fade-in">
       <div className="flex flex-col gap-6 w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto">
@@ -41,7 +45,9 @@ export default async function BlogPage() {
             Search, sort, and read my latest thoughts.
           </TypographyLead>
         </div>
-        <BlogList allPostsData={allPostsData} allTags={allTags} />
+        <Suspense>
+          <BlogContent />
+        </Suspense>
       </div>
     </main>
   );

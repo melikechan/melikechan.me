@@ -43,7 +43,6 @@ async function getAllMdxFiles(
 }
 
 export async function getSortedPostsData(): Promise<PostData[]> {
-  "use cache";
   const allMdxFiles = await getAllMdxFiles(postsDirectory);
 
   const allPostsData = await Promise.all(
@@ -68,7 +67,6 @@ export async function getSortedPostsData(): Promise<PostData[]> {
 }
 
 export async function getAllTags(): Promise<string[]> {
-  "use cache";
   const allPosts = await getSortedPostsData();
   const allTags = new Set<string>();
   allPosts.forEach((post) => post.tags?.forEach((tag) => allTags.add(tag)));
@@ -78,7 +76,6 @@ export async function getAllTags(): Promise<string[]> {
 export async function getPostData(
   slug: string,
 ): Promise<PostDataWithContent | null> {
-  "use cache";
   const allMdxFiles = await getAllMdxFiles(postsDirectory);
   const fullPath = allMdxFiles.find(
     (filePath) => path.basename(filePath, ".mdx") === slug,

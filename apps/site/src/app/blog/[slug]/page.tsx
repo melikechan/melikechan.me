@@ -3,7 +3,7 @@ import type { ResolvingMetadata, Metadata } from "next";
 import { getSortedPostsData, getPostData } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
-import { Badge, Button } from "@melikechan/ui";
+import { Badge, Button, SectionDivider } from "@melikechan/ui";
 import {
   TypographyH1,
   TypographyH2,
@@ -24,6 +24,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
 import Admonition from "@/components/Admonition";
+import Collapsible from "@/components/Collapsible";
 
 const headings = {
   h1: TypographyH1,
@@ -43,9 +44,31 @@ const lists = {
   ol: TypographyOrderedList,
 };
 
+function Code({
+  className,
+  children,
+}: {
+  className?: string;
+  children?: React.ReactNode;
+}) {
+  if (className) {
+    return <code className={className}>{children}</code>;
+  }
+  return <TypographyInlineCode>{children}</TypographyInlineCode>;
+}
+
+function Pre({ children }: { children?: React.ReactNode }) {
+  return (
+    <pre className="w-full overflow-x-auto rounded-lg p-4 bg-muted text-sm">
+      {children}
+    </pre>
+  );
+}
+
 const inlineElements = {
   a: TypographyLink,
-  code: TypographyInlineCode,
+  code: Code,
+  pre: Pre,
 };
 
 export const mdxComponents = {
@@ -54,6 +77,8 @@ export const mdxComponents = {
   ...lists,
   ...inlineElements,
   Admonition,
+  Collapsible,
+  SectionDivider,
 };
 
 const mdxOptions = {
