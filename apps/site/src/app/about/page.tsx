@@ -54,7 +54,7 @@ export default function About() {
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 animate-fade-in">
       <TypographyH1>About</TypographyH1>
-      <TypographyParagraph className="text-center">
+      <TypographyParagraph className="text-center w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto">
         {person.intro}
       </TypographyParagraph>
 

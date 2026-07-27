@@ -9,7 +9,6 @@ import {
   SiCmake,
   SiCplusplus,
   SiKeras,
-  SiTensorflow,
 } from "@icons-pack/react-simple-icons";
 
 export interface GlossaryEntry {
@@ -274,51 +273,6 @@ export const techGlossary: {
               </li>
             </TypographyUnorderedList>
           </>
-        </>
-      ),
-    },
-    tensorflow: {
-      name: "Tensorflow",
-      tooltip: (
-        <>
-          <div className="flex items-center space-x-2 mb-2">
-            <SiTensorflow className="text-[#FF6F00] dark:text-foreground w-6 h-6" />{" "}
-            <a
-              href="https://tensorflow.org"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold hover:underline"
-            >
-              TensorFlow
-            </a>
-          </div>
-          <TypographyMuted>
-            TensorFlow is a free and open-source software library for machine
-            learning and artificial intelligence, developed by the Google Brain
-            team. It serves as an end-to-end platform for machine learning and
-            offers:
-          </TypographyMuted>
-          <TypographyUnorderedList className="text-sm text-muted-foreground my-0 mt-4">
-            <li>
-              Primary use for training and inference of neural networks across a
-              range of tasks.
-            </li>
-            <li>
-              Support for various programming languages including Python
-              (primary front-end API), JavaScript, C++, and Java.
-            </li>
-            <li>
-              A comprehensive, flexible ecosystem of tools, libraries, and
-              community resources.
-            </li>
-            <li>
-              Features to assist with all stages of the machine learning
-              process, from data preparation to model deployment.
-            </li>
-            <li>
-              Compatibility with Keras for building machine learning models.
-            </li>
-          </TypographyUnorderedList>
         </>
       ),
     },

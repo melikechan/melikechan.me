@@ -2,6 +2,7 @@ import * as React from "react";
 import { SiGithub, SiKaggle, SiOrcid } from "@icons-pack/react-simple-icons";
 import Linkedin from "@/icons/linkedin.svg";
 import AnkaraUni from "@/icons/education/ankara-uni.svg";
+import KIT from "@/icons/education/kit.svg";
 import Getir from "@/icons/experience/getir.svg";
 
 import { techGlossary, type GlossaryEntry } from "@/utils/glossary";
@@ -82,22 +83,25 @@ const person: Person = {
   nickname: "melikechan",
   title: (
     <>
-      computer engineering student{" "}
+      Incoming M.Sc. Computer Science Student{" "}
       <TypographyLink
         key="uni-link"
-        href="https://ankara.edu.tr/"
+        href="https://kit.edu/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        @ankara university
+        @KIT
       </TypographyLink>
     </>
   ),
   intro: (
     <>
-      I am currently a <b>senior</b> in computer engineering at Ankara
-      University. <br />I am interested in deep learning and computer vision,
-      would like to work as a research scientist in the future.
+      I've recently <b>graduated</b> from <i>computer engineering</i> department
+      at Ankara University and I am going to start my master's studies in{" "}
+      <i>computer science</i> at Karlsruhe Institute of Technology (KIT). <br />
+      I am interested in <b>computer vision</b>, <b>multimodal learning</b>, and{" "}
+      <b>perception</b>, would like to work as a research scientist in the
+      future.
     </>
   ),
   links: {
@@ -132,17 +136,32 @@ const person: Person = {
   },
   education: [
     {
+      insName: "Karlsruhe Institute of Technology (KIT)",
+      icon: (
+        <div className="flex items-center justify-center bg-white rounded-md p-1 aspect-square">
+          <KIT />
+        </div>
+      ),
+      degree: "Master of Science (M.Sc.)",
+      subject: "Computer Science",
+      dates: {
+        startDate: new Date("2026-10-01"),
+        endDate: new Date("2028-10-01"),
+        continue: true,
+      },
+    },
+    {
       insName: "Ankara University",
       icon: <AnkaraUni />,
-      degree: "Bachelor's Degree",
+      degree: "Bachelor of Science (B.Sc.)",
       subject: "Computer Engineering",
       dates: {
         startDate: new Date("2022-09-21"),
-        endDate: null,
-        continue: true,
+        endDate: new Date("2026-07-01"),
+        continue: false,
       },
       gpa: {
-        cgpa: 3.8,
+        cgpa: 3.82,
         scale: 4.0,
       },
     },
@@ -249,7 +268,6 @@ const person: Person = {
       elements: [
         techGlossary.frameworks.pytorch,
         techGlossary.frameworks.keras,
-        techGlossary.frameworks.tensorflow,
       ],
     },
   ],
