@@ -43,6 +43,9 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
+  --font-sans: var(--font-lexend), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-monaspace), ui-monospace, monospace;
+
   --animate-fade-in: fade-in 0.6s ease-out forwards;
 
   @keyframes fade-in {
@@ -63,65 +66,70 @@
 
 /* Default palette — melikechan.me (main site). Override per-project in globals.css. */
 :root {
-  --background: 210 41% 96%;
-  --foreground: 222 47% 11%;
+  --background: 210 40% 95%;
+  --foreground: 255 10% 5%;
 
-  --card: 0 0% 97%;
-  --card-foreground: 333 3% 10%;
+  --card: 0 0% 95%;
+  --card-foreground: 335 5% 10%;
 
-  --popover: 0 0% 97%;
-  --popover-foreground: 333 3% 10%;
+  --popover: 0 0% 95%;
+  --popover-foreground: 335 5% 10%;
 
-  --primary: 332 81% 40%;
-  --primary-alt: 36 81% 50%;
+  --primary: 330 80% 40%;
+  --primary-alt: 35 80% 50%;
   --primary-foreground: 0 0% 95%;
 
-  --secondary: 332 8% 85%;
+  --secondary: 330 10% 85%;
   --secondary-foreground: 0 0% 10%;
 
-  --muted: 332 5% 85%;
-  --muted-foreground: 333 5% 50%;
+  --muted: 330 5% 85%;
+  --muted-foreground: 330 5% 50%;
 
-  --accent: 332 8% 85%;
+  --accent: 330 10% 85%;
   --accent-foreground: 0 0% 10%;
 
   --destructive: 0 85% 50%;
   --destructive-foreground: 0 0% 95%;
 
-  --border: 332 26% 79%;
-  --ring: 332 50% 74%;
-  --input: 332 23% 79%;
+  --border: 330 25% 80%;
+  --ring: 330 50% 75%;
+  --input: 330 20% 80%;
 }
 
 .dark {
-  --background: 255 12% 7%;
-  --foreground: 210 41% 96%;
+  --background: 255 10% 5%;
+  --foreground: 210 40% 95%;
 
-  --card: 255 12% 13%;
-  --card-foreground: 264 6% 95%;
+  --card: 255 10% 15%;
+  --card-foreground: 265 5% 95%;
 
-  --popover: 255 12% 13%;
-  --popover-foreground: 264 6% 95%;
+  --popover: 255 10% 15%;
+  --popover-foreground: 265 5% 95%;
 
   --primary: 264 85% 52%;
   --primary-alt: 316 85% 35%;
   --primary-foreground: 0 0% 95%;
 
-  --secondary: 265 28% 14%;
+  --secondary: 265 30% 15%;
   --secondary-foreground: 0 0% 95%;
 
-  --muted: 265 19% 19%;
-  --muted-foreground: 265 8% 60%;
+  --muted: 265 20% 20%;
+  --muted-foreground: 265 10% 60%;
 
-  --accent: 265 28% 14%;
+  --accent: 265 30% 15%;
   --accent-foreground: 0 0% 95%;
 
-  --destructive: 0 85% 53%;
+  --destructive: 0 85% 50%;
   --destructive-foreground: 0 0% 95%;
 
-  --border: 264 42% 19%;
-  --ring: 264 67% 24%;
-  --input: 255 12% 13%;
+  --border: 264 40% 20%;
+  --ring: 264 65% 25%;
+  --input: 255 10% 15%;
+}
+
+pre,
+code {
+  font-family: var(--font-monaspace), ui-monospace, monospace;
 }
 
 .material-symbols-outlined {

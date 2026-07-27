@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import { Lexend } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "next-themes";
@@ -7,6 +8,13 @@ import { env } from "@/env";
 
 import "katex/dist/katex.min.css";
 import "@/app/globals.css";
+
+const lexend = Lexend({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-lexend",
+  adjustFontFallback: false,
+});
 
 const monaspaceNeon = localFont({
   src: "./fonts/MonaspaceNeon-Var.woff2",
@@ -76,7 +84,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={monaspaceNeon.className}
+      className={`${lexend.variable} ${monaspaceNeon.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -93,7 +101,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
         />
       </head>
-      <body className="bg-background text-foreground">
+      <body className="bg-background text-foreground font-sans">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           <main className="flex flex-col min-h-screen w-full max-w-7xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-16 mt-4">
