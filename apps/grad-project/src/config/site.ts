@@ -7,10 +7,5 @@ interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   name: "Summarization of Art Pieces Using VLMs",
-  navItems: [
-    {
-      href: "/",
-      label: "About",
-    },
-  ],
+  navItems: [],
 };

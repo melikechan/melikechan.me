@@ -1,7 +1,7 @@
 {
   "name": "melikechan-monorepo",
   "private": true,
-  "packageManager": "pnpm@11.1.2",
+  "packageManager": "pnpm@11.17.0",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -10,10 +10,5 @@
   },
   "devDependencies": {
     "turbo": "catalog:tooling"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "next-themes@0.4.6": "patches/next-themes@0.4.6.patch"
-    }
   }
 }
