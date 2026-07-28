@@ -13,44 +13,40 @@ const navLinkClass =
 
 export function Navbar() {
   return (
-    <nav className="sticky inset-x-0 top-0 z-50 bg-background border-b">
-      <div className="flex items-center justify-between h-16 px-4">
-        <Link
-          href={siteUrl}
-          aria-label="melikechan.me"
-          rel="noopener noreferrer"
-        >
-          <Image
-            src={`${siteUrl}/logo.svg`}
-            alt="melikechan-logo"
-            width={48}
-            height={48}
-            priority
-            unoptimized
-          />
-        </Link>
+    <nav className="sticky inset-x-0 top-0 h-20 z-50 flex items-center justify-between px-4 py-4 bg-background border-b-2">
+      <Link href={siteUrl} aria-label="melikechan.me" rel="noopener noreferrer">
+        <Image
+          src={`${siteUrl}/logo.svg`}
+          alt="melikechan-logo"
+          width={48}
+          height={48}
+          priority
+          unoptimized
+        />
+      </Link>
 
-        <div className="flex items-center gap-4">
-          <div className="hidden sm:flex items-center gap-2 font-medium">
-            {siteConfig.navItems.map((item) =>
-              item.href ? (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className={navLinkClass}
-                  {...(item.external
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                >
-                  {item.label}
-                </Link>
-              ) : null,
-            )}
-          </div>
+      <div className="flex items-center gap-4">
+        <div className="hidden lg:flex items-center font-medium gap-2">
+          {siteConfig.navItems.map((item) =>
+            item.href ? (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={navLinkClass}
+                {...(item.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                {item.label}
+              </Link>
+            ) : null,
+          )}
           <ThemeSwitcher />
-          <div className="sm:hidden">
-            <MobileMenu items={siteConfig.navItems} />
-          </div>
+        </div>
+
+        <div className="flex lg:hidden items-center gap-4">
+          <ThemeSwitcher />
+          <MobileMenu items={siteConfig.navItems} />
         </div>
       </div>
     </nav>
