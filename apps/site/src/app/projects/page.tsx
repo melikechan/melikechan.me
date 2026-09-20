@@ -58,18 +58,10 @@ const projects: Project[] = [
     tags: ["Python", "JSON"],
   },
   {
-    title: "debigtech",
-    description:
-      "Alternative products to get rid of big tech corporations (multilanguage, fork of degoogle).",
-    href: "https://github.com/ankaraunifreesoftware/debigtech",
-    img: "https://repository-images.githubusercontent.com/191201679/10394d00-968c-11ea-8879-4f06b3e59af5",
-    progress: 15,
-  },
-  {
-    title: "Super Secret Project 2",
+    title: "Secret Mini Project",
     description: "TBA!",
     progress: 5,
-    tags: ["JavaScript"],
+    tags: ["Python"],
   },
 ];
 

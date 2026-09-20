@@ -83,7 +83,7 @@ const person: Person = {
   nickname: "melikechan",
   title: (
     <>
-      Incoming M.Sc. Computer Science Student{" "}
+      M.Sc. Computer Science Student{" "}
       <TypographyLink
         key="uni-link"
         href="https://kit.edu/"
@@ -99,9 +99,14 @@ const person: Person = {
       I've recently <b>graduated</b> from <i>computer engineering</i> department
       at Ankara University and I am going to start my master's studies in{" "}
       <i>computer science</i> at Karlsruhe Institute of Technology (KIT). <br />
-      I am interested in <b>computer vision</b>, <b>multimodal learning</b>, and{" "}
+      I am interested in <b>computer vision</b>, <b>robotics</b>, and{" "}
       <b>perception</b>, would like to work as a research scientist in the
       future.
+      <br />
+      Additionally, I like building projects which can actually be <b>
+        used
+      </b>{" "}
+      and <b>easy to understand</b>.
     </>
   ),
   links: {
