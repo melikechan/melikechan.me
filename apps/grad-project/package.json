@@ -6,11 +6,10 @@
     "dev": "next dev --port $(node -p \"require('../../zones.json')['grad-project'].port\")",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@icons-pack/react-simple-icons": "catalog:ui",
     "@melikechan/paper-template": "workspace:*",
     "@melikechan/ui": "workspace:*",
     "next": "catalog:framework",
@@ -21,7 +20,6 @@
   "devDependencies": {
     "@melikechan/config-tailwind": "workspace:*",
     "@melikechan/config-tsconfig": "workspace:*",
-    "@svgr/webpack": "catalog:tooling",
     "@types/node": "catalog:typescript",
     "@types/react": "catalog:typescript",
     "@types/react-dom": "catalog:typescript",

@@ -9,6 +9,8 @@
     "typecheck": "turbo typecheck"
   },
   "devDependencies": {
+    "eslint": "catalog:tooling",
+    "eslint-config-next": "catalog:tooling",
     "turbo": "catalog:tooling"
   }
 }

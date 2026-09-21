@@ -3,20 +3,18 @@
   "version": "1.2.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack --port $(node -p \"require('../../zones.json')['site'].port\")",
+    "dev": "next dev --port $(node -p \"require('../../zones.json')['site'].port\")",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "catalog:ui",
     "@melikechan/ui": "workspace:*",
-    "@next/mdx": "catalog:mdx",
     "@t3-oss/env-nextjs": "catalog:validation",
     "gray-matter": "catalog:mdx",
     "katex": "catalog:mdx",
-    "lucide-react": "catalog:ui",
     "next": "catalog:framework",
     "next-mdx-remote": "catalog:mdx",
     "next-themes": "catalog:ui",

@@ -21,7 +21,6 @@
     "@radix-ui/react-tabs": "catalog:radix",
     "class-variance-authority": "catalog:ui",
     "clsx": "catalog:ui",
-    "lucide-react": "catalog:ui",
     "tailwind-merge": "catalog:ui"
   },
   "devDependencies": {
