@@ -1,5 +1,5 @@
-import type { ResolvingMetadata, Metadata } from "next";
 import ProjectCard from "@/components/ProjectCard";
+import { createPageMetadata } from "@/lib/metadata";
 import {
   TypographyH1,
   TypographyH2,
@@ -7,30 +7,11 @@ import {
   TypographyLead,
 } from "@melikechan/ui/typography";
 
-export async function generateMetadata(
-  _params: object,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const parentMetadata = await parent;
-  return {
-    title: "Projects",
-    description: "Projects of melikechan.",
-    alternates: {
-      canonical: "/projects",
-    },
-    openGraph: {
-      ...parentMetadata.openGraph,
-      title: "Projects",
-      description: "Projects of melikechan.",
-      url: "/projects",
-    },
-    twitter: {
-      ...parentMetadata.twitter,
-      title: "Projects",
-      description: "Projects of melikechan.",
-    },
-  };
-}
+export const metadata = createPageMetadata({
+  title: "Projects",
+  description: "Projects of melikechan.",
+  pathname: "/projects",
+});
 
 interface Project {
   title: string;

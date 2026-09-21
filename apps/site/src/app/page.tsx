@@ -1,30 +1,6 @@
-import type { ResolvingMetadata, Metadata } from "next";
 import HeroSocialButton from "@/components/HeroSocialButton";
 import ShootingStars from "@/components/ShootingStars";
 import person from "@/utils/person";
-
-export async function generateMetadata(
-  _params: object,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const parentMetadata = await parent;
-  return {
-    title: {
-      absolute: "melikechan",
-    },
-    alternates: {
-      canonical: "/",
-    },
-    openGraph: {
-      ...parentMetadata.openGraph,
-      title: "melikechan",
-    },
-    twitter: {
-      ...parentMetadata.twitter,
-      title: "melikechan",
-    },
-  };
-}
 
 export default function Home() {
   return (

@@ -1,4 +1,3 @@
-import type { ResolvingMetadata, Metadata } from "next";
 import { isValidElement } from "react";
 
 import Timeline from "@/components/Timeline";
@@ -24,31 +23,13 @@ import {
 
 import person from "@/utils/person";
 import { formatTimePeriod } from "@/utils/date";
+import { createPageMetadata } from "@/lib/metadata";
 
-export async function generateMetadata(
-  _params: object,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const parentMetadata = await parent;
-  return {
-    title: "About",
-    description: "About melikechan.",
-    alternates: {
-      canonical: "/about",
-    },
-    openGraph: {
-      ...parentMetadata.openGraph,
-      title: "About",
-      description: "About melikechan.",
-      url: "/about",
-    },
-    twitter: {
-      ...parentMetadata.twitter,
-      title: "About",
-      description: "About melikechan.",
-    },
-  };
-}
+export const metadata = createPageMetadata({
+  title: "About",
+  description: "About melikechan.",
+  pathname: "/about",
+});
 
 export default function About() {
   return (
@@ -208,7 +189,7 @@ export default function About() {
                       <TypographyH2 className="font-bold text-lg my-1">
                         {edu.insName}
                       </TypographyH2>
-                      <TypographyH3 className="text-md mt-0">
+                      <TypographyH3 className="text-base mt-0">
                         {edu.degree} in {edu.subject}
                       </TypographyH3>
                       <TypographyMuted className="mt-1 mb-2">

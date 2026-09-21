@@ -1,4 +1,4 @@
-import type { ResolvingMetadata, Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import {
   TypographyH1,
   TypographyH2,
@@ -6,30 +6,12 @@ import {
   TypographyMuted,
 } from "@melikechan/ui/typography";
 
-export async function generateMetadata(
-  _params: object,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const parentMetadata = await parent;
-  return {
-    title: "Research",
-    description: "Research projects affiliated with melikechan.",
-    alternates: {
-      canonical: "/research",
-    },
-    openGraph: {
-      ...parentMetadata.openGraph,
-      title: "Research",
-      description: "Research projects affiliated with melikechan.",
-      url: "/research",
-    },
-    twitter: {
-      ...parentMetadata.twitter,
-      title: "Research",
-      description: "Research projects affiliated with melikechan.",
-    },
-  };
-}
+export const metadata = createPageMetadata({
+  title: "Research",
+  description: "Research projects affiliated with melikechan.",
+  pathname: "/research",
+  noIndex: true,
+});
 
 export default function Research() {
   return (

@@ -1,35 +1,13 @@
-import type { ResolvingMetadata, Metadata } from "next";
 import { TypographyH1, TypographyLead } from "@melikechan/ui/typography";
 import person from "@/utils/person";
+import { createPageMetadata } from "@/lib/metadata";
 
-export async function generateMetadata(
-  _params: object,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const parentMetadata = await parent;
-  return {
-    title: "Contact",
-    description: "Contact information of melikechan.",
-    alternates: {
-      canonical: "/contact",
-    },
-    openGraph: {
-      ...parentMetadata.openGraph,
-      title: "Contact",
-      description: "Contact information of melikechan.",
-      url: "/contact",
-    },
-    twitter: {
-      ...parentMetadata.twitter,
-      description: "Contact information of melikechan.",
-      title: "Contact",
-    },
-    robots: {
-      index: false,
-      follow: false,
-    },
-  };
-}
+export const metadata = createPageMetadata({
+  title: "Contact",
+  description: "Contact information of melikechan.",
+  pathname: "/contact",
+  noIndex: true,
+});
 
 export default function Contact() {
   return (

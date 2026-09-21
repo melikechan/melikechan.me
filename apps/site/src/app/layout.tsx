@@ -1,10 +1,12 @@
 import localFont from "next/font/local";
 import { Lexend } from "next/font/google";
+import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "next-themes";
 
-import { env } from "@/env";
+import { siteConfig } from "@/config/site";
+import { getSocialCard } from "@/lib/metadata";
 
 import "katex/dist/katex.min.css";
 import "@/app/globals.css";
@@ -13,7 +15,6 @@ const lexend = Lexend({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-lexend",
-  adjustFontFallback: false,
 });
 
 const monaspaceNeon = localFont({
@@ -24,47 +25,40 @@ const monaspaceNeon = localFont({
   adjustFontFallback: false,
 });
 
-const defaultUrl = env.NEXT_PUBLIC_SITE_URL;
+const defaultSocialCard = getSocialCard("Home");
 
-export const metadata = {
-  metadataBase: new URL(defaultUrl),
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.siteUrl),
   title: {
     template: "%s | melikechan",
-    default: "melikechan",
+    default: siteConfig.title,
   },
-  description: "melikechan's personal website.",
+  description: siteConfig.description,
   keywords: ["melikechan", "Melike Vurucu"],
-  authors: [{ name: "Melike Vurucu", url: defaultUrl }],
-  creator: "Melike Vurucu",
-  publisher: "Melike Vurucu",
+  authors: siteConfig.authors.map((name) => ({ name, url: siteConfig.url })),
+  creator: siteConfig.authors[0],
+  publisher: siteConfig.authors[0],
   referrer: "origin-when-cross-origin",
   openGraph: {
-    siteName: "melikechan",
+    siteName: siteConfig.name,
     title: {
       template: "%s | melikechan",
-      default: "melikechan",
+      default: siteConfig.title,
     },
-    description: "melikechan's personal website.",
-    url: new URL(defaultUrl),
+    description: siteConfig.description,
+    url: siteConfig.url,
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: `${defaultUrl}/logo.png`,
-        width: 512,
-        height: 512,
-        alt: "melikechan logo",
-      },
-    ],
+    images: [defaultSocialCard],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: {
       template: "%s | melikechan",
-      default: "melikechan",
+      default: siteConfig.title,
     },
-    description: "melikechan's personal website.",
-    images: [`${defaultUrl}/logo.png`],
+    description: siteConfig.description,
+    images: [defaultSocialCard],
   },
   alternates: {
     canonical: "/",
@@ -73,6 +67,9 @@ export const metadata = {
     index: true,
     follow: true,
     nocache: false,
+  },
+  icons: {
+    icon: "/logo.png",
   },
 };
 
@@ -88,8 +85,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/logo.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -98,15 +93,15 @@ export default function RootLayout({
         />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap"
         />
       </head>
       <body className="bg-background text-foreground font-sans">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          <main className="flex flex-col min-h-screen w-full max-w-7xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-16 mt-4">
+          <div className="flex flex-col min-h-screen w-full max-w-7xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-16 mt-4">
             {children}
-          </main>
+          </div>
           <Footer />
         </ThemeProvider>
       </body>

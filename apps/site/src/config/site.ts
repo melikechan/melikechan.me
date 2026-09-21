@@ -1,18 +1,27 @@
 import type { NavItem } from "@melikechan/ui";
+import { env } from "@/env";
 
 export type { NavItem };
 
-export interface SiteConfig {
+interface SiteConfig {
   name: string;
   url: string;
   description: string;
+  title: string;
+  siteUrl: string;
+  authors: readonly string[];
   navItems: NavItem[];
 }
 
+const siteUrl = env.NEXT_PUBLIC_SITE_URL;
+
 export const siteConfig: SiteConfig = {
   name: "melikechan",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: siteUrl,
   description: "melikechan's personal website.",
+  title: "melikechan",
+  siteUrl,
+  authors: ["Melike Vurucu"],
   navItems: [
     {
       href: "/about",
