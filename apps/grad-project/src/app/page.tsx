@@ -1,4 +1,4 @@
-import { Button, TypographyUnorderedList } from "@melikechan/ui";
+import { TypographyUnorderedList } from "@melikechan/ui";
 import {
   TypographyH1,
   TypographyH2,
@@ -14,9 +14,9 @@ import {
   FigureWithCaption,
   SimpleTable,
 } from "@melikechan/paper-template";
-import { SiHuggingface } from "@icons-pack/react-simple-icons";
 import { modelArchitectures, metrics, rows } from "./data";
 import { EvaluationTable } from "@/components/EvaluationTable";
+import { siteConfig } from "@/config/site";
 
 const TOC_ITEMS = [
   { href: "#introduction", label: "Introduction" },
@@ -30,7 +30,7 @@ export default function Page() {
     <article className="w-full max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto py-10 animate-fade-in">
       <header className="flex flex-col items-center text-center gap-3 mb-10">
         <TypographyH1 className="text-3xl sm:text-4xl lg:text-5xl text-balance">
-          Summarization of Art Pieces Using Vision-Language Models
+          {siteConfig.title}
         </TypographyH1>
 
         <TypographyLead>
@@ -58,7 +58,7 @@ export default function Page() {
           caption="The Crucifixion with the Virgin, Saint John, Saint Jerome, and Saint Mary Magdalene [left panel] by Pietro Perugino (c. 1482/1485)"
           variant="aside"
           containerClassName="h-[45vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh]"
-          priority
+          preload
           zoomable
         >
           <div className="flex flex-col gap-3">
@@ -167,7 +167,7 @@ export default function Page() {
                 rel="noopener noreferrer"
                 className="text-primary underline underline-offset-2 hover:text-primary-alt transition-colors"
               >
-                NGA's accessibility guidelines.
+                NGA&apos;s accessibility guidelines.
               </a>
               <TypographyMuted className="mt-1 block">
                 (~10% reserved for testing, the remainder for training)

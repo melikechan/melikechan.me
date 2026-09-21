@@ -1,3 +1,5 @@
+import { siteConfig } from "@/config/site";
+
 const year = new Date().getFullYear();
 
 export default function Footer() {
@@ -6,7 +8,7 @@ export default function Footer() {
       <p className="text-center text-xs text-muted-foreground">
         Project page design by{" "}
         <a
-          href="https://melikechan.me"
+          href={siteConfig.siteUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary font-bold underline underline-offset-2 hover:text-primary-alt transition-colors"
