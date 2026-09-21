@@ -1,11 +1,5 @@
 import type { NextConfig } from "next";
-import nextMdx from "@next/mdx";
 import zonesConfig from "../../zones.json";
-
-const withMdx = nextMdx({
-  extension: /\.mdx?$/,
-  options: {},
-});
 
 type ZoneEntry = { port: number; basePath?: string };
 
@@ -29,11 +23,10 @@ const nextConfig: NextConfig = {
     rules: {
       "*.svg": {
         loaders: ["@svgr/webpack"],
-        as: "*.ts",
+        as: "*.js",
       },
     },
   },
-  pageExtensions: ["md", "mdx", "tsx", "ts", "jsx", "js"],
   images: {
     remotePatterns: [
       {
@@ -48,30 +41,9 @@ const nextConfig: NextConfig = {
       destination: `${zone.url}${zone.basePath}:path`,
     }));
   },
-  webpack(config) {
-    const fileLoaderRule = config.module.rules.find(
-      (rule: { test?: { test?: (s: string) => boolean } }) =>
-        rule.test?.test?.(".svg"),
-    );
-    config.module.rules.push(
-      {
-        ...fileLoaderRule,
-        test: /\.svg$/i,
-        resourceQuery: /url/,
-      },
-      {
-        test: /\.svg$/i,
-        issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] },
-        use: ["@svgr/webpack"],
-      },
-    );
-    fileLoaderRule.exclude = /\.svg$/i;
-    return config;
-  },
   experimental: {
     useTypeScriptCli: true,
   },
 };
 
-export default withMdx(nextConfig);
+export default nextConfig;
