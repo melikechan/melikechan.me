@@ -11,7 +11,7 @@ interface FigureWithCaptionProps {
   className?: string;
   containerClassName?: string; // Styles the image wrapper div
   children?: ReactNode;
-  priority?: boolean;
+  preload?: boolean;
   zoomable?: boolean;
 }
 
@@ -23,7 +23,7 @@ export function FigureWithCaption({
   className,
   containerClassName,
   children,
-  priority = false,
+  preload = false,
   zoomable = false,
 }: FigureWithCaptionProps) {
   const sizes =
@@ -43,7 +43,7 @@ export function FigureWithCaption({
         alt={alt}
         sizes={sizes}
         backdropSizes={backdropSizes}
-        priority={priority}
+        preload={preload}
         containerClassName={containerClassName}
       />
     ) : (
@@ -63,7 +63,6 @@ export function FigureWithCaption({
               fill
               aria-hidden
               sizes={backdropSizes}
-              priority={priority}
               className="object-cover scale-110 blur-2xl opacity-60 select-none"
             />
             <Image
@@ -71,7 +70,7 @@ export function FigureWithCaption({
               alt={alt}
               fill
               sizes={sizes}
-              priority={priority}
+              preload={preload}
               className="object-contain z-10"
             />
           </>

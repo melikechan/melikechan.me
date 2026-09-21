@@ -95,7 +95,10 @@ export function MobileMenu({ items, title = "Navigate" }: MobileMenuProps) {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger aria-label="Open navigation menu" asChild>
         <Button variant="ghost" className="text-center" size="sm">
-          <span className="material-symbols-outlined text-muted-foreground">
+          <span
+            aria-hidden
+            className="material-symbols-outlined text-muted-foreground"
+          >
             menu
           </span>
         </Button>

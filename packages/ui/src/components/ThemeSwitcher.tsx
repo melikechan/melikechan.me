@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { Button } from "./ui/button";
 import {
   DropdownMenu,
@@ -17,14 +17,15 @@ const THEME_ICONS: Record<string, string> = {
   system: "computer",
 };
 
+const emptySubscribe = () => () => {};
+
 export function ThemeSwitcher() {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
   const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const icon = mounted
     ? (THEME_ICONS[theme ?? "system"] ?? "computer")
     : "computer";
@@ -38,7 +39,10 @@ export function ThemeSwitcher() {
           size="sm"
           suppressHydrationWarning
         >
-          <span className="material-symbols-outlined text-muted-foreground">
+          <span
+            aria-hidden
+            className="material-symbols-outlined text-muted-foreground"
+          >
             {icon}
           </span>
         </Button>
@@ -52,7 +56,10 @@ export function ThemeSwitcher() {
                 className="flex items-center gap-2"
                 value={value}
               >
-                <span className="material-symbols-outlined text-muted-foreground">
+                <span
+                  aria-hidden
+                  className="material-symbols-outlined text-muted-foreground"
+                >
                   {iconName}
                 </span>
                 <span className="capitalize">{value}</span>

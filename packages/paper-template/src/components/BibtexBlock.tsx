@@ -51,7 +51,7 @@ export function BibtexBlock({ code, className }: BibtexBlockProps) {
             onClick={handleCopy}
             aria-label="Copy BibTeX"
           >
-            <span className="material-symbols-outlined text-base">
+            <span aria-hidden className="material-symbols-outlined text-base">
               {copied ? "check" : "content_copy"}
             </span>
           </Button>

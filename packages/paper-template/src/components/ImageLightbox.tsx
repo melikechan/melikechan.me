@@ -33,7 +33,7 @@ interface ImageLightboxProps {
   alt: string;
   sizes: string;
   backdropSizes: string;
-  priority?: boolean;
+  preload?: boolean;
   containerClassName?: string;
 }
 
@@ -44,7 +44,7 @@ export function ImageLightbox({
   alt,
   sizes,
   backdropSizes,
-  priority = false,
+  preload = false,
   containerClassName,
 }: ImageLightboxProps) {
   const [open, setOpen] = useState(false);
@@ -124,19 +124,6 @@ export function ImageLightbox({
     pendingMoveRef.current = null;
   }, []);
 
-  useEffect(() => {
-    if (!open) {
-      cancelPendingRaf();
-      if (wheelSyncRef.current !== null) {
-        clearTimeout(wheelSyncRef.current);
-        wheelSyncRef.current = null;
-      }
-      // Animate back to identity during the dialog's exit fade.
-      applyTransform(1, { x: 0, y: 0 }, true);
-      setScale(1);
-    }
-  }, [open, applyTransform, cancelPendingRaf]);
-
   // Pure computation — no side effects, usable by both hot and cold paths.
   const computeZoom = useCallback(
     (newScale: number, cx: number, cy: number, rect?: DOMRect) => {
@@ -167,8 +154,29 @@ export function ImageLightbox({
   const zoomIn = useCallback(() => zoomTo(scaleRef.current * 1.5), [zoomTo]);
   const zoomOut = useCallback(() => {
     const next = scaleRef.current / 1.5;
-    next <= MIN_SCALE ? commit(1, { x: 0, y: 0 }) : zoomTo(next);
+    if (next <= MIN_SCALE) {
+      commit(1, { x: 0, y: 0 });
+    } else {
+      zoomTo(next);
+    }
   }, [commit, zoomTo]);
+
+  const handleOpenChange = useCallback(
+    (nextOpen: boolean) => {
+      setOpen(nextOpen);
+      if (nextOpen) return;
+
+      cancelPendingRaf();
+      if (wheelSyncRef.current !== null) {
+        clearTimeout(wheelSyncRef.current);
+        wheelSyncRef.current = null;
+      }
+      // Animate back to identity during the dialog's exit fade.
+      applyTransform(1, { x: 0, y: 0 }, true);
+      setScale(1);
+    },
+    [applyTransform, cancelPendingRaf],
+  );
 
   // Single effect for all non-React listeners; passive:false required on wheel
   // and touchmove so preventDefault() can suppress page scroll and pinch-zoom.
@@ -420,7 +428,6 @@ export function ImageLightbox({
           fill
           aria-hidden
           sizes={backdropSizes}
-          priority={priority}
           className="object-cover scale-110 blur-2xl opacity-60 select-none"
         />
         <Image
@@ -428,7 +435,7 @@ export function ImageLightbox({
           alt={alt}
           fill
           sizes={sizes}
-          priority={priority}
+          preload={preload}
           className="object-contain z-10"
         />
         <div className="absolute inset-0 z-20 flex items-end justify-end p-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
@@ -440,7 +447,7 @@ export function ImageLightbox({
         </div>
       </button>
 
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogContent className={DIALOG_CLS}>
           <DialogTitle className="sr-only">{alt}</DialogTitle>
 
@@ -486,7 +493,6 @@ export function ImageLightbox({
 
           <div
             ref={containerRef}
-            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
             tabIndex={0}
             className={cn(
               "flex-1 relative overflow-hidden select-none",

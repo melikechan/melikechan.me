@@ -46,7 +46,9 @@ export function ImageCarousel({ images, className }: ImageCarouselProps) {
           onClick={prev}
           aria-label="Previous image"
         >
-          <span className="material-symbols-outlined">chevron_left</span>
+          <span aria-hidden className="material-symbols-outlined">
+            chevron_left
+          </span>
         </Button>
         <Button
           variant="ghost"
@@ -55,7 +57,9 @@ export function ImageCarousel({ images, className }: ImageCarouselProps) {
           onClick={next}
           aria-label="Next image"
         >
-          <span className="material-symbols-outlined">chevron_right</span>
+          <span aria-hidden className="material-symbols-outlined">
+            chevron_right
+          </span>
         </Button>
       </div>
 

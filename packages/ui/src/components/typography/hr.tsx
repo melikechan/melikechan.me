@@ -12,7 +12,10 @@ export function TypographyHr({
       {...props}
     >
       <div className="h-0.5 w-1/3 bg-linear-to-r from-transparent to-primary/70" />
-      <span className="material-symbols-outlined text-primary text-md">
+      <span
+        aria-hidden
+        className="material-symbols-outlined text-primary text-base"
+      >
         star
       </span>
       <div className="h-0.5 w-1/3 bg-linear-to-l from-transparent to-primary/70" />
