@@ -54,10 +54,9 @@ export function Navbar() {
         <Link href="/" aria-label="Home">
           <Image
             src="/logo.svg"
-            alt="melikechan-logo"
+            alt="melikechan logo"
             width={48}
             height={48}
-            priority
           />
         </Link>
 
@@ -70,7 +69,10 @@ export function Navbar() {
                     className={`${navLinkClass} flex items-center gap-1 outline-none`}
                   >
                     {item.label}
-                    <span className="material-symbols-outlined text-[1em] leading-none">
+                    <span
+                      aria-hidden
+                      className="material-symbols-outlined text-[1em] leading-none"
+                    >
                       expand_more
                     </span>
                   </DropdownMenuTrigger>

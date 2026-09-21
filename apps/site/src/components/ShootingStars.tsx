@@ -48,6 +48,13 @@ const ShootingStars = () => {
   const colorRef = useRef<string>("hsla(0, 0%, 100%, 0.8)");
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
     colorRef.current = readStarColor();
 
     const updateColor = () => {
@@ -63,10 +70,6 @@ const ShootingStars = () => {
       attributeFilter: ["class"],
     });
 
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
     const c: HTMLCanvasElement = canvas;
     const cx: CanvasRenderingContext2D = ctx;
     let rafId: number;
@@ -180,7 +183,6 @@ const ShootingStars = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 -z-1"
-      style={{ willChange: "transform" }}
       aria-hidden="true"
     />
   );

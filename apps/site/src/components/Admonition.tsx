@@ -66,6 +66,7 @@ export default function Admonition({
       <CardHeader className="px-4">
         <div className="flex items-center gap-2">
           <span
+            aria-hidden
             className={cn(
               "material-symbols-outlined text-[20px]",
               config.color,
