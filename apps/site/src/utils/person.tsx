@@ -96,8 +96,9 @@ const person: Person = {
   ),
   intro: (
     <>
-      I've recently <b>graduated</b> from <i>computer engineering</i> department
-      at Ankara University and I am going to start my master's studies in{" "}
+      I&apos;ve recently <b>graduated</b> from <i>computer engineering</i>{" "}
+      department at Ankara University and I am going to start my master&apos;s
+      studies in{" "}
       <i>computer science</i> at Karlsruhe Institute of Technology (KIT). <br />
       I am interested in <b>computer vision</b>, <b>robotics</b>, and{" "}
       <b>perception</b>, would like to work as a research scientist in the

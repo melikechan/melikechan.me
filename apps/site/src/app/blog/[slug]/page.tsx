@@ -1,6 +1,5 @@
-import { Suspense } from "react";
 import Link from "next/link";
-import type { ResolvingMetadata, Metadata } from "next";
+import type { Metadata } from "next";
 import { getSortedPostsData, getPostData } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
@@ -18,7 +17,7 @@ import {
   TypographyOrderedList,
   TypographyInlineCode,
 } from "@melikechan/ui/typography";
-import { siteConfig } from "@/config/site";
+import { createPageMetadata } from "@/lib/metadata";
 
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
@@ -72,7 +71,7 @@ const inlineElements = {
   pre: Pre,
 };
 
-export const mdxComponents = {
+const mdxComponents = {
   ...headings,
   ...textBlocks,
   ...lists,
@@ -91,42 +90,33 @@ const mdxOptions = {
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
-  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { slug } = await params;
   const postData = await getPostData(slug);
   if (!postData) return {};
-  const parentMetadata = await parent;
+  const description = postData.description;
+  const baseMetadata = createPageMetadata({
+    title: postData.title ?? "Untitled Post",
+    description,
+    pathname: `/blog/${slug}`,
+    noIndex: postData.noIndex === true,
+  });
+  const authors = postData.author
+    ? [postData.author as string]
+    : ["Melike Vurucu"];
+
   return {
-    title: postData.title,
-    description: postData.description,
+    ...baseMetadata,
     keywords: postData.keywords ?? postData.tags,
-    authors: postData.author
-      ? [{ name: postData.author as string }]
-      : [{ name: "Melike Vurucu" }],
-    alternates: {
-      canonical: `/blog/${slug}`,
-    },
+    authors: authors.map((name) => ({ name })),
     openGraph: {
-      ...parentMetadata.openGraph,
-      title: postData.title,
-      description: postData.description,
-      url: siteConfig.url + "/blog/" + postData.id,
+      ...baseMetadata.openGraph,
       locale: (postData.locale as string) ?? "en_US",
       type: "article",
-      siteName: siteConfig.name,
       publishedTime: postData.date
         ? new Date(postData.date as string).toISOString()
         : undefined,
-      authors: postData.author
-        ? [postData.author as string]
-        : ["Melike Vurucu"],
-    },
-    twitter: {
-      ...parentMetadata.twitter,
-      card: "summary_large_image",
-      title: postData.title,
-      description: postData.description,
+      authors,
     },
   };
 }
@@ -136,23 +126,12 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.id }));
 }
 
-function PostSkeleton() {
-  return (
-    <article className="mt-4 animate-pulse">
-      <header className="border-b pb-6 mb-8">
-        <div className="h-9 w-2/3 rounded bg-muted" />
-        <div className="h-4 w-40 rounded bg-muted mt-4" />
-      </header>
-      <div className="space-y-3">
-        <div className="h-4 w-full rounded bg-muted" />
-        <div className="h-4 w-full rounded bg-muted" />
-        <div className="h-4 w-2/3 rounded bg-muted" />
-      </div>
-    </article>
-  );
-}
-
-async function PostArticle({ slug }: { slug: string }) {
+export default async function Post({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const postData = await getPostData(slug);
 
   if (!postData) {
@@ -160,58 +139,47 @@ async function PostArticle({ slug }: { slug: string }) {
   }
 
   return (
-    <article className="mt-4">
-      <header className="border-b pb-6 mb-8">
-        <TypographyH1 className="text-4xl font-bold tracking-tight">
-          {postData.title}
-        </TypographyH1>
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 text-muted-foreground">
-          <time dateTime={postData.date as string}>
-            {postData.date as string}
-          </time>
-          {postData.author && <span>by {postData.author as string}</span>}
-        </div>
-        {(postData.tags as string[] | undefined)?.map((tag) => (
-          <Badge key={tag} variant="secondary" className="mt-4 mr-2">
-            {tag}
-          </Badge>
-        ))}
-      </header>
-      <div className="prose dark:prose-invert max-w-none">
-        <MDXRemote
-          source={postData.content as string}
-          options={mdxOptions}
-          components={mdxComponents}
-        />
-      </div>
-    </article>
-  );
-}
-
-export default async function Post({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-
-  return (
     <main className="flex flex-col items-center gap-8 py-8 animate-fade-in">
-      <div className="w-full max-w-4xl xl:max-w-5xl 2xl:max-w-6xl">
+      <div className="w-full max-w-3xl">
         <Button asChild variant="ghost" className="-ml-4">
           <Link
             href="/blog"
             className="flex items-center gap-2 text-muted-foreground"
           >
-            <span className="material-symbols-outlined text-[1.25rem]! size-5">
+            <span
+              aria-hidden
+              className="material-symbols-outlined size-5 text-[1.25rem]!"
+            >
               chevron_left
             </span>
             Back to Blog
           </Link>
         </Button>
-        <Suspense fallback={<PostSkeleton />}>
-          <PostArticle slug={slug} />
-        </Suspense>
+        <article className="mt-4">
+          <header className="border-b pb-6 mb-8">
+            <TypographyH1 className="text-4xl font-bold tracking-tight">
+              {postData.title}
+            </TypographyH1>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 text-muted-foreground">
+              <time dateTime={postData.date as string}>
+                {postData.date as string}
+              </time>
+              {postData.author && <span>by {postData.author as string}</span>}
+            </div>
+            {(postData.tags as string[] | undefined)?.map((tag) => (
+              <Badge key={tag} variant="secondary" className="mt-4 mr-2">
+                {tag}
+              </Badge>
+            ))}
+          </header>
+          <div className="prose dark:prose-invert max-w-none">
+            <MDXRemote
+              source={postData.content as string}
+              options={mdxOptions}
+              components={mdxComponents}
+            />
+          </div>
+        </article>
       </div>
     </main>
   );

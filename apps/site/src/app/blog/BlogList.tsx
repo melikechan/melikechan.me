@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 
 import {
   Input,
@@ -46,7 +46,7 @@ export default function BlogList({ allPostsData, allTags }: BlogListProps) {
   const [pageInput, setPageInput] = useState("1");
 
   const processedPosts = useMemo(() => {
-    let filtered = allPostsData
+    const filtered = allPostsData
       .filter((post) =>
         post.title?.toLowerCase().includes(searchTerm.toLowerCase()),
       )
@@ -93,12 +93,13 @@ export default function BlogList({ allPostsData, allTags }: BlogListProps) {
     currentPage,
   ]);
 
-  useEffect(() => {
-    setPageInput(currentPage.toString());
-  }, [currentPage]);
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+    setPageInput(page.toString());
+  };
 
   const handleFilterChange = () => {
-    setCurrentPage(1);
+    goToPage(1);
   };
 
   const handleTagsChange = (newTags: string[]) => {
@@ -116,9 +117,9 @@ export default function BlogList({ allPostsData, allTags }: BlogListProps) {
     }
 
     if (newPage > totalPages) {
-      setCurrentPage(totalPages);
+      goToPage(totalPages);
     } else {
-      setCurrentPage(newPage);
+      goToPage(newPage);
     }
   };
 
@@ -141,6 +142,7 @@ export default function BlogList({ allPostsData, allTags }: BlogListProps) {
         <Input
           type="text"
           placeholder="Search posts by title..."
+          aria-label="Search posts by title"
           value={searchTerm}
           onChange={(e) => {
             setSearchTerm(e.target.value);
@@ -155,8 +157,11 @@ export default function BlogList({ allPostsData, allTags }: BlogListProps) {
         {selectedTags.length > 1 && (
           <RadioGroup
             value={tagFilterLogic}
-            onValueChange={(v) => setTagFilterLogic(v as TagFilterLogic)}
-            className="flex items-center justify-center gap-4 bg-muted p-2 rounded-lg"
+            onValueChange={(value) => {
+              setTagFilterLogic(value as TagFilterLogic);
+              goToPage(1);
+            }}
+            className="flex flex-wrap items-center justify-center gap-4 rounded-lg bg-muted p-2"
           >
             <Label className="font-medium">Match:</Label>
             <div className="flex items-center space-x-2">
@@ -173,8 +178,14 @@ export default function BlogList({ allPostsData, allTags }: BlogListProps) {
             </div>
           </RadioGroup>
         )}
-        <Select value={sortKey} onValueChange={(v) => setSortKey(v as SortKey)}>
-          <SelectTrigger>
+        <Select
+          value={sortKey}
+          onValueChange={(value) => {
+            setSortKey(value as SortKey);
+            goToPage(1);
+          }}
+        >
+          <SelectTrigger className="w-full">
             <SelectValue placeholder="Sort by..." />
           </SelectTrigger>
           <SelectContent>
@@ -220,23 +231,29 @@ export default function BlogList({ allPostsData, allTags }: BlogListProps) {
       </div>
 
       {processedPosts.totalPages > 1 && (
-        <div className="flex items-center justify-center gap-2 sm:gap-4">
+        <div className="mt-6 flex items-center justify-center gap-2 sm:gap-4">
           <Button
             variant="outline"
             size="icon"
-            onClick={() => setCurrentPage(1)}
+            onClick={() => goToPage(1)}
             disabled={currentPage === 1}
+            aria-label="First page"
           >
-            <span className="material-symbols-outlined">first_page</span>
+            <span aria-hidden className="material-symbols-outlined">
+              first_page
+            </span>
           </Button>
 
           <Button
             variant="outline"
             size="icon"
-            onClick={() => setCurrentPage((p) => p - 1)}
+            onClick={() => goToPage(currentPage - 1)}
             disabled={currentPage === 1}
+            aria-label="Previous page"
           >
-            <span className="material-symbols-outlined">chevron_left</span>
+            <span aria-hidden className="material-symbols-outlined">
+              chevron_left
+            </span>
           </Button>
 
           <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
@@ -256,19 +273,25 @@ export default function BlogList({ allPostsData, allTags }: BlogListProps) {
           <Button
             variant="outline"
             size="icon"
-            onClick={() => setCurrentPage((p) => p + 1)}
+            onClick={() => goToPage(currentPage + 1)}
             disabled={currentPage === processedPosts.totalPages}
+            aria-label="Next page"
           >
-            <span className="material-symbols-outlined">chevron_right</span>
+            <span aria-hidden className="material-symbols-outlined">
+              chevron_right
+            </span>
           </Button>
 
           <Button
             variant="outline"
             size="icon"
-            onClick={() => setCurrentPage(processedPosts.totalPages)}
+            onClick={() => goToPage(processedPosts.totalPages)}
             disabled={currentPage === processedPosts.totalPages}
+            aria-label="Last page"
           >
-            <span className="material-symbols-outlined">last_page</span>
+            <span aria-hidden className="material-symbols-outlined">
+              last_page
+            </span>
           </Button>
         </div>
       )}

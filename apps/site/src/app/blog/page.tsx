@@ -1,41 +1,18 @@
-import { Suspense } from "react";
-import type { ResolvingMetadata, Metadata } from "next";
 import { getSortedPostsData, getAllTags } from "@/lib/posts";
+import { createPageMetadata } from "@/lib/metadata";
 import BlogList from "./BlogList";
 import { TypographyH1, TypographyLead } from "@melikechan/ui/typography";
 
-export async function generateMetadata(
-  _params: object,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const parentMetadata = await parent;
-  return {
-    title: "Blog",
-    description: "Blog posts by melikechan.",
-    alternates: {
-      canonical: "/blog",
-    },
-    openGraph: {
-      ...parentMetadata.openGraph,
-      title: "Blog",
-      description: "Blog posts by melikechan.",
-      url: "/blog",
-    },
-    twitter: {
-      ...parentMetadata.twitter,
-      title: "Blog",
-      description: "Blog posts by melikechan.",
-    },
-  };
-}
+export const metadata = createPageMetadata({
+  title: "Blog",
+  description: "Blog posts by melikechan.",
+  pathname: "/blog",
+});
 
-async function BlogContent() {
+export default async function BlogPage() {
   const allPostsData = await getSortedPostsData();
-  const allTags = await getAllTags();
-  return <BlogList allPostsData={allPostsData} allTags={allTags} />;
-}
+  const allTags = getAllTags(allPostsData);
 
-export default function BlogPage() {
   return (
     <main className="flex flex-col min-h-screen items-center gap-6 mt-2 animate-fade-in">
       <div className="flex flex-col gap-6 w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto">
@@ -45,9 +22,7 @@ export default function BlogPage() {
             Search, sort, and read my latest thoughts.
           </TypographyLead>
         </div>
-        <Suspense>
-          <BlogContent />
-        </Suspense>
+        <BlogList allPostsData={allPostsData} allTags={allTags} />
       </div>
     </main>
   );
